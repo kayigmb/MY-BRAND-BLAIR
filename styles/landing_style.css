@@ -18,16 +18,21 @@ body {
     gap:10px;    
 }
 
-.left{
+.profile_section{
     width: 305px;
-    background-color: var(--white);
-    height: 1278.5px;   
+    background-color: var(--white); 
+}
+.profile_section hr{
+    width: 220px;
+    color: var(--light_grey);
+    margin: 20px auto;
+
 }
 .main_part{
     width:1200px;
 }
 
-.right{
+.menu_section{
     width:108px;
     height:100vh;
     background-color: var(--white);
@@ -43,6 +48,21 @@ body {
     height: 261px;
     width: 250px;
 }
+.home_page h1 ,h2 span{
+    color: var(--yellow);
+}
+.hirebtn{
+    height: 51px;
+    width: 154px;
+    background-color: var(--yellow);
+    border: 1px solid;
+    font-weight:normal;
+    border-color: var(--yellow);
+    border-radius: 5px;
+    font-size: 16px;
+    align-items: center;
+    text-align: center;
+}
 .about_page{
     color: var(--black);
 }
@@ -54,5 +74,120 @@ footer{
     align-items: center;
     justify-content: center;
     color: var(--black);
+}
+.profile{
+    color:var(--black);
+    margin-top: 50px;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.profile h2{
+    font-size: 18px;
+    margin-top: 20px;
+}
+.profile img{
+    height:145.84px;
+    width: 150px;
+    border-radius: 100px;
+}
+.profile p{
+    color: var(--dark_grey);
+    left:0;
+    margin-top: 10px;
+}
+
+.outter{
+    height: 23.33px;
+    width: 24px;
+    background-color: var(--yellow);
+    border-radius:30px;
+    color:var(--black);
+}
+.outter a i{
+    color: var(--black);
+    margin-top: 3px;
+  }
+  
+.links{
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    margin-top: 20px;
+    gap:20px ;
+
+}
+
+.info{
+    display: flex;
+    width: 220px;
+    margin: 20px auto;
+    justify-content: space-between;
+}
+.info_section1 p{
+    background-color: var(--yellow);
+    margin-top: 10px;
+    padding-left: 2px;
+}
+.info_section2 p{
+    margin-top: 10px;
+}
+.language{
+    width: 220px;
+    margin: 20px auto;
+}
+.language h2{
+font-size:18px;
+color:var(--black)
+}
+.lang{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    color:var(--dark_grey)
+}
+.bar{
+    background-color: var(--white);
+    border: 0.5px solid var(--yellow);
+    height: 6px;
+    border-radius: 30px;
+    margin-top: 10px;
+}
+.myBar{
+    height: 2px;
+    border:0.5px solid var(--yellow);
+    background-color: var(--yellow);
+    border-radius: 30px;
+    left:0;
+    margin: 1px;
+}
+.extra_skills{
+    width: 220px;
+}
+.extra_skills h2{
+    font-size: 18px;
+    color: var(--black);
+}
+.moreskills{
+    margin-top: 10px;
+}
+.moreskills p{
+        color: var(--dark_grey);
+        margin-top:5px;
+}
+
+.downloadbtn{
+    width: 220px;
+    height: 40px;
+    background-color: var(--yellow);
+    border: 1px solid var(--yellow);
+    color:var(--black);
+    font-size:14px;
+    font-weight: bold;
+}
+
+.dark_light{
+    
 }
 
