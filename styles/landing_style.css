@@ -29,11 +29,12 @@ body {
 
 }
 .main_part{
-    width:1200px;
+     width:70%; /* change this to 70% */
+
 }
 
 .menu_section{
-    width:108px;
+    width:108px;  /* change to 108px or 10%*/
     height:100vh;
     background-color: var(--white);
 }
@@ -41,16 +42,38 @@ body {
 .home_page{
     background-color: var(--white);
     width: 100%;
-    padding: 0;
-    margin: 0;
+    height: 480px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
 }
-.home_page img{
+.img{
+    align-self: flex-end;
+}
+.img img{
     height: 261px;
     width: 250px;
+    bottom: 0;
+    
 }
 .home_page h1 ,h2 span{
     color: var(--yellow);
 }
+.home h1{
+    margin-top:50px;
+
+}
+
+.home_page h1,h2{
+    font-size: 48px;
+}
+.home_page p{
+    font-size: 20px;
+    margin-top: 90px;
+    font-weight: normal;
+}
+
 .hirebtn{
     height: 51px;
     width: 154px;
@@ -60,11 +83,24 @@ body {
     border-color: var(--yellow);
     border-radius: 5px;
     font-size: 16px;
+    margin-top:50px;
     align-items: center;
     text-align: center;
 }
 .about_page{
     color: var(--black);
+    margin-top: 50px;
+}
+.about_page h1{
+    text-align: center;
+    margin-top:120px;
+    font-size: 32px;
+}
+.about_page p{
+    font-size: 40px;
+    margin: 50px auto;
+    width: 80%;
+    text-align: left;
 }
 footer{
     background-color: var(--white);
@@ -98,14 +134,14 @@ footer{
     margin-top: 10px;
 }
 
-.outter{
+.link_icons{
     height: 23.33px;
     width: 24px;
     background-color: var(--yellow);
     border-radius:30px;
     color:var(--black);
 }
-.outter a i{
+.link_icons a i{
     color: var(--black);
     margin-top: 3px;
   }
@@ -132,6 +168,7 @@ footer{
 }
 .info_section2 p{
     margin-top: 10px;
+    align-self: flex-end;
 }
 .language{
     width: 220px;
@@ -176,6 +213,9 @@ color:var(--black)
         color: var(--dark_grey);
         margin-top:5px;
 }
+.moreskills p i{
+    color:var(--yellow)
+}
 
 .downloadbtn{
     width: 220px;
@@ -188,6 +228,84 @@ color:var(--black)
 }
 
 .dark_light{
-    
+    margin:90px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--black);
+    height:25px;
+    width: 25px;
+    border-radius: 30px;
 }
+.dark_light i{
+   color: var(--white);
+}
+.menu{
+    margin:50px auto;
+    width: 50%;
+
+}
+.menu_components{
+    height: 40px;
+    width:40px;
+    max-width: 100%;
+    background-color: var(--light_grey);
+    border-radius:30px;
+    color:var(--black);
+    margin:30px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu .menu_components a i{   
+    color :var(--dark_grey)
+}
+.menu_components:hover{
+    background-color: var(--yellow);
+    color:var(--black)
+}
+.menu .menu_components a i:hover{
+   
+    color :var(--black)
+}
+.services{
+    margin-top: 100px;
+}
+.services h1{
+    color: var(--black);
+    text-align:center;
+    font-size: 32px;
+
+
+}
+.services_show{
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    margin-top: 50px;
+}
+.each_service{
+    width: 310px;
+    height: 225px;
+    background-color: var(--white);
+    text-align: center;
+    align-items: center;
+}
+.each_service img{
+    color:var(--yellow);
+    height: 68px;
+    width: 68px;
+    margin: 30px;
+}
+.each_service h2{
+    font-size: 18px;
+    color: var(--black);
+    margin-top: 20px;
+}
+.each_service p{
+    color: var(--dark_grey);
+    font-size:15px;
+    margin-top:20px;
+}
+
 
