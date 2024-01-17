@@ -1,8 +1,112 @@
 :root{
-    --yellow:#FFB400;
-    --dark_grey:#767676;
-    --light_grey:#E4E6EB;
-    --light_white:#F0F0F6;
-    --black:#2B2B2B;
-    --white:#FFFFFF;
+--yellow:#FFB400;
+--dark_grey:#767676;
+--light_grey:#E4E6EB;
+--light_white:#F0F0F6;
+--black:#2B2B2B;
+--white:#FFFFFF;
+}
+*{
+font-family:sans-serif;
+margin: 0;
+padding: 0;
+}
+body{
+    background-color: var(--light_white);
+}
+.content{
+    position: relative;
+    display: flex;
+}
+.content .navigation{
+    background-color: var(--white);
+    width:clamp(5%,15%,10%);
+    height: 100%;
+    top: 0;
+    right: 0;
+    position: fixed;   
+}
+.menu{
+    margin: 100px auto;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+}
+/* dark and light mode */
+.nlmode{
+    max-width: 50px;
+    min-height: 50px;
+    background-color: black;
+    border-radius: 30px;
+    margin: 0 auto;
+    color: var(--white);
+}
+.nlmode i{
+    font-size: clamp(20px,40px,50px);
+}
+
+
+.menu_links{
+    margin-top: 100px;
+}
+
+.menu_components{
+    background-color: var(--light_white);
+   width: clamp(20px,50px,100px);
+    min-height:clamp(20px,50px,100px);
+    margin: 50px auto;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu_components  a i{
+   font-size:30px;  
+   color:var(--black)
+}
+.menu_components a  i:hover,
+.menu_components:hover{
+    background-color: var(--yellow);
+    color:black;
+  
+} 
+.main_section{
+    width: 90%;
+    margin: 0 auto;
+}
+
+h1{
+    text-align: center;
+    font-size:clamp(10px,96px,96px);
+    font-weight: medium;
+    color: var(--black);
+}
+
+.blog_cards{
+    background-color: black;
+    width: 80%;
+    min-height: 400vh;
+    border: 1px solid black;
+    margin: 0 auto ;
+    z-index: 1;
+}
+.dropdownbar img{
+    display: none;
+}
+@media(max-width:440px){
+    .navigation{
+        display:none;
+    }
+    .dropdownbar{
+        max-width: 50px;
+    }
+    .dropdownbar img{
+        display: inline;
+        max-width: 50px;
+        height: 48px;
+        margin-top: 10px;
+    }
+    h1{
+        font-size:48px;
+    }
 }

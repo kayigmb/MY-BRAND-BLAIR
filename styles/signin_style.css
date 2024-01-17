@@ -6,3 +6,130 @@
     --black:#2B2B2B;
     --white:#FFFFFF;
 }
+*{
+    margin: 0;
+}
+
+body{
+    background-color: var(--dark_grey);
+    height: 100%;
+}
+section{
+    color: var(--yellow);
+    width: clamp(430px,60%,80%);
+    margin: 5% auto;
+}
+
+form{
+    background-color: var(--black);
+    width: 100%;
+    min-height: 500px;
+    height: clamp(50%,500px,70%);   
+    border: 1px solid var(--black);
+    margin-top: 50px;
+    border-radius: 20px;
+
+}
+.format{
+    width: 70%;
+    margin: 10px auto;
+}
+section a button{
+    width: clamp(100px,40%,230px);
+    height: clamp(20px,50px,60px);
+    background-color:var(--black);
+    color: var(--yellow);
+
+}
+form button{
+    background-color: var(--yellow);
+    border:1px solid var(--yellow);
+    width: 100%;
+    margin-top:50px ;
+    min-height:80px ;
+    border-radius: 20px;
+    font-size: 40px;
+    letter-spacing: 10px;
+}
+input{
+    border-radius: 30px;
+}
+h1{
+    font-size: clamp(40px,96px,96px);
+    letter-spacing: 5px;
+    font-weight: normal;
+
+}
+label{
+    font-size: 40px;
+    letter-spacing: 5px;
+    font-weight: regular;
+}
+input[type="text"], input[type="password"]{
+        width: 100%;
+        margin-top: 5px;
+        height: 35px;
+        text-align: center;
+     
+        border: 1px solid var(--white);
+}
+.form_input{
+    margin-top: 10px;
+}
+
+@media (max-width: 434px){
+    body{
+        background-color: var(--black);
+
+    }
+    input[type="text"], input[type="password"]{
+        width: 100%;
+        margin-top: 10px;
+        height: 20px;
+        text-align: center;
+        border: 1px solid var(--white);
+}
+    section{
+        margin-top: 1%;
+        width: 100%;
+    }
+    
+    .format{
+        width: 80%;
+        margin-top: 70px;
+    }
+    section a button{
+        background-color: var(--dark_grey);
+        color:var(--yellow);
+        border:1px solid var(var(--dark_grey));
+    }
+    h1{
+        letter-spacing: 5px;
+        font-weight: normal;
+        font-size:xxx-large;
+    }
+    label{
+        font-size:20px;
+        letter-spacing: 5px;
+        font-weight: regular;
+    }
+    form button{
+        font-size: 90%;
+        letter-spacing: 10px;
+    }
+    .form{
+        margin-top:60px;
+    }
+    .button{
+        width: 80%;
+        margin: 0 auto;
+
+    }
+
+}
+@media (max-width:380px) {
+    section a button{
+        width: 50%;
+    }
+
+}
