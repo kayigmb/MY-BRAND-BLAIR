@@ -1,3 +1,5 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
 :root{
     --yellow:#FFB400;
     --dark_grey:#767676;
@@ -8,15 +10,17 @@
 }
 *{
     margin: 0;
+
 }
 
 body{
     background-color: var(--dark_grey);
     height: 100%;
+    font-family: 'Inter', sans-serif;
 }
 section{
     color: var(--yellow);
-    width: clamp(430px,60%,80%);
+    width: clamp(430px,40%,80%);
     margin: 5% auto;
 }
 
@@ -29,6 +33,10 @@ form{
     margin-top: 50px;
     border-radius: 20px;
 
+}
+.form{
+    margin-top: 50px;
+    padding-bottom: 50px;       
 }
 .format{
     width: 70%;
@@ -50,9 +58,7 @@ form button{
     border-radius: 20px;
     font-size: 40px;
     letter-spacing: 10px;
-}
-input{
-    border-radius: 30px;
+
 }
 h1{
     font-size: clamp(40px,96px,96px);
@@ -61,23 +67,31 @@ h1{
 
 }
 label{
-    font-size: 40px;
+    font-size: 1.5vw;
     letter-spacing: 5px;
-    font-weight: regular;
+    font-weight: normal;
 }
 input[type="text"], input[type="password"]{
         width: 100%;
         margin-top: 5px;
         height: 35px;
         text-align: center;
-     
+        border-radius: 30px;
+        height: 30px;
+        margin-top: 10px;
         border: 1px solid var(--white);
 }
 .form_input{
-    margin-top: 10px;
+    margin-top: 25px;
 }
-
-@media (max-width: 434px){
+@media (max-width: 1200px) {
+    label{
+        font-size: 3vw;
+        letter-spacing: 5px;
+        font-weight: normal;
+    }
+}
+@media (max-width: 475px){
     body{
         background-color: var(--black);
 
@@ -88,6 +102,11 @@ input[type="text"], input[type="password"]{
         height: 20px;
         text-align: center;
         border: 1px solid var(--white);
+}
+label{
+    font-size: 3vw;
+    letter-spacing: 5px;
+    font-weight: normal;
 }
     section{
         margin-top: 1%;
@@ -132,4 +151,9 @@ input[type="text"], input[type="password"]{
         width: 50%;
     }
 
+}
+@media (max-width:1200px) {
+ section{
+    width: clamp(430px,70%,80%);
+ }
 }
