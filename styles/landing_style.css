@@ -9,90 +9,98 @@
     --black:#2B2B2B;
     --white:#FFFFFF;
 }
-/* hide the scroll bar */
-
-
 *{
-   
     margin: 0;
     padding: 0;
-    
 }
 
-body {
+html, body {
+    scroll-behavior: smooth;
+}
+
+body{
     background-color: var(--light_white);  
     font-family: 'Inter', sans-serif;
-    
+  
 }
 
 ::-webkit-scrollbar {
     
     display: none;
 }
-/* the container for the whole body */
-.container {
+
+main{
     display: flex;
 }
-/* main section  */
-main {
-    flex: 1; 
-}
-/* main content pages */
-.main_content {
-    /* can change this height */
-    height: 100vh;  
-    margin: 0 5%;     
-}
-@media (max-width: 867px) {
-    .main_content {
-        /* can change this height */
-        height: auto;  
-        margin: 0 5%;     
-    }
-}
 
-/* navigation bar both nav bar and menu */
-.navigation {
+nav{
+    width: 108px;
     height: 100vh;
-    width: 10%;
-    position: sticky;
+    position: fixed;
     background-color: var(--white);
     top:0;
+    right: 0;
+    display: block;
 }
 
-
-/* menu bar */
-.menu {
+section{
+    width:calc(100% - 108px);
     height: 100%;
+}
+
+.dropbar{
+    height: 60px;
     width: 100%;
-    background-color: var(--white);
-    margin: 100px auto;
+    background-color:transparent;
+    opacity: 1;
+    display: none;
+    position: fixed;
+    z-index: 3;
+}
+.dropdown{
+    display: flex;
+    justify-content: right; 
     align-items: center;
-    position: sticky;
-    text-align: center;
+}
+.main_content{
+    width: 90%;
+    height: 100vh;
+    margin: 0 auto;
+    z-index: 1;
 }
 
 /* drop-down section */
 .dropdown {  
-    height: 100%;
+    height: 60px;
     width: 100%;
-    position: fixed;
-    display: none;
-    
+    position: fixed;   
 }
 
 /* drop-down menu img */
 .dropdown img {
-    height: 60px;
-    max-width: 100%;
+    height: 100%;
+    max-width: 67px;
 } 
+
+/* menu bar */
+.menu {
+    width: 100%;
+    top:0;
+    height: auto;
+    margin:100px auto;
+    background-color: var(--white);
+    align-items: center;
+    position: sticky;
+    text-align: center;
+    
+}
 
 /* dark and light mode */
 .nlmode {
     max-width: 30px;
     min-height: 30px;
     border-radius: 30px;
-    margin: 10px auto;
+    margin: 0 auto;
     color: var(--black);
     margin-top: 50px;
 }
@@ -115,20 +123,22 @@ main {
     position: relative;
 }
 .menuSection{
-    margin-top: 100px;
-    
+    margin-top:60px;
 }
 .menuSection a {
     font-size: 20px;  
     display: block;
+    
     color: var(--black);
     text-decoration: none;
+    transition:0.3s  ease;
 }
 .hover-text {
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.1s;
     position: absolute;
+    font-size: 14px;
     margin-bottom: 10px;
     bottom: 100%;
     left: 50%;
@@ -149,28 +159,40 @@ background-color: var(--yellow);
     opacity: 1;
 } 
 
-/* media for mobile drop-menu show and hide */
-@media (max-width: 500px) {
-    .dropdown {
+@media (max-width: 768px){
+    .dropbar{
         display: block;
     }
-    .menu {
-        display: none;
+    nav{
+       display: none;
     }
-    .menuSection{
-        display: none;
+
+    section {
+        width: 100%;
+        height: 100%;
     }
-    .navigation {
-        background-color: transparent;
+
+    .main_content{
+        width: 100%;
+        height:auto;
+        margin: 0 auto;
+    }
+    
+}
+
+@media (max-width: 1200px) {
+    .main_content{
+        height: auto;
     }
 }
+
 
 /* ******************other sections************************************ */
 
 
 .homepage{
     width: 100%;
-    height: 100;
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -470,10 +492,8 @@ background-color: var(--yellow);
 
 }
 
-.portfolio_box img:hover{
-    fill: var(--yellow);
-}
-@media (max-width: 907px) {
+
+@media (max-width: 1500px) {
     .portfolio_box_container, 
     .services_show,
      .blog_pages{
@@ -680,10 +700,11 @@ background-color: var(--yellow);
 .myinfo .infos{
     width: 80%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: 20px auto;
+
     color: var(--dark_grey);
-    font-size: clamp(5px,16px,20px);
+    font-size: clamp(1px,14px,20px);
 }
 .info1 p,.info2 p{
     margin-top: 20px;
@@ -706,8 +727,8 @@ background-color: var(--yellow);
 form{
     width: 90%;
     background-color: var(--white);
-    border-radius: 20px;
-    height: 670px;
+    border-radius: 10px;
+    height: 600px;
     padding-top: 20px;
     
 }
@@ -733,7 +754,8 @@ textarea{
     resize: none;
 }
 
-@media (max-width:818px) {
+@media (max-width:1218px) {
+    
     .contactsinfo{
         flex-wrap: wrap;
     }
@@ -755,6 +777,7 @@ textarea{
     .info{
         width: 100%;
     }
+
 }
 
 
