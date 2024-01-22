@@ -16,12 +16,12 @@
 
 html, body {
     scroll-behavior: smooth;
+
 }
 
 body{
-    background-color: var(--light_white);  
-    font-family: 'Inter', sans-serif;
-  
+    background-color: var(--light_white); 
+    font-family: 'Inter', sans-serif;  
 }
 
 ::-webkit-scrollbar {
@@ -64,7 +64,7 @@ section{
 }
 .main_content{
     width: 90%;
-    height: 100vh;
+    height: 100%;
     margin: 0 auto;
     z-index: 1;
 }
@@ -197,6 +197,8 @@ background-color: var(--yellow);
     flex-wrap: wrap;
     justify-content: space-between;
     background-color: var(--white);
+    background-image:url(/img/background.jpg);
+    background-size: cover;
 }
 .img{
     display: flex;
@@ -299,17 +301,18 @@ background-color: var(--yellow);
 /* ****************Skills Container************* */
 
 .skills{
-    width: 85%;
+    width: 90%;
     height: 100%;
-    margin:3vh auto;
+    margin:0vh auto;
 }
 .skill_box{    
-   margin: 10vh 0 0 0;
+   margin: 10vh auto;
+   width: 86%;
 }
-.skills h2{
+.skills h1{
     font-size:clamp(20px,40px,10vw);
     color:var(--black);
-    text-align:center;  
+    text-align: center;
 }
 
 .skill{
@@ -334,7 +337,8 @@ background-color: var(--yellow);
     margin: 1px;
 }
 .extra_skills{
-    margin-top:0vw ;
+    margin:0vw auto;
+    width: 87%;
 }
 .extra_skills h3{
     font-size: 2vw;
@@ -478,18 +482,44 @@ background-color: var(--yellow);
 
 }
 .portfolio_box{
-    width: 310px;
+    width: 100%;
+    max-width:310px;
     height: clamp(120px,12vw,400px);
     background-color: #fff;
     margin-bottom: 50px;
+    overflow: hidden; 
+    position: relative; 
 }
+
+.portfoliohover{
+    width: 100%;
+    height:100%;
+    background-color: var(--yellow);
+    margin-bottom: 50px;
+    top:0;
+    left:-100%;
+    position: absolute;
+    color:black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    z-index: 99;
+    opacity: 0.8;
+}
+
+.portfolio_box:hover .portfoliohover{
+    left:0;
+}
+
 
 /* portfolio box image */
 .portfolio_box img{
     width: 100%;    
     object-fit: cover;
     height: 100%;
-
+    z-index: -1;
+    background-blend-mode:normal;
 }
 
 
@@ -542,7 +572,7 @@ background-color: var(--yellow);
     }
     .home h1{
         font-size:12vw;
-        margin-top:40px;
+        margin-top:100px;
         margin-left:0;
     }
     .home p{
@@ -553,10 +583,11 @@ background-color: var(--yellow);
     }
     .linkscontainer{
         display: flex;
+        gap:5px;
         align-items: center;
         justify-content: center;
-        gap:5px;
     }
+    
    
 }
 
