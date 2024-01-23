@@ -5,8 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Post</title>
     <link rel="stylesheet" href="admin.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
 </head>
 <body>
-    
+           <!-- nav bar -->
+    <nav class="navigation">
+        <div class="navs">
+                <!-- each nav link -->
+        <div class="eachnav">
+            <a href="addpost..html" style="color:#FFB400;">Create Post</a>
+           
+        </div>
+        <hr>
+        <!-- each nav link -->
+        <div class="eachnav">
+            <a href="manageposts.html">Manage Posts</a>
+           
+        </div>
+        <hr>
+        <!-- each nav link -->
+        <div class="eachnav">
+            <a href="queries.html">Manage Queries</a>
+           
+        </div>
+        <hr>
+        </div>
+    </nav>
+   
+       <main class="main_body">
+           <!-- Header -->
+           <header class="header">
+                <div class="heading">
+                    <img src="/img/drop.png" alt="">
+                    <h1>Add Post</h1>
+                </div>
+               <div class="name">
+                   <h3>Admin</h3>
+                   <!-- change this by js -->
+                   <a href="/Pages/sign_in.html"><button>Log Out </button></a> 
+               </div>
+           </header>
+           <!-- main content -->
+           <div class="main_content">
+                <div class="addpost">
+                        <input type="text" name="Title" id="title" placeholder="Title">
+                        <textarea name="" id="" cols="30" rows="10" placeholder="Enter Content Here"></textarea>
+                        <div class="buttons">
+                            <!-- the js is to open the input text from the button -->
+                            <button onclick="document.getElementById('file').click()" class="btn1">Add Image</button>
+                            <!-- incorporate when choosen file name changes -->
+                            <input type="file" id="file" style="display: none;">
+                            <button class="btn2">Publish</button>
+                        </div>
+                </div>
+           </div>
+       </main>
+
 </body>
 </html>
