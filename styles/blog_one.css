@@ -49,20 +49,77 @@ hr{
     height: 3px;
     background-color: var(--white);
 }
+/* drop-down section */
 .dropdown{
+    height: auto;
     width: 100%;
-    height: 40px;
-    display: flex;    
-    align-items: center ;
-    margin: 3%;
-    display: none;
+    top:0;
+    position: fixed;   
+    background-color: var(--white);
+    z-index: 98;
 }
-.dropdown img{
-    width: 40px;
-    height: 100%;
-    margin-right: auto;
+
+.hmenu{
+    display: none;
+    width: 100%;
+    cursor: pointer;
+    height: 35px;
+    background: none;
+    border: none;
+    top:0;
+    position: fixed;
+    z-index: 99;
+    margin: 3px auto 0px 3px;
+    background-color: transparent;
+
 
 }
+
+.hmenu .hbar, .hmenu:before, .hmenu:after{
+    width: 35px;
+    height: 5px;
+    content: '';
+    display: block;
+    background-color: black;
+    margin: 6px 10px;
+    transform: 0.4s;
+}
+.hmenu.is-active:before{
+    transform: rotate(-45deg) translate(-8px, 6px);
+}
+.hmenu.is-active:after {
+    transform: rotate(45deg) translate(-8px, -9px);
+}
+.hmenu.is-active .hbar{
+    opacity: 0;
+}
+
+.mnav{
+    display: none;
+    position: fixed;
+    left: -100%;
+    width: 70%;
+    min-height: 100vh;
+    z-index: 97;
+    background-color:var(--light_grey);
+    transition: 0.5s;
+
+}
+.mnav a{
+    display: block;
+    text-align: center;
+    padding: 20px;
+    width: 50%;
+    border-radius: 20px;
+    margin: 10px auto 20px;
+    background-color: var(--dark_grey);
+    text-decoration: none;
+    color:var(--white);
+}
+.mnav.is-active{
+    left:0;
+}
+
 .maincontent h1{
     font-size: clamp(80px,90px,12vw);
 }
@@ -95,8 +152,14 @@ hr{
     .eachlink {
         margin:0;
     }
-    .dropdown{
+    .dropbar{
         display: block;
+    }
+    .hmenu{
+        display: block;
+    }
+    .mnav{
+            display: block;
     }
 }
 

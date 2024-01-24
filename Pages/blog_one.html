@@ -58,9 +58,27 @@
 
         <!-- Main content -->
         <main>
-            <div class="dropdown">
-                <img src="/img/drop.png" alt="">
-            </div>
+                     <!-- drop down nav bar-->
+
+                     <div class="dropdownbar">
+                        <!-- drop bar section -->
+                        <div class="dropbar">
+                            <!-- <img src="img/drop.png" alt="dropdown" onclick=""> -->
+                           <div class="dropdown">
+                             <button class="hmenu">
+                                <div class="hbar">
+        
+                                </div>
+                             </button>
+                           </div>
+                        </div>
+                        <div class="mnav">
+                            <a href="../landing_page.html">Home</a>
+                            <a href="sign_in.html">Log In</a>
+                         </div>
+                    </div>
+
+            <!-- main content -->
            <div class="maincontent">
             <h1>Node Js</h1>
             <div class="heading">
@@ -156,6 +174,22 @@
            </div>
         </main>
         
-   
+        <script>
+            const hmenu = document.querySelector('.hmenu');
+            const mnav = document.querySelector('.mnav');
+            const menuItems = document.querySelectorAll('.mnav a');
+            
+            hmenu.addEventListener('click',function() {
+                hmenu.classList.toggle('is-active');
+                mnav.classList.toggle('is-active');
+            });
+            menuItems.forEach(function(menuItem) {
+                      menuItem.addEventListener('click', function() {
+                     hmenu.classList.remove('is-active');
+                     mnav.classList.remove('is-active');
+    });
+    });
+    
+    </script>
 </body>
 </html>

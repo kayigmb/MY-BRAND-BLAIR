@@ -164,32 +164,95 @@ h1{
 }
 
 
-.dropdownbar{
+/* drop-down section */
+.dropdown{
+    height: auto;
+    width: 100%;
     top:0;
-    position: sticky;
-    margin-left: auto;
+    position: fixed;   
+    background-color: var(--white);
+    z-index: 98;
 }
 
-/* dropdown bar */
-.dropdownbar img{
+.hmenu{
     display: none;
+    width: 100%;
+    cursor: pointer;
+    height: 35px;
+    background: none;
+    border: none;
+    top:0;
+    position: fixed;
+    z-index: 99;
+    margin: 3px auto 0px 3px;
+    background-color: transparent;
+
+
 }
+
+.hmenu .hbar, .hmenu:before, .hmenu:after{
+    width: 35px;
+    height: 5px;
+    content: '';
+    display: block;
+    background-color: black;
+    margin: 6px 10px;
+    transform: 0.4s;
+}
+.hmenu.is-active:before{
+    transform: rotate(-45deg) translate(-8px, 6px);
+}
+.hmenu.is-active:after {
+    transform: rotate(45deg) translate(-8px, -9px);
+}
+.hmenu.is-active .hbar{
+    opacity: 0;
+}
+
+.mnav{
+    display: none;
+    position: fixed;
+    left: -100%;
+    width: 70%;
+    min-height: 100vh;
+    z-index: 97;
+    background-color:var(--light_grey);
+    transition: 0.5s;
+
+}
+.mnav a{
+    display: block;
+    text-align: center;
+    padding: 20px;
+    width: 50%;
+    border-radius: 20px;
+    margin: 10px auto 20px;
+    background-color: var(--dark_grey);
+    text-decoration: none;
+    color:var(--white);
+}
+.mnav.is-active{
+    left:0;
+}
+
+
 
 /* media querie for 440px screen */
 @media(max-width:440px){
     .navigation{
         display:none;
     }
-    .dropdownbar{
-        max-width: 50px;
-    }
-    .dropdownbar img{
-        max-width: 50px;
-        height: 48px;
+    .dropbar{
         display: block;
-    
-        margin-top: 10px;
     }
+
+    .hmenu{
+        display: block;
+    }
+    .mnav{
+            display: block;
+    }
+
     h1{
         font-size:48px;
     }
@@ -200,7 +263,8 @@ h1{
         width: 100%;
     }
     .blog_card{
-        width: 80%;
+        width: 90%;
+        margin: 10px auto;
     }
     nav{
         display: none;

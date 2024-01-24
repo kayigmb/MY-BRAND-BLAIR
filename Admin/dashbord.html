@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage queries</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="admin.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
@@ -20,7 +20,7 @@
             <hr>
             <!-- each nav link -->
             <div class="eachnav">
-                <a href="addpost..html">Create Post</a>
+                <a href="addpost.html">Create Post</a>
                
             </div>
             <hr>
@@ -42,7 +42,34 @@
             <!-- Header -->
             <header class="header">
                     <div class="heading">
-                        <img src="/img/drop.png" alt="">
+                          <!-- drop down nav bar-->
+
+            <div class="dropdownbar">
+                <!-- drop bar section -->
+                <div class="dropbar">
+                    <!-- <img src="img/drop.png" alt="dropdown" onclick=""> -->
+                   <div class="dropdown">
+                     <button class="hmenu">
+                        <div class="hbar">
+
+                        </div>
+                     </button>
+                   </div>
+                </div>
+                <div class="mnav">
+                    <a href="dashbord.html" style="color:#FFB400">Dashboard</a>
+                    <hr>
+                    <a href="addpost.html">Create Post</a>
+                    <hr>
+                    <a href="queries.html">Messages</a>
+                    <hr>
+                    <a href="manageposts.html">Manage Posts</a>
+                <hr>
+                 </div>
+            </div>
+
+
+
                         <h1>Dashboard</h1>
                     </div>
                 <div class="name">
@@ -52,10 +79,26 @@
             </header>
             <!-- main content -->
             <div class="main_content">
-                
+                <!-- each message -->
             </div>
         </main>
-
+        <script>
+            const hmenu = document.querySelector('.hmenu');
+            const mnav = document.querySelector('.mnav');
+            const menuItems = document.querySelectorAll('.mnav a');
+            
+            hmenu.addEventListener('click',function() {
+                hmenu.classList.toggle('is-active');
+                mnav.classList.toggle('is-active');
+            });
+            menuItems.forEach(function(menuItem) {
+                      menuItem.addEventListener('click', function() {
+                     hmenu.classList.remove('is-active');
+                     mnav.classList.remove('is-active');
+    });
+    });
+    
+    </script>
 
 </body>
 </html>

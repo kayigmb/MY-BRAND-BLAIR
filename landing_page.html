@@ -15,11 +15,25 @@
             <section>
                 <!-- drop bar section -->
                 <div class="dropbar">
+                    <!-- <img src="img/drop.png" alt="dropdown" onclick=""> -->
                    <div class="dropdown">
-                     <img src="img/drop.png" alt="dropdown">
+                     <button class="hmenu">
+                        <div class="hbar">
+
+                        </div>
+                     </button>
                    </div>
                 </div>
-
+                <div class="mnav">
+                    <a href="#homePage">Home</a>
+                    <a href="#aboutPage">About Me</a>
+                    <a href="#skillsPage">Skills</a>
+                    <a href="#servicesPage">Services</a>
+                    <a href="#portfolioPage">Portfolio</a>
+                    <a href="#blogPage">Blogs</a>
+                    <a href="#contacts">Contacts</a>
+                    <a href="/Pages/sign_in.html">Log In</a>
+                 </div>
                 <!-- main content -->
                 <div class="main_content" id="homePage">
                     
@@ -183,53 +197,34 @@
                             <!-- portfolio box -->
                             <div class="portfolio_box_container">
                                 <!-- each box -->
-
-                                    <div class="portfolio_box">
-                                        
-                                        <img src="img/woodle.jpg" alt="project">
-                                        <div class="portfoliohover">
-                                            <i class="fas fa-plus"></i>
-                                            
-                                        </div>
-                                    </div>  
-                                <!-- each box -->
                                     <div class="portfolio_box">
                                         <img src="img/woodle.jpg" alt="project">
                                         <div class="portfoliohover">
-                                            <i class="fas fa-plus"></i>
+                                            <h1>Woodle App</h1>
+                                            <a href="https://github.com/kayigmb/woodle.git"><i class="fab fa-github"></i></a>
                                             
                                         </div>
                                     </div>
                                 <!-- each box -->
                                     <div class="portfolio_box">
-                                        <img src="img/woodle.jpg" alt="project">
+                                        <img src="img/snap.jpg" alt="project">      
                                         <div class="portfoliohover">
-                                            <i class="fas fa-plus"></i>
-                                            
+                                            <h1>Snap clone</h1>
+                                            <a href="https://github.com/kayigmb/snap.git">
+                                                <i class="fab fa-github"></i> 
+                                            </a>
+                                                                                       
                                         </div>
                                     </div>
                                 <!-- each box -->
                                     <div class="portfolio_box">
-                                        <img src="img/woodle.jpg" alt="project">  
+                                        <img src="img/todo.png" alt="project">  
                                         <div class="portfoliohover">
-                                            <i class="fas fa-plus"></i>
-                                            
-                                        </div>    
-                                    </div>
-                                <!-- each box -->
-                                    <div class="portfolio_box">
-                                        <img src="img/woodle.jpg" alt="project">      
-                                        <div class="portfoliohover">
-                                            <i class="fas fa-plus"></i>
-                                            
-                                        </div>
-                                    </div>
-                                <!-- each box -->
-                                    <div class="portfolio_box">
-                                        <img src="img/woodle.jpg" alt="project">  
-                                        <div class="portfoliohover">
-                                            <i class="fas fa-plus"></i>
-                                            
+                                            <h1>Todo app</h1>
+                                            <a href="https://github.com/kayigmb/ts1.git">
+                                                <i class="fab fa-github"></i>     
+                                            </a>
+                                                                                  
                                         </div>   
                                     </div>
                             </div>
@@ -437,6 +432,22 @@
             </nav>
             
         </main>
-        
+        <script>
+                const hmenu = document.querySelector('.hmenu');
+                const mnav = document.querySelector('.mnav');
+                const menuItems = document.querySelectorAll('.mnav a');
+                
+                hmenu.addEventListener('click',function() {
+                    hmenu.classList.toggle('is-active');
+                    mnav.classList.toggle('is-active');
+                });
+                menuItems.forEach(function(menuItem) {
+                          menuItem.addEventListener('click', function() {
+                         hmenu.classList.remove('is-active');
+                         mnav.classList.remove('is-active');
+        });
+    });
+
+        </script>
 </body>
 </html>

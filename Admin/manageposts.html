@@ -19,19 +19,19 @@
         <hr>
         <!-- each nav link -->
         <div class="eachnav">
-            <a href="addpost..html">Create Post</a>
+            <a href="addpost.html">Create Post</a>
            
         </div>
         <hr>
         <!-- each nav link -->
         <div class="eachnav">
-            <a href="manageposts.html" style="color:#FFB400;">Messages</a>
+            <a href="manageposts.html" style="color:#FFB400;">Manage Post</a>
            
         </div>
         <hr>
         <!-- each nav link -->
         <div class="eachnav">
-            <a href="queries.html">Manage Queries</a>
+            <a href="queries.html">Messages</a>
            
         </div>
         <hr>
@@ -41,7 +41,32 @@
         <!-- Header -->
         <header class="header">
             <div class="heading">
-                <img src="/img/drop.png" alt="">
+               <!-- drop down nav bar-->
+
+            <div class="dropdownbar">
+                <!-- drop bar section -->
+                <div class="dropbar">
+                    <!-- <img src="img/drop.png" alt="dropdown" onclick=""> -->
+                   <div class="dropdown">
+                     <button class="hmenu">
+                        <div class="hbar">
+
+                        </div>
+                     </button>
+                   </div>
+                </div>
+                <div class="mnav">
+                    <a href="dashbord.html">Dashboard</a>
+                    <hr>
+                    <a href="addpost.html">Create Post</a>
+                    <hr>
+                    <a href="queries.html">Messages</a>
+                    <hr>
+                    <a href="manageposts.html" style="color:#FFB400">Manage Posts</a>
+                <hr>
+                 </div>
+            </div>
+
                 <h1>Manage Posts</h1>
             </div>
             <div class="name">
@@ -116,6 +141,22 @@
             </div>
         </div>
     </main>
-    
+    <script>
+        const hmenu = document.querySelector('.hmenu');
+        const mnav = document.querySelector('.mnav');
+        const menuItems = document.querySelectorAll('.mnav a');
+        
+        hmenu.addEventListener('click',function() {
+            hmenu.classList.toggle('is-active');
+            mnav.classList.toggle('is-active');
+        });
+        menuItems.forEach(function(menuItem) {
+                  menuItem.addEventListener('click', function() {
+                 hmenu.classList.remove('is-active');
+                 mnav.classList.remove('is-active');
+});
+});
+
+</script>
 </body>
 </html>

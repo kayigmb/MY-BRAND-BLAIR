@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage queries</title>
+    <title>Messages</title>
     <link rel="stylesheet" href="admin.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
@@ -20,7 +20,7 @@
             <hr>
             <!-- each nav link -->
             <div class="eachnav">
-                <a href="addpost..html">Create Post</a>
+                <a href="addpost.html">Create Post</a>
                
             </div>
             <hr>
@@ -42,7 +42,33 @@
             <!-- Header -->
             <header class="header">
                     <div class="heading">
-                        <img src="/img/drop.png" alt="">
+                         <!-- drop down nav bar-->
+
+            <div class="dropdownbar">
+                <!-- drop bar section -->
+                <div class="dropbar">
+                    <!-- <img src="img/drop.png" alt="dropdown" onclick=""> -->
+                   <div class="dropdown">
+                     <button class="hmenu">
+                        <div class="hbar">
+
+                        </div>
+                     </button>
+                   </div>
+                </div>
+                <div class="mnav">
+                    <a href="dashbord.html">Dashboard</a>
+                    <hr>
+                    <a href="addpost.html">Create Post</a>
+                    <hr>
+                    <a href="queries.html" style="color:#FFB400">Messages</a>
+                    <hr>
+                    <a href="manageposts.html">Manage Posts</a>
+                <hr>
+                 </div>
+            </div>
+                        
+                        
                         <h1>Messages</h1>
                     </div>
                 <div class="name">
@@ -52,10 +78,98 @@
             </header>
             <!-- main content -->
             <div class="main_content">
-                
+                        <div class="message">
+                            <!-- each message -->
+                            <div class="messages">
+                                <!-- messenger name -->
+                                <div class="messanger-name">
+                                    <p>Jack</p>
+                                </div>
+                                <!-- messanger email -->
+                                <div class="messanger-email">
+                                    <p>jack@email.com</p>
+                                </div>
+                                <!-- messenger message -->
+                                <div class="messanger-message">
+                                        <p id="content">Lorem ipsum dolor sit amet consectetur 
+                                            adipisicing elit. Laborum, nesciunt ea esse
+                                            sapiente quam error a possimus temporibus 
+                                            est ab.
+                                        </p>
+                                </div>
+                                <!-- messenger-react -->
+                                <div class="message-react">
+                                    <i class="fas fa-reply"></i>
+                                    <i class="fas fa-trash-alt"></i>
+                                </div>
+                            </div>
+                            <!-- each message -->
+                            <div class="messages">
+                                <!-- messenger name -->
+                                <div class="messanger-name">
+                                    <p>Jack</p>
+                                </div>
+                                <!-- messanger email -->
+                                <div class="messanger-email">
+                                    <p>jack@email.com</p>
+                                </div>
+                                <!-- messenger message -->
+                                <div class="messanger-message">
+                                        <p id="content">Lorem ipsum dolor sit amet consectetur 
+                                            adipisicing elit. Laborum, nesciunt ea esse
+                                            sapiente quam error a possimus temporibus 
+                                            est ab.
+                                        </p>
+                                </div>
+                                <!-- messenger-react -->
+                                <div class="message-react">
+                                    <i class="fas fa-reply"></i>
+                                    <i class="fas fa-trash-alt"></i>
+                                </div>
+                            </div>
+                            <!-- each message -->
+                            <div class="messages">
+                                <!-- messenger name -->
+                                <div class="messanger-name">
+                                    <p>Jack</p>
+                                </div>
+                                <!-- messanger email -->
+                                <div class="messanger-email">
+                                    <p>jack@email.com</p>
+                                </div>
+                                <!-- messenger message -->
+                                <div class="messanger-message">
+                                        <p id="content">Lorem ipsum dolor sit amet consectetur 
+                                            adipisicing elit. Laborum, nesciunt ea esse
+                                            sapiente quam error a possimus temporibus 
+                                            est ab.
+                                        </p>
+                                </div>
+                                <!-- messenger-react -->
+                                <div class="message-react">
+                                    <i class="fas fa-reply"></i>
+                                    <i class="fas fa-trash-alt"></i>
+                                </div>
+                            </div>
+                        </div>
             </div>
         </main>
-
-
+        <script>
+            const hmenu = document.querySelector('.hmenu');
+            const mnav = document.querySelector('.mnav');
+            const menuItems = document.querySelectorAll('.mnav a');
+            
+            hmenu.addEventListener('click',function() {
+                hmenu.classList.toggle('is-active');
+                mnav.classList.toggle('is-active');
+            });
+            menuItems.forEach(function(menuItem) {
+                      menuItem.addEventListener('click', function() {
+                     hmenu.classList.remove('is-active');
+                     mnav.classList.remove('is-active');
+    });
+    });
+    
+    </script>
 </body>
 </html>

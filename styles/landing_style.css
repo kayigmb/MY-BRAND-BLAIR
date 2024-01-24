@@ -12,6 +12,7 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html, body {
@@ -48,20 +49,6 @@ section{
     height: 100%;
 }
 
-.dropbar{
-    height: 60px;
-    width: 100%;
-    background-color:transparent;
-    opacity: 1;
-    display: none;
-    position: fixed;
-    z-index: 3;
-}
-.dropdown{
-    display: flex;
-    justify-content: right; 
-    align-items: center;
-}
 .main_content{
     width: 90%;
     height: 100%;
@@ -70,19 +57,77 @@ section{
 }
 
 /* drop-down section */
-.dropdown {  
-    height: 60px;
+.dropdown{
+    height: auto;
     width: 100%;
+    top:0;
     position: fixed;   
+    background-color: var(--white);
+    z-index: 98;
 }
 
-/* drop-down menu img */
-.dropdown img {
-    height: 100%;
-    max-width: 67px;
-} 
+.hmenu{
+    display: none;
+    width: 100%;
+    cursor: pointer;
+    height: 35px;
+    background: none;
+    border: none;
+    top:0;
+    position: fixed;
+    z-index: 99;
+    margin: 3px auto 0px 3px;
+    background-color: transparent;
 
-/* menu bar */
+
+}
+
+.hmenu .hbar, .hmenu:before, .hmenu:after{
+    width: 35px;
+    height: 5px;
+    content: '';
+    display: block;
+    background-color: black;
+    margin: 6px 10px;
+    transform: 0.4s;
+}
+.hmenu.is-active:before{
+    transform: rotate(-45deg) translate(-8px, 6px);
+}
+.hmenu.is-active:after {
+    transform: rotate(45deg) translate(-8px, -9px);
+}
+.hmenu.is-active .hbar{
+    opacity: 0;
+}
+
+.mnav{
+    display: none;
+    position: fixed;
+    left: -100%;
+    width: 70%;
+    min-height: 100vh;
+    z-index: 97;
+    background-color:var(--light_grey);
+    transition: 0.5s;
+
+}
+.mnav a{
+    display: block;
+    text-align: center;
+    padding: 20px;
+    width: 50%;
+    border-radius: 20px;
+    margin: 10px auto 20px;
+    background-color: var(--dark_grey);
+    text-decoration: none;
+    color:var(--white);
+}
+.mnav.is-active{
+    left:0;
+}
+
+/* *****************menu bar***************** */
 .menu {
     width: 100%;
     top:0;
@@ -166,7 +211,12 @@ background-color: var(--yellow);
     nav{
        display: none;
     }
-
+    .hmenu{
+        display: block;
+    }
+    .mnav{
+            display: block;
+    }
     section {
         width: 100%;
         height: 100%;
@@ -524,10 +574,15 @@ background-color: var(--yellow);
     color:black;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     transition: 0.5s;
     z-index: 99;
-    opacity: 0.8;
+    opacity: 0.9;
+}
+.portfoliohover i{
+    font-size: 40px;
+    color:var(--black)
 }
 
 .portfolio_box:hover .portfoliohover{
@@ -568,6 +623,10 @@ background-color: var(--yellow);
         width: 90%;
         margin: 0 auto;
         
+    }
+    .portfolio_box{
+        height: 200px;
+        /* width: 290px; */
     }
     .portfolio_links a{
         font-size: clamp(3px,3vw,25px);

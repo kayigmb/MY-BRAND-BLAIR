@@ -40,8 +40,28 @@
             <!-- drop down nav bar-->
 
             <div class="dropdownbar">
-                <img src="/img/drop.png" alt="">
+                <!-- drop bar section -->
+                <div class="dropbar">
+                    <!-- <img src="img/drop.png" alt="dropdown" onclick=""> -->
+                   <div class="dropdown">
+                     <button class="hmenu">
+                        <div class="hbar">
+
+                        </div>
+                     </button>
+                   </div>
+                </div>
+                <div class="mnav">
+                    <a href="../landing_page.html">Home</a>
+                    <a href="sign_in.html">Log In</a>
+                 </div>
             </div>
+
+
+
+
+
+
         <h1>Blogs</h1>
         <!-- blog section holder -->
         <div class="blog_cards_container">
@@ -180,6 +200,23 @@
     </main>
 
     </section>
+    <script>
+        const hmenu = document.querySelector('.hmenu');
+        const mnav = document.querySelector('.mnav');
+        const menuItems = document.querySelectorAll('.mnav a');
+        
+        hmenu.addEventListener('click',function() {
+            hmenu.classList.toggle('is-active');
+            mnav.classList.toggle('is-active');
+        });
+        menuItems.forEach(function(menuItem) {
+                  menuItem.addEventListener('click', function() {
+                 hmenu.classList.remove('is-active');
+                 mnav.classList.remove('is-active');
+});
+});
+
+</script>
 
 </body>
 </html>
