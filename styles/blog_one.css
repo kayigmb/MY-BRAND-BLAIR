@@ -14,8 +14,6 @@
 }
 
 body{
-    width: 100%;
-    height: 100%;
     display: flex;
     background-color: var(--light_grey);
 
@@ -71,12 +69,13 @@ hr{
 @media (max-width: 769px) {
     body{
         flex-direction:column;
+
     }
     aside{
         order:2;
         width: 100%;
         height: auto;
-        margin:0;
+        margin-left:10px;
     }
     main{
         order:1;
@@ -87,9 +86,7 @@ hr{
     .maincontent{
         margin: 3%;
     }
-    /* .maincontent h1{
-        font-size: 80px;
-    } */
+
     nav{
         display: none;
     }
@@ -299,7 +296,6 @@ main h1{
 .blog_reaction{
     margin-top: 30px;
     display: flex;
-    justify-content: center;
     gap:30px;
 }
 
@@ -336,11 +332,14 @@ input[type="text"]{
     width: 40%;
     height: 30px;
     border-radius: 7px;
+    background-color: transparent;
+    font-size: 16px;
 }
  textarea{
-    width:80%;
+    width:70%;
     height:auto;
     border-radius: 7px;
+    background-color: transparent;
  }
 .comment_form button{ 
         background-color: var(--yellow);
@@ -382,7 +381,7 @@ input[type="text"]{
 
 
 @media (max-width: 768px) {
-    .textarea{
+    textarea{
         width:100%;
     }
     input[type="text"]{

@@ -10,31 +10,38 @@
 <body>
     <section class="content">
     <!-- navbar -->
-    <nav class="navigation">
+    <nav>
         <div class="menu">
-            <!-- night and dark mode icon -->
-        <div class="nlmode">
-        <i class="far fa-moon"></i>
-        <!-- <img src="/MY-BRAND-BLAIR/img/nightmode5.svg" alt="nightmode"> -->
-        </div>
-        <!-- other menu links  -->
-        <div class="menu_links">
-                <div class="menu_components"> 
-                    <a href="../landing_page.html">
+            <div class="nlmode">
+                <i class="far fa-moon"></i>
+            </div>
+            <div class="menuSection">
+                <!-- Menu components with correct anchor tag nesting -->
+                <a href="../landing_page.html">
+                    <div class="menu_components"> 
                         <div class="hover-text">Home</div>
-                     <i class="fas fa-home"></i>
-                     </a>
-                </div>
-                <div class="menu_components">                
-                    <a href="sign_in.html">
-                        <i class="fas fa-sign-in"></i>   
-                    </a>            
-                </div>
+                        <i class="fas fa-home"></i>
+                    </div>
+                </a>
+                <a href="sign_in.html">
+                    <div class="menu_components">
+                        <div class="hover-text">Log In</div>
+                        <i class="fas fa-sign-in"></i></div>
+                </a>
+            </div>
+
         </div>
-        
     </nav>
+
+
+
        <!-- main section -->    
     <main class="main_section">
+            <!-- drop down nav bar-->
+
+            <div class="dropdownbar">
+                <img src="/img/drop.png" alt="">
+            </div>
         <h1>Blogs</h1>
         <!-- blog section holder -->
         <div class="blog_cards_container">
@@ -44,7 +51,7 @@
                 <div class="blog_word">
                     <h2>Node Js</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur... </p>
-                    <a href="#" class="learn_more">Learn More 
+                    <a href="blog_one.html" class="learn_more">Learn More 
                             <span style="font-weight: bold;">></span>
                     </a>
                 </div>
@@ -65,7 +72,7 @@
                 <div class="blog_word">
                     <h2>Node Js</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur... </p>
-                    <a href="#" class="learn_more">Learn More 
+                    <a href="blog_one.html" class="learn_more">Learn More 
                             <span style="font-weight: bold;">></span>
                     </a>
                 </div>
@@ -86,7 +93,7 @@
                 <div class="blog_word">
                     <h2>Node Js</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur... </p>
-                    <a href="#" class="learn_more">Learn More 
+                    <a href="blog_one.html" class="learn_more">Learn More 
                             <span style="font-weight: bold;">></span>
                     </a>
                 </div>
@@ -107,7 +114,7 @@
     <div class="blog_word">
         <h2>Node Js</h2>
         <p>Lorem ipsum dolor sit amet, consectetur... </p>
-        <a href="#" class="learn_more">Learn More 
+        <a href="blog_one.html" class="learn_more">Learn More 
                 <span style="font-weight: bold;">></span>
         </a>
     </div>
@@ -128,7 +135,7 @@
     <div class="blog_word">
         <h2>Node Js</h2>
         <p>Lorem ipsum dolor sit amet, consectetur... </p>
-        <a href="#" class="learn_more">Learn More 
+        <a href="blog_one.html" class="learn_more">Learn More 
                 <span style="font-weight: bold;">></span>
         </a>
     </div>
@@ -149,7 +156,7 @@
                 <div class="blog_word">
                     <h2>Node Js</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur... </p>
-                    <a href="#" class="learn_more">Learn More 
+                    <a href="blog_one.html" class="learn_more">Learn More 
                             <span style="font-weight: bold;">></span>
                     </a>
                 </div>
@@ -171,11 +178,7 @@
         </div>
         
     </main>
-        <!-- drop down nav bar-->
 
-    <nav class="dropdownbar">
-        <img src="/img/drop.png" alt="">
-    </nav>
     </section>
 
 </body>

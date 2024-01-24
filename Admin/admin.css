@@ -4,6 +4,7 @@
     --light_grey:#E4E6EB;
     --light_white:#F0F0F6;
     --black:#2B2B2B;
+    --special:#D9D9D9;
     --white:#FFFFFF;
 }
 *{
@@ -74,7 +75,7 @@ hr{
     }
     .heading img{
         max-width: 67px;
-        min-height: 58px;
+        max-height: 38px;
         display: none;
         background-color: transparent;
     }
@@ -166,6 +167,65 @@ textarea{
 @media(max-width:980px){
     .addpost{
         width: 95%;
-
     }
 }
+
+
+/* **********Manage Posts************ */
+
+.manage-post{
+
+    width: 80%;
+    height: 300px;
+    margin: 5%;
+}
+
+/* .manage-title{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: clamp(15px,3vw,33px);   
+} */
+.manage-each-post{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-around;
+    align-items: center;
+    background-color:var(--special);
+    border: 1px solid transparent;
+    border-radius: 13px;
+    font-size: clamp(14px,20px,100%);
+    font-weight: bold;
+}
+.manage-icons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:clamp(5px,3vw,30px);
+    cursor: pointer;
+}
+
+.manage-icons i:nth-child(1){
+    color: blue;
+}
+.manage-icons i:nth-child(2){
+    color: green;
+}
+.manage-icons i:nth-child(3){
+    color: red;
+}
+button{
+    cursor: pointer;
+}
+
+@media (max-width:769px) {
+    .manage-post{
+        width: 100%;
+        height: auto;
+        margin:5%  0 0 0 ;
+    }
+}   
