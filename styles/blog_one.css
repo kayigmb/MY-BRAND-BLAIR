@@ -81,7 +81,7 @@ hr{
         order:1;
         height: auto;
         width: 100%;
-        margin: 0;
+        margin: 10px;
     }
     .maincontent{
         margin: 3%;
@@ -90,9 +90,7 @@ hr{
     nav{
         display: none;
     }
-    .image img{
-        display: none;
-    }
+
     .image,
     .eachlink {
         margin:0;
@@ -113,11 +111,6 @@ hr{
     gap:5px;
 }
 
-
-.image img{
-    height: 82px;
-    width: 110px;  
-}
 .image h1{
     font-size: x-large;
 }

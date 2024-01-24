@@ -298,8 +298,17 @@ background-color: var(--yellow);
         font-size:clamp(40px,50px,10vw);
         margin: 5vh 0 0 100px;
         text-wrap:balance;
-        text-
+        
 }
+@media (max-width: 500px) {
+    .about_page p{
+        font-size:30px;    
+        padding: 0 1rem;  
+        text-align: justify;
+        
+}
+}
+
 @media (max-width:900px) {
     .about_page p{
         margin: 5vh 0 0 0;
@@ -711,7 +720,6 @@ background-color: var(--yellow);
 }
 .leaveinfo{
     width: 60%;
-    flex:1;
 }
 
 .leaveinfo form{
@@ -778,7 +786,7 @@ background-color: var(--yellow);
 .info2 p{
     text-align: right;
 }
-.leaveinfo button{
+form button{
     width: 160px;
     height: 36px;
     color: var(--black);
@@ -791,7 +799,7 @@ form{
     width: 90%;
     background-color: var(--white);
     border-radius: 10px;
-    height: 600px;
+    height: 500px;
     padding-top: 20px;
     
 }
@@ -859,7 +867,10 @@ textarea{
     footer{
         width:100%;
     }
-    
+
+    form button{
+        width: 88%;
+    }
 
 }
 
@@ -867,14 +878,14 @@ textarea{
 
 /* ************footer ******** */
 .footer{
-    margin-top: 50px;
+    margin-top: 30px;
     position: sticky;
 }
 
 footer{
-    width:72%;
+    width:100%;
     margin: 0 auto;
-    height: 10vh;
+    height: 7vh;
     font-size:15px;
     max-width: 100%;
     background-color: var(--white);
