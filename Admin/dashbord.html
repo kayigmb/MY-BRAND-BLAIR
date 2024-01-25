@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+         
+        <!-- nav bar -->
+        <nav class="navigation">
+              <!-- each nav link -->
+              <div class="eachnav">
+                <a href="dashbord.html" style="color:#FFB400;">Dashboard</a>
+               
+            </div>
+            <hr>
+            <!-- each nav link -->
+            <div class="eachnav">
+                <a href="addpost.html">Create Post</a>
+               
+            </div>
+            <hr>
+            <!-- each nav link -->
+            <div class="eachnav">
+                <a href="manageposts.html">Manage Posts</a>
+               
+            </div>
+            <hr>
+            <!-- each nav link -->
+            <div class="eachnav">
+                <a href="queries.html">Messages</a>
+               
+            </div>
+            <hr>
+        </nav>
+    
+        <main class="main_body">
+            <!-- Header -->
+            <header class="header">
+                    <div class="heading">
+                          <!-- drop down nav bar-->
+
+            <div class="dropdownbar">
+                <!-- drop bar section -->
+                <div class="dropbar">
+                    <!-- <img src="img/drop.png" alt="dropdown" onclick=""> -->
+                   <div class="dropdown">
+                     <button class="hmenu">
+                        <div class="hbar">
+
+                        </div>
+                     </button>
+                   </div>
+                </div>
+                <div class="mnav">
+                    <a href="dashbord.html" style="color:#FFB400">Dashboard</a>
+                    <hr>
+                    <a href="addpost.html">Create Post</a>
+                    <hr>
+                    <a href="queries.html">Messages</a>
+                    <hr>
+                    <a href="manageposts.html">Manage Posts</a>
+                <hr>
+                 </div>
+            </div>
+
+
+
+                        <h1>Dashboard</h1>
+                    </div>
+                <div class="name">
+                    <h3>Admin</h3>
+                    <a href="../landing_page.html"><i class="fas fa-sign-out-alt"></i></a>
+                </div>
+            </header>
+            <!-- main content -->
+            <div class="main_content">
+                <!-- DASHBOARD ITEM -->
+
+                <div class="dashboard">
+                    <!-- each board  -->
+                        <div class="board">
+                            <h1>Messages</h1>
+                            <p>3</p>
+                        </div>
+                    <!-- each board  -->
+                        <div class="board">
+                            <h1>Likes</h1>
+                            <p>12</p>
+                        </div>
+                    <!-- each board  -->
+                        <div class="board">
+                            <h1>Comments</h1>
+                            <p>2</p>
+                        </div>
+
+                    
+                </div>
+            </div>
+        </main>
+
+        <!-- SCRIPT -->
+        <script>
+            const hmenu = document.querySelector('.hmenu');
+            const mnav = document.querySelector('.mnav');
+            const menuItems = document.querySelectorAll('.mnav a');
+            
+            hmenu.addEventListener('click',function() {
+                hmenu.classList.toggle('is-active');
+                mnav.classList.toggle('is-active');
+            });
+            menuItems.forEach(function(menuItem) {
+                      menuItem.addEventListener('click', function() {
+                     hmenu.classList.remove('is-active');
+                     mnav.classList.remove('is-active');
+    });
+    });
+    
+    </script>
+
+</body>
+</html>

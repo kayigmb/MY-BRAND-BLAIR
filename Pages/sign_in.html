@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../styles/signin_style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <section>
+        <div class="button">            
+                <button onclick="home()"><i class="fas fa-long-arrow-alt-left"></i>  Go Back Home</button></a>
+        </div>
+       
+
+        <form action="#">
+            <div class="format">
+            
+            <h1>Login</h1>
+
+            <div class="form">
+            <div class="form_input">
+                <label for="username">Username:</label>
+                <input type="text" required>
+            </div>
+            <div class="form_input">
+                <label for="username">Password:</label>
+                <input type="password" required>
+            </div>
+            <button class="lgnbtn" onclick="login()">Login</button>
+            </div>
+            </div>
+        </form>
+    </section>
+
+    <script>
+        const login = () =>{
+            window.location.href = "../Admin/dashbord.html"
+        }
+        const home = () =>{
+            window.location.href = "../landing_page.html";
+        }
+    </script>
+</body>
+</html>

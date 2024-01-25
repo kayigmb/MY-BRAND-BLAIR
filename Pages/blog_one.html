@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="../styles/blog_one.css">
+    <link rel="icon" href="../img/blog.jpg">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+        <!-- Aside bar -->
+        <aside>
+            <div class="image">
+                <h1>Related Pages</h1>
+            </div>
+            <hr>
+            <!-- each blog link -->
+            <div class="eachlink">
+                <h3>Node Js</h3>
+                <a href="../Pages/blog_page.html">Read More ></a>
+            </div>
+            <hr>
+            <!-- each blog link -->
+            <div class="eachlink">
+                <h3>Node Js</h3>
+                <a href="#">Read More ></a>
+            </div>
+            <hr>            
+        </aside>
+
+
+        <!-- Navigation bar -->
+
+        <nav>
+            <div class="menu">
+                <div class="nlmode">
+                    <i class="far fa-moon"></i>
+                </div>
+                <div class="menuSection">
+                    <!-- Menu components with correct anchor tag nesting -->
+                    <a href="../landing_page.html">
+                        <div class="menu_components"> 
+                            <div class="hover-text">Home</div>
+                            <i class="fas fa-home"></i>
+                        </div>
+                    </a>
+                    <a href="sign_in.html">
+                        <div class="menu_components">
+                            <div class="hover-text">Log In</div>
+                            <i class="fas fa-sign-in"></i></div>
+                    </a>
+                </div>
+
+            </div>
+        </nav>
+
+
+        <!-- Main content -->
+        <main>
+                     <!-- drop down nav bar-->
+
+                     <div class="dropdownbar">
+                        <!-- drop bar section -->
+                        <div class="dropbar">
+                            <!-- <img src="img/drop.png" alt="dropdown" onclick=""> -->
+                           <div class="dropdown">
+                             <button class="hmenu">
+                                <div class="hbar">
+        
+                                </div>
+                             </button>
+                           </div>
+                        </div>
+                        <div class="mnav">
+                            <a href="../landing_page.html">Home</a>
+                            <a href="sign_in.html">Log In</a>
+                         </div>
+                    </div>
+
+            <!-- main content -->
+           <div class="maincontent">
+            <h1>Node Js</h1>
+            <div class="heading">
+                <div class="imagetitle">
+                    <img src="../img/blogimage.png" alt="blog image">
+                </div>
+                
+                <div class="bloginfo">
+                    <h3><span>Author:</span> Blair Kayigamba</h3>
+                    <p>November 21,2019</p>
+                </div>
+            </div>
+
+            <div class="article">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Obcaecati, maiores fugiat nam amet doloribus optio ab dolorem sint cumque possimus qui
+                     placeat nemo molestias esse sequi odio facilis sunt a laudantium consequatur molestiae 
+                     deleniti sed similique! Doloremque ducimus, sit exercitationem quis veniam culpa ut earum, 
+                     ea explicabo delectus voluptatum iste!
+                </p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo nam itaque, numquam modi magnam 
+                    dolore ipsa provident quam amet reiciendis nihil! Commodi quaerat, reprehenderit aut ex quibusdam
+                     impedit accusantium possimus culpa nesciunt eligendi perferendis. Ab rem in saepe aliquid, tempora
+                      eaque iure facere voluptatibus? Exercitationem at ratione incidunt voluptatibus, accusamus 
+                      odit excepturi laudantium quo quos quae, deleniti mollitia voluptatem sed quam vero voluptates.
+                       Id repellat exercitationem similique earum! Facilis aspernatur adipisci sint, expedita, 
+                       repellendus doloribus quos doloremque quo totam et quisquam molestias veniam nulla nisi 
+                       necessitatibus exercitationem, blanditiis eligendi voluptate?
+                </p>
+            
+            </div>
+
+            <div class="blog_reaction">
+                <!-- each reaction icon -->
+                <div class="reaction">
+                    <i class="far fa-thumbs-up"></i>
+                    <p>3</p>
+                </div>
+                <!-- each reaction icon -->
+                <div class="reaction">
+                    <i class="far fa-comment"></i>
+                    <p>2</p>
+                </div>
+                
+            </div>
+
+            <div class="comment_section">
+                <h2>Comments: 2</h2>
+            </div>
+            <!-- Comment form to add a comment -->
+            <div class="comment_form">
+                <!-- each input comment -->
+                <div class="each_input_comment">
+                    <label for="">Enter Name:</label>
+                    <input type="text" name="" id="">
+                </div>
+                <!-- each input comment --> 
+                <div class="each_input_comment">
+                        <label for="">Comment:</label>
+                        <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+                </div>  
+                <button>Post Comment</button>
+                
+            </div>
+
+            <!-- section for comments -->
+            <div class="comments_section">
+                <div class="comment_info">
+                    <h3>John</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur
+                         adipisicing elit. Assumenda fuga dolorem aspernatur vero dicta sunt debitis sed eius.
+                          Repudiandae, tempore?
+                    </p>
+                </div>
+                <!-- <div class="comment_react">
+                    <button>Reply</button>
+                </div> -->
+                </div>
+                  <!-- section for comments -->
+            <div class="comments_section">
+                <div class="comment_info">
+                    <h3>John</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur
+                         adipisicing elit. Assumenda fuga dolorem aspernatur vero dicta sunt debitis sed eius.
+                          Repudiandae, tempore?
+                    </p>
+                </div>
+                <!-- <div class="comment_react">
+                    <button>Reply</button>
+                </div> -->
+                </div>
+            </div>
+           </div>
+        </main>
+        
+        <script>
+            const hmenu = document.querySelector('.hmenu');
+            const mnav = document.querySelector('.mnav');
+            const menuItems = document.querySelectorAll('.mnav a');
+            
+            hmenu.addEventListener('click',function() {
+                hmenu.classList.toggle('is-active');
+                mnav.classList.toggle('is-active');
+            });
+            menuItems.forEach(function(menuItem) {
+                      menuItem.addEventListener('click', function() {
+                     hmenu.classList.remove('is-active');
+                     mnav.classList.remove('is-active');
+    });
+    });
+    
+    </script>
+</body>
+</html>
