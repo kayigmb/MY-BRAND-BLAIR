@@ -56,14 +56,16 @@ section{
     z-index: 1;
 }
 
+
 /* drop-down section */
 .dropdown{
     height: auto;
     width: 100%;
     top:0;
-    position: fixed;   
-    background-color: var(--white);
+    position: relative;
     z-index: 98;
+
+    
 }
 
 .hmenu{
@@ -74,11 +76,11 @@ section{
     background: none;
     border: none;
     top:0;
+    right: 0;
     position: fixed;
     z-index: 99;
     margin: 3px auto 0px 3px;
     background-color: transparent;
-
 
 }
 
@@ -104,7 +106,7 @@ section{
 .mnav{
     display: none;
     position: fixed;
-    left: -100%;
+    right: -100%;
     width: 70%;
     min-height: 100vh;
     z-index: 97;
@@ -124,7 +126,7 @@ section{
     color:var(--white);
 }
 .mnav.is-active{
-    left:0;
+    right:0;
 }
 
 /* *****************menu bar***************** */
@@ -213,6 +215,7 @@ background-color: var(--yellow);
     }
     .hmenu{
         display: block;
+        right:0;
     }
     .mnav{
             display: block;

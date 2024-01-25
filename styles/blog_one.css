@@ -97,7 +97,7 @@ hr{
 .mnav{
     display: none;
     position: fixed;
-    left: -100%;
+    right: -100%;
     width: 70%;
     min-height: 100vh;
     z-index: 97;
@@ -117,7 +117,7 @@ hr{
     color:var(--white);
 }
 .mnav.is-active{
-    left:0;
+    right:0;
 }
 
 .maincontent h1{
@@ -142,6 +142,7 @@ hr{
     }
     .maincontent{
         margin: 3%;
+        margin-top: 30px;
     }
 
     nav{
