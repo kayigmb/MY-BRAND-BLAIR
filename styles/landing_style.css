@@ -343,22 +343,21 @@ background-color: var(--yellow);
 .about_page h1{
         text-align: center;
         font-size: clamp(20px,40px,10vw);
-        color: var(--black);        
+        color: var(--black);       
 }
 
 .about_page p{
         color:var(--black);
         font-size:clamp(40px,50px,10vw);
-        margin: 5vh 0 0 100px;
-        text-wrap:balance;
-        
+        margin-top: 50px;
+        text-wrap: balance;
+        white-space: wrap;
+        text-align: justify;      
 }
 @media (max-width: 500px) {
     .about_page p{
         font-size:30px;    
-        padding: 0 1rem;  
-        text-align: justify;
-        
+        padding: 0 1rem;     
 }
 }
 
@@ -375,10 +374,10 @@ background-color: var(--yellow);
 .skills{
     width: 90%;
     height: 100%;
-    margin:0vh auto;
+    margin:0 auto;
 }
 .skill_box{    
-   margin: 10vh auto;
+   margin: 0 auto;
    width: 86%;
 }
 .skills h1{
