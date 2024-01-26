@@ -113,7 +113,6 @@ input[type="text"], input[type="password"]{
         width: 100%;
         margin-top: 10px;
         height: 35px;
-        text-align: center;
         border: 1px solid var(--white);
 
 }
