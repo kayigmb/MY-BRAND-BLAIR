@@ -212,7 +212,7 @@ h1{
 .mnav{
     display: none;
     position: fixed;
-    left: -100%;
+    right: -100%;
     width: 70%;
     min-height: 100vh;
     z-index: 97;
@@ -232,7 +232,7 @@ h1{
     color:var(--white);
 }
 .mnav.is-active{
-    left:0;
+    right:0;
 }
 
 
