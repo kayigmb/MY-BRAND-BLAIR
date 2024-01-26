@@ -106,12 +106,16 @@ input[type="text"], input[type="password"]{
         margin: 0;
         padding: 0;
     }
+    section{
+       max-width: 100%;
+    }
  input[type="text"], input[type="password"]{
         width: 100%;
         margin-top: 10px;
         height: 35px;
         text-align: center;
         border: 1px solid var(--white);
+
 }
 label{
     font-size: 3vw;
@@ -127,7 +131,7 @@ section{
         width: 80%;
         margin-top: 70px;
     }
-    .button a button{
+    .button button{
         background-color: var(--dark_grey);
         color:var(--white);
         border:1px solid var(var(--dark_grey));
