@@ -461,20 +461,6 @@ background-color: var(--yellow);
     font-size:clamp(20px,40px,10vw);
 }
 
-/* @media (max-width:450px) {
-    .services h1{
-        font-size: 10vw;
-    }    
-    
-}
-@media(max-width:790px){
-    .services_show{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-} */
-
 .services_show{
     
     display: flex;
@@ -512,6 +498,9 @@ background-color: var(--yellow);
     margin-top:20px;
 }
 
+@media (min-width: 868px){
+
+}
 /* *****************portfolio page************** */
 
 .portfolio {
@@ -612,7 +601,6 @@ select option{
     width: 100%;    
     object-fit: cover;
     height: 100%;
-    z-index: -1;
     background-blend-mode:normal;
 }
 @media (max-width:841px) {
@@ -635,11 +623,6 @@ select option{
         scroll-behavior: smooth;
         scrollbar-color:inherit;
     }
-    /* .portfolio,
-    .services,
-    .blog{
-        width: 100%;
-    } */
 
 }
 
@@ -790,9 +773,19 @@ select option{
      color: green;
      font-weight: bold;
  }
- @media (max-width: 768px) {
+ @media (max-width: 1090px) {
     .blog_pages{
         margin: 20px auto;
+
+    }
+
+    .blog_pages,
+    .services_show{
+        width: 100%;
+        justify-content: center;
+        display: flex;
+        align-items: center;   
+        flex-wrap: wrap;     
     }
  }
 
@@ -860,7 +853,6 @@ select option{
     display: flex;
     justify-content: space-around;
     margin: 20px auto;
-
     color: var(--dark_grey);
     font-size: clamp(1px,14px,20px);
 }
@@ -939,6 +931,11 @@ textarea{
     }
     .info{
         width: 100%;
+    }
+    .infos{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;        
     }
     input[type="text"]{
         background-color: var(--light_grey);
