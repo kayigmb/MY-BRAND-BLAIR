@@ -303,9 +303,11 @@ background-color: var(--yellow);
 /* links for the social medias */
 .linkscontainer{
     display: flex;  
-    gap:20px ;
+    gap:10px ;
     margin-bottom: 40px;
 }
+
+
 .link_icons{
     height: 30px;
     width: 30px;
@@ -353,9 +355,9 @@ background-color: var(--yellow);
         color:var(--black);
         font-size:clamp(40px,50px,10vw);
         margin-top: 50px;
-        text-wrap: balance;
-        white-space: wrap;
-        text-align: justify;      
+        text-align:justify;
+        white-space:wrap;
+        box-sizing: border-box;
 }
 @media (max-width: 500px) {
     .about_page p{
@@ -667,6 +669,7 @@ select option{
     .home h2{
         font-size: 6vw;
         margin-left:0;
+
     }
     .links{
         margin:20px auto;
@@ -674,15 +677,15 @@ select option{
     .hirebtn{
         margin-left:0;
         width: 40%;
-        font-size: 20px;
+        font-size: clamp(1px,20px,30px);
+        font-weight: bold;;
     }
-    .home h1{
+        .home h1{
         font-size:12vw;
-        margin-top:100px;
-        margin-left:0;
+        margin:100px 0 0 0;
     }
     .home p{
-        font-size: 15px;
+        font-size: 25px;
         margin-top: 40px;
         margin-left:0;
         font-weight: bold;
@@ -691,8 +694,12 @@ select option{
         display: flex;
         gap:5px;
         align-items: center;
-        justify-content: center;
-        
+        justify-content: center;     
+    }
+    .link_icons{
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
     }
     
    
