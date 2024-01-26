@@ -673,6 +673,8 @@ select option{
     }
     .hirebtn{
         margin-left:0;
+        width: 40%;
+        font-size: 20px;
     }
     .home h1{
         font-size:12vw;
