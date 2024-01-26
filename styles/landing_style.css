@@ -17,7 +17,6 @@
 
 html, body {
     scroll-behavior: smooth;
-
 }
 
 body{
@@ -361,8 +360,9 @@ background-color: var(--yellow);
 }
 @media (max-width: 500px) {
     .about_page p{
-        font-size:30px;    
-        padding: 0 1rem;     
+        font-size:35px;    
+        padding: 0 1.5rem; 
+            
 }
 }
 
