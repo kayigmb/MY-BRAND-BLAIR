@@ -105,7 +105,7 @@ section{
 .mnav{
     display: none;
     position: fixed;
-    right: -100%;
+    left: -100%;
     width: 70%;
     min-height: 100vh;
     z-index: 97;
@@ -125,9 +125,9 @@ section{
     color:var(--white);
 }
 .mnav.is-active{
-    right:0;
+    left:0;
 }
-
+ 
 /* *****************menu bar***************** */
 .menu {
     width: 100%;
@@ -358,11 +358,10 @@ background-color: var(--yellow);
         white-space:wrap;
         box-sizing: border-box;
 }
-@media (max-width: 500px) {
+@media (max-width: 565px) {
     .about_page p{
-        font-size:35px;    
+        font-size:39px;    
         padding: 0 1.5rem; 
-            
 }
 }
 
@@ -802,7 +801,7 @@ select option{
 
 .contactsinfo{
     width: 78%;
-    height: 100%;
+    height: auto;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -888,7 +887,7 @@ form{
     width: 90%;
     background-color: var(--white);
     border-radius: 10px;
-    height: 500px;
+    height: auto;
     padding-top: 20px;
     
 }
@@ -900,6 +899,13 @@ form label{
 }
 .inputs{
     margin: 20px 0px 0px 20px;
+    
+}
+
+#errorContainer{
+    margin: 20px 0px 0px 20px;
+    height: auto;
+    width: auto;
 }
 input[type="text"]{
     background-color: var(--light_grey);
@@ -918,7 +924,7 @@ textarea{
     
     .contactsinfo{
         flex-wrap: wrap;
-
+        height: auto;;
     }
     .leaveinfo {
        width: 100%;
@@ -938,7 +944,7 @@ textarea{
     form{
         width:100%;
     }
-    .info{
+    .info{  
         width: 100%;
     }
     .infos{
