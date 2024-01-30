@@ -42,6 +42,13 @@ nav{
     right: 0;
     display: block;
 }
+.show-nav{
+    display: none;
+}
+nav:hover {
+    width: 200px;
+    position: fixed;
+}
 
 section{
     width:calc(100% - 108px);
@@ -113,6 +120,7 @@ section{
     transition: 0.5s;
 
 }
+
 .mnav a{
     display: block;
     text-align: center;
@@ -141,6 +149,7 @@ section{
     
 }
 
+
 /* dark and light mode */
 .nlmode {
     max-width: 30px;
@@ -162,23 +171,26 @@ section{
     background-color: var(--light_grey);
     border-radius: 30px;
     color: var(--black);
-    margin: 30px auto;
+    /* margin: 30px auto; */
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
 }
+
+
 .menuSection{
     margin-top:60px;
 }
-.menuSection a {
+.menu-spread a {
     font-size: 20px;  
-    display: block;
-    
+    display:block;    
+    align-items: center;
     color: var(--black);
     text-decoration: none;
     transition:0.3s  ease;
 }
+
 .hover-text {
     visibility: hidden;
     opacity: 0;
@@ -195,6 +207,30 @@ section{
     border-radius: 4px;
     white-space: nowrap;
 }
+
+
+.menu-spread{
+    height: 60px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding:20px;
+
+}
+.hover-name{
+    display: none;
+}
+nav:hover .hover-name{
+    display: block;
+}
+nav:hover .menu-spread{
+    margin:5px;
+    padding: 0;
+    justify-content: flex-start;
+}
+
 
 .menu_components:hover{
 background-color: var(--yellow);
@@ -906,6 +942,10 @@ form label{
     margin: 20px 0px 0px 20px;
     height: auto;
     width: auto;
+    color:red;
+}
+#errorContainer p{
+    margin-top: 5px;
 }
 input[type="text"]{
     background-color: var(--light_grey);

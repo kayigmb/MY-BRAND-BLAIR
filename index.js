@@ -41,17 +41,17 @@ function validation() {
     error.innerHTML = '';
 
     if (enteredName === '') {
-        errorMessage(" Please enter a name");
+        errorMessage(" Enter a VALID name");
     }
     if (enteredEmail === ""){
-        errorMessage('Enter an email')
+        errorMessage('Enter an VALID email')
 
     } else if(!emailRegex.test(enteredEmail)){
-        errorMessage('Enter a valid email')
+        errorMessage('Enter a VALID email')
     }
 
     if(enteredText === ""){
-        errorMessage('Please enter a text');
+        errorMessage('Enter a  VALID text');
     }
 
 }

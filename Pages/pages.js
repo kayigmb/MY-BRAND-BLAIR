@@ -35,12 +35,18 @@ function validate() {
     else if(passWord.length > 15){
         errorMessage('Password is too long')
     }
-     
+    
+    
     if(userName === "admin" && passWord === "admin123"){
         window.location.href = "/Admin/dashbord.html";
     }
-    
+    else
+    if(userName !== "admin" && passWord !== "admin123"){
+        errorMessage("Wrong username or password")
+    }
+
 }
+
 
 function errorMessage(message) {
     const errorWord = document.createElement("p");
