@@ -862,9 +862,8 @@ select option{
  @media (max-width: 1090px) {
     .blog_pages{
         margin: 20px auto;
-        min-width: auto;
-        width: 100%;
-    }
+   }
+    
     .blog_individual{
         width:300px;
     }

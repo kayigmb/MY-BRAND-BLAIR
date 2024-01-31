@@ -89,6 +89,7 @@ linkButton.addEventListener("click", () => {
     modifyText(linkButton.id, false, userLink);
   }
 });
+
 //Highlight clicked button
 const highlighter = (className, needsRemoval) => {
   className.forEach((button) => {
@@ -120,3 +121,4 @@ const highlighterRemover = (className) => {
 };
 window.onload = initializer();
 
+// validtin the 
