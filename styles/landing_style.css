@@ -113,8 +113,8 @@ section{
     display: none;
     position: fixed;
     left: -100%;
-    width: 70%;
-    min-height: 100vh;
+    width: 40%;
+    min-height: 60vh;
     z-index: 97;
     background-color:var(--light_grey);
     transition: 0.5s;
@@ -123,11 +123,11 @@ section{
 
 .mnav a{
     display: block;
-    text-align: center;
+    text-align: left;
     padding: 20px;
     width: 50%;
     border-radius: 20px;
-    margin: 10px auto 20px;
+    margin: 10px auto;
     background-color: var(--dark_grey);
     text-decoration: none;
     color:var(--white);
@@ -135,6 +135,19 @@ section{
 .mnav.is-active{
     left:0;
 }
+.mnav a i{
+    font-size: 20px;
+}
+@media (max-width: 568px){
+    .mnav{
+        width: 80%;
+    }
+}   
+@media (max-width: 368px){
+    .mnav{
+        width: 100%;
+    }
+} 
  
 /* *****************menu bar***************** */
 .menu {
