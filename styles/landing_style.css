@@ -771,7 +771,7 @@ select option{
     display: flex;
     flex-wrap: nowrap;
     gap:10px;
-    z-index: 97;
+    z-index: 91;
     overflow: auto;
     align-items: center;
     position: relative;
@@ -853,7 +853,7 @@ select option{
     width: 50px;
     height:50px;
     font-size: 35px;
-    z-index: 99;
+    z-index: 96;
     margin-top: 30vh;
     border: 1px solid transparent;
     cursor: pointer;
