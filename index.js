@@ -63,5 +63,38 @@ function errorMessage(message) {
 }
 
 
+// slider 
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const blogPages = document.querySelector('.blog_pages');
+    const leftButton = document.querySelector('.left');
+    const rightButton = document.querySelector('.right');
+    
+    let currentIndex = 0;
+    
+    const pages = document.querySelectorAll('.blog_individual');
+
+    leftButton.addEventListener('click', function () {
+        if (currentIndex > 0) {
+            currentIndex--;
+        }
+        scrollToCurrentIndex();
+    });
+
+    rightButton.addEventListener('click', function () {
+        if (currentIndex < pages.length - 1) {
+            currentIndex++;
+        }
+        scrollToCurrentIndex();
+    });
+
+    function scrollToCurrentIndex() {
+        const pageWidth = pages[currentIndex].offsetWidth;
+        blogPages.scrollLeft = currentIndex * pageWidth;
+    }
+});
+
+
 
 

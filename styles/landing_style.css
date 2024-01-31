@@ -767,19 +767,30 @@ select option{
 .blog_pages{
     margin:30px auto;
     width: 93%;
+    height:auto;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap:10px;
-    justify-content:space-between;
+    z-index: 97;
+    overflow: auto;
     align-items: center;
+    position: relative;
+}
+.pages{
+    position: absolute;
+    overflow:auto;
+    min-width: 90%;
+    display: flex;
+    gap: 30px;
 }
 
 .blog_individual{
-    width: clamp(305px,20vw,400px);
-    min-height: 480px;
+    width: 20vw;
+    min-height: auto;
     background-color: white;
     border: 1px solid white;
     margin-bottom:20px;
+    
 }
 /*blog card image  */
 .blog_individual img{
@@ -793,7 +804,7 @@ select option{
     height: calc(100%-280px);
 }
 /* blog card title */
-.blog_word h2{
+.blog_word h3{
     color:var(--black);
 }
 /* blog card paragraph */
@@ -816,7 +827,7 @@ select option{
  .iconsreact{
      display: flex;
      align-items: flex-end;
-     justify-content: flex-start;
+     justify-content: space-between;
  }
  .reaction1{
      width: 30%;
@@ -830,19 +841,45 @@ select option{
      color: green;
      font-weight: bold;
  }
+.slide-content{
+    width: auto;
+    height: 600px;
+    overflow: scroll;
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.left, .right{
+    width: 50px;
+    height:50px;
+    font-size: 35px;
+    z-index: 99;
+    margin-top: 30vh;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
  @media (max-width: 1090px) {
     .blog_pages{
         margin: 20px auto;
-
+        min-width: auto;
+        width: 100%;
+    }
+    .blog_individual{
+        width:300px;
     }
 
     .blog_pages,
     .services_show{
-        width: 100%;
+      
         justify-content: center;
         display: flex;
         align-items: center;   
-        flex-wrap: wrap;     
+    }
+
+    .services_show{
+        flex-wrap: wrap;   
+        width: 100%;  
     }
  }
 
