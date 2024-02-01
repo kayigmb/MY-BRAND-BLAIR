@@ -20,40 +20,48 @@ const form = document.getElementById('form');
 const error = document.getElementById('errorContainer');
 
 
-function validate() {
-    form.addEventListener('submit', (e) => {
+
+form.addEventListener('submit', (e) => {
         e.preventDefault();
         validation();
-    });
-}
+});
 
-validate();
+
+
+const name = document.getElementById('name');
+const email = document.getElementById('email');
+const textarea = document.querySelector('textarea');
 
 function validation() {
-    const name = document.getElementById('name');
-    const enteredName = name.value.trim();
-    const email = document.getElementById('email');
-    const enteredEmail = email.value.trim();
-    const textarea = document.querySelector('textarea');
+    
+    const enteredName = name.value.trim();    
+    const enteredEmail = email.value.trim();    
     const enteredText = textarea.value.trim();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     error.innerHTML = '';
-
+    let valid = true;
     if (enteredName === '') {
-        errorMessage(" Enter a VALID name");
+        errorMessage(" Enter a name");
+        valid = false
     }
     if (enteredEmail === ""){
-        errorMessage('Enter an VALID email')
+        errorMessage('Enter an email')
+        valid = false
 
     } else if(!emailRegex.test(enteredEmail)){
-        errorMessage('Enter a VALID email')
+        errorMessage('Enter a valid email')
+        valid = false
     }
 
     if(enteredText === ""){
-        errorMessage('Enter a  VALID text');
+        errorMessage('Enter a  text');
+        valid = false
     }
 
+    if(valid){
+        contactUser();
+    }
 }
 
 function errorMessage(message) {
@@ -62,10 +70,23 @@ function errorMessage(message) {
     word.innerHTML = message;
 }
 
+//  contact the user 
+function contactUser(){
+    const enteredName = name.value.trim();    
+    const enteredEmail = email.value.trim();    
+    const enteredText = textarea.value.trim();
+    
+    let messageSent = JSON.parse(localStorage.getItem('messages'))||[];
+
+    messageSent.push({
+        name: enteredName,
+        email: enteredEmail,
+        text:enteredText
+    });
+    localStorage.setItem('messages', JSON.stringify(messageSent));
+}
 
 // slider 
-
-
 document.addEventListener("DOMContentLoaded", function () {
     const blogPages = document.querySelector('.blog_pages');
     const leftButton = document.querySelector('.left');
@@ -93,6 +114,9 @@ document.addEventListener("DOMContentLoaded", function () {
         blogPages.scrollLeft = current * pageWidth;
     }
 });
+
+
+
 
 
 

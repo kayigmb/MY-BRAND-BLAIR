@@ -6,6 +6,10 @@
     <title>Add Post</title>
     <link rel="stylesheet" href="admin.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../richtexteditor/rte_theme_default.css" />
+	<script type="text/javascript" src="../richtexteditor/rte.js"></script>
+    <script>RTE_DefaultConfig.url_base='../richtexteditor'</script>
+	<script type="text/javascript" src='../richtexteditor/plugins/all_plugins.js'></script>
 
 </head>
 <body>
@@ -80,120 +84,34 @@
            </header>
            <!-- main content -->
            <div class="main_content">
-                <div class="addpost">
+                <form action="#">
+                    <div class="addpost">
                         <input type="text" name="Title" id="title" placeholder="Title">
-                        <div class="add-image">
-                                <input type="file" id="image">
-                        </div>
+
+                        <input type="text" name="Author" id="name" placeholder="Author">
+
                           <div class="texteditor">
                             <!-- text editor header/links -->
                             <div class="richcontainer">
-                                <div class="options">
-                                  <!-- Text Format -->
-                                  <button id="bold" class="option-button format">
-                                    <i class="fa-solid fa-bold"></i>
-                                  </button>
-                                  <button id="italic" class="option-button format">
-                                    <i class="fa-solid fa-italic"></i>
-                                  </button>
-                                  <button id="underline" class="option-button format">
-                                    <i class="fa-solid fa-underline"></i>
-                                  </button>
-                                  <button id="strikethrough" class="option-button format">
-                                    <i class="fa-solid fa-strikethrough"></i>
-                                  </button>
-                                  <button id="superscript" class="option-button script">
-                                    <i class="fa-solid fa-superscript"></i>
-                                  </button>
-                                  <button id="subscript" class="option-button script">
-                                    <i class="fa-solid fa-subscript"></i>
-                                  </button>
-                                  <!-- List -->
-                                  <button id="insertOrderedList" class="option-button">
-                                    <div class="fa-solid fa-list-ol"></div>
-                                  </button>
-                                  <button id="insertUnorderedList" class="option-button">
-                                    <i class="fa-solid fa-list"></i>
-                                  </button>
-                                  <!-- Undo/Redo -->
-                                  <button id="undo" class="option-button">
-                                    <i class="fa-solid fa-rotate-left"></i>
-                                  </button>
-                                  <button id="redo" class="option-button">
-                                    <i class="fa-solid fa-rotate-right"></i>
-                                  </button>
-                                  <!-- Link -->
-                                  <button id="createLink" class="adv-option-button">
-                                    <i class="fa fa-link"></i>
-                                  </button>
-                                  <button id="unlink" class="option-button">
-                                    <i class="fa fa-unlink"></i>
-                                  </button>
-                                  <!-- Alignment -->
-                                  <button id="justifyLeft" class="option-button align">
-                                    <i class="fa-solid fa-align-left"></i>
-                                  </button>
-                                  <button id="justifyCenter" class="option-button align">
-                                    <i class="fa-solid fa-align-center"></i>
-                                  </button>
-                                  <button id="justifyRight" class="option-button align">
-                                    <i class="fa-solid fa-align-right"></i>
-                                  </button>
-                                  <button id="justifyFull" class="option-button align">
-                                    <i class="fa-solid fa-align-justify"></i>
-                                  </button>
-                                  <button id="indent" class="option-button spacing">
-                                    <i class="fa-solid fa-indent"></i>
-                                  </button>
-                                  <button id="outdent" class="option-button spacing">
-                                    <i class="fa-solid fa-outdent"></i>
-                                  </button>
-                                  <!-- Headings -->
-                                  <select id="formatBlock" class="adv-option-button">
-                                    <option value="H1">H1</option>
-                                    <option value="H2">H2</option>
-                                    <option value="H3">H3</option>
-                                    <option value="H4">H4</option>
-                                    <option value="H5">H5</option>
-                                    <option value="H6">H6</option>
-                                  </select>
-                                  <!-- Font -->
-                                  <select id="fontName" class="adv-option-button"></select>
-                                  <select id="fontSize" class="adv-option-button"></select>
-                                  <!-- Color -->
-                                  <div class="input-wrapper">
-                                    <input type="color" id="foreColor" class="adv-option-button" />
-                                    <label for="foreColor">Font Color</label>
-                                  </div>
-                                  <div class="input-wrapper">
-                                    <input type="color" id="backColor" class="adv-option-button" />
-                                    <label for="backColor">Highlight Color</label>
-                                  </div>
-                                </div>
-                                <div id="text-input" contenteditable="true" class="content" id="content"></div>
-                              </div>
-                              <!-- </div>
-                        
-                                <div class="content" contenteditable="true" data-placeholder="Enter here" id="content">
                                 
-                                </div> -->
+                                <textarea name="text" id="content"  cols="30" rows="10"></textarea>
+                               
                                 <div id="error">
                                     
                                 </div>
-                             <!-- buttons -->
-                            <div class="buttons">
-                            <!-- the js is to open the input text from the button -->
-                            <!-- <button onclick="document.getElementById('file').click()" class="btn1">Add Image</button> -->
-                            <!-- incorporate when choosen file name changes -->
-                            <input type="file" id="file" style="display: none;">
-                           
-                            <button class="btn2" id="btn">Publish</button>
-                        </div>
-                </div>
-           </div>
+                            <!-- buttons -->
+                                <div class="buttons" id="buttons">       
+                                    <button class="btn1" id="btn1">Update</button>                 
+                                    <button class="btn2" id="btn" >Publish</button>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+            </form>
        </main>
    
-      <script src="admin.js"></script>
       <script src="addpost.js"></script>
+
+
 </body>
 </html>

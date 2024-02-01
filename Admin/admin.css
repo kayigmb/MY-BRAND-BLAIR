@@ -128,7 +128,7 @@ hr{
     left: -100%;
     width: 70%;
     min-height: 100vh;
-    z-index: 97;
+    z-index: 99999999999999999;
     top:0;
     background-color:var(--black);
     transition: 0.5s;
@@ -218,6 +218,15 @@ hr{
     font-size: x-large;
     border:1px solid transparent;
 }
+#name{
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+    background-color: #D9D9D9;
+    color:black;
+    font-size: x-large;
+    border:1px solid transparent;
+}
 .add-image{
     width: 100%;
     height: 50px;
@@ -227,18 +236,25 @@ hr{
     display: flex;
     align-items: center;
     }
+.manage-each-post{
+    text-align: left;
+}
 .buttons{
     margin-top: 20px;
     display: flex;
     margin-top: 20px;
     justify-content: space-between;
 }
-.btn2{
+.btn1,.btn2{
     width: clamp(100px,90%,15vw);
     height: 49px; 
     background-color: var(--black);
     border-radius: 10px;
     color:var(--white);
+ 
+}
+.btn1{
+    display: none;
 }
 #error{
     height: auto;
@@ -248,11 +264,18 @@ hr{
 #error p{
     color: red;
 }
+.manage-post h1{
+    text-align: center;
+    color: red;
+}
 .btn.active{
     background-color: var(--yellow);
     border: 1px solid transparent;
 }
-
+::-webkit-scrollbar {
+    
+    display: none;
+}
 /* rich texteditor */
 .texteditor{
     width: 100%;
@@ -264,68 +287,12 @@ hr{
 }
 .richcontainer {
     background-color: #ffffff;
-    width: 100%;
+    max-width: 100%;
+    overflow-x: scroll;
     border-radius: 10px;
     box-shadow: 0 25px 50px rgba(7, 20, 35, 0.2);
   }
-  .options {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px;
-  }
-  .options button {
-    height: 28px;
-    width: 28px;
-    display: grid;
-    place-items: center;
-    border-radius: 3px;
-    border: none;
-    background-color: #ffffff;
-    outline: none;
-    color: #020929;
-  }
-  .options select {
-    padding: 7px;
-    border: 1px solid #020929;
-    border-radius: 3px;
-  }
-  .options label,
-  .options select {
-    font-family: "Poppins", sans-serif;
-  }
-  .input-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  input[type="color"] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-color: transparent;
-    width: 40px;
-    height: 28px;
-    border: none;
-    cursor: pointer;
-  }
-  input[type="color"]::-webkit-color-swatch {
-    border-radius: 15px;
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 3px #020929;
-  }
-  input[type="color"]::-moz-color-swatch {
-    border-radius: 15px;
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 3px #020929;
-  }
-  #text-input {
-    margin-top: 10px;
-    border: 1px solid #dddddd;
-    padding: 20px;
-    min-height: 50vh;
-  }
-  .active {
-    background-color: #e0e9ff;
-  }
+  
 
 
 @media(max-width:980px){
@@ -404,7 +371,9 @@ button{
 .message{
     margin: 5%;
 }
-
+.message h1{
+    text-align: center;
+}
 .messages{
     width: 100%;
     background-color: var(--special);
