@@ -398,6 +398,11 @@ input[type="text"]{
     border-radius: 7px;
     background-color: transparent;
  }
+ .error{
+        margin-top: 10px;
+        font-size: 20px;
+        color: red;
+ }
 .comment_form button{ 
         background-color: var(--yellow);
         width: clamp(40px,40%,100%);
