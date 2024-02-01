@@ -63,6 +63,55 @@ function errorMessage(message) {
     text.innerHTML = message
     error.appendChild(text)
 }
+
+
+// show the comment
+function showComment(){
+  var comments = [];
+    
+  if (localStorage.getItem('comment') !== null) {
+    comments = JSON.parse(localStorage.getItem('comment'));
+    }
+    const clear = document.getElementById('clear')
+    clear.innerHTML = ""
+    comments.forEach((word) => {
+        // declaring the comment       
+        const heading = document.createElement('h3');
+        const commentWord = document.createElement('p');
+        const commentInfo = document.createElement('div');
+        const commentSection = document.createElement('div')
+        const original = document.getElementById('original')
+        
+        // classnames
+        commentInfo.className = 'comment_info'
+        commentSection.className = 'comments_section'
+
+        
+        // assignin the values
+
+        heading.textContent = word.name;
+        commentWord.textContent = word.textarea;
+
+        
+        // append the comment
+        original.append(clear)
+        clear.appendChild(commentSection);
+        commentSection.appendChild(commentInfo);
+        commentInfo.appendChild(heading);
+        commentInfo.appendChild(commentWord);
+        
+    });
+
+    const commentNum = document.getElementById('commentnumber');
+
+    commentNum.innerHTML = comments.length
+    
+}
+
+window.onload = showComment()
+
+
+
 // add comments
 function addComment(){
     const nameEnter = name.value.trim();
@@ -77,42 +126,9 @@ function addComment(){
     });
 
     localStorage.setItem('comment',JSON.stringify(record));
-
-}
-// show the comment
-function showComment() {
-
-    const commentSection = JSON.parse(localStorage.getItem('comment')) || [];
-    
-
-    commentSection.forEach((word) => {
-        // declaring the comment       
-        const heading = document.createElement('h3');
-        const commentWord = document.createElement('p');
-        const commentInfo = document.createElement('div');
-        const commentSection = document.createElement('div')
-        const original = document.getElementById('original')
-        // assignin the values
-
-        heading.textContent = word.name;
-        commentWord.textContent = word.textarea;
-
-        // classnames
-        commentInfo.className = 'comment_info'
-        commentSection.className = 'comments_section'
-
-        
-        // append the comment
-        original.appendChild(commentSection);
-        commentSection.appendChild(commentInfo);
-        commentInfo.appendChild(heading);
-        commentInfo.appendChild(commentWord);
-    });
+    showComment()
 }
 
-
-
-window.onload = showComment
 
 
 

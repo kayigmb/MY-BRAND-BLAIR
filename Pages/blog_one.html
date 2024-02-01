@@ -126,7 +126,7 @@
                     </div>
 
                     <div class="comment_section" id="original">
-                        <h2>Comments: 2</h2>
+                        <h2>Comments: <span id="commentnumber"></span></h2>
                         <!-- Comment form to add a comment -->
                         <form class="comment_form">
                             <!-- each input comment -->
@@ -145,7 +145,10 @@
                                 <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
                             </div>
                             <div class="error" id="error"></div>
-                            <button ondblclick="load()">Post Comment</button>
+                            <button>Post Comment</button>
+                            <div class="commentclear" id="clear">
+
+                            </div>
                         </form>
                     
                         <!-- section for comments -->
