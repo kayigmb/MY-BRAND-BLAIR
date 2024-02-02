@@ -14,6 +14,7 @@ menuItems.forEach(function(menuItem) {
 });
 })
 
+// rich text
 var content = new RichTextEditor("#content");
 
 // validate the input value
@@ -22,6 +23,7 @@ const error = document.getElementById('error');
 var contentEnter = document.getElementById('content')
 const author = document.getElementById('name');
 const form = document.querySelector('form');
+const image =  document.getElementById('image');
 
 // form call
 
@@ -73,6 +75,7 @@ function addPost(){
     const contentEntered = contentEnter.value.trim();
     const authorEnter = author.value.trim();
 
+
     let posts = JSON.parse(localStorage.getItem("post"))||[];
 
         posts.push({
@@ -82,6 +85,7 @@ function addPost(){
         });
     
     localStorage.setItem("post", JSON.stringify(posts));
+    window.location.href = 'manageposts.html';
 }
 
 
@@ -101,7 +105,7 @@ function update() {
         publish.style.display = "none"
         title.value = updateInfo.title;
         author.value = updateInfo.author;
-        contentEnter.value = updateInfo.content;
+        content.setHTML(updateInfo.content)
     } else {
         updateBtn.style.display = "none"; 
     }   
@@ -129,5 +133,6 @@ function updatePost(){
     
     localStorage.setItem("post", JSON.stringify(posts));
     localStorage.removeItem('current');
+    window.location.reload();
 }
 

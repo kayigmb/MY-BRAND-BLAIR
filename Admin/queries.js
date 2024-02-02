@@ -63,7 +63,7 @@ function showMessages() {
         // append the entire message to the section
         messageSection.appendChild(eachMessage);
         // message react
-        reaction.innerHTML = '<i class="fas fa-reply"></i>';
+        reaction.innerHTML = `<i class="fas fa-reply" onclick="reply(${index})"></i>`;
         reaction.innerHTML += `<i class="fas fa-trash-alt" onclick="deleteMessage(${index})"></i>`;
     });
 }
@@ -82,8 +82,14 @@ function deleteMessage(index) {
     cleartext.innerHTML = '';
 
     showMessages()
+    
 }
 
 window.onload = showMessages;
 
-
+function reply(index){
+    let messages = JSON.parse(localStorage.getItem('messages'))||[];
+    
+    window.location.href = `mailto:${messages[index].email}`;
+    
+}
