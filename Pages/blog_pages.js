@@ -15,35 +15,57 @@ const hmenu = document.querySelector('.hmenu');
 
 // view Blogs
 function viewBlogs(){
-    const posts = JSON.parse(localStorage.getItem('post'))|| [];
-    const container = document.getElementsByClassName('blog_cards_container');
-
+    const posts = JSON.parse(localStorage.getItem('post')) || [];
+    
+    const container = document.querySelector('.blog_cards_container');
+    
     // loop through posts
     posts.forEach((element,index) =>{
-            const blogCard = document.querySelector('.blog_card');
+
+
+            const blogCard = document.createElement('div');
             const img = document.createElement('img');
-            const blogWord = document.querySelector('.blog_word');
+            const blogWord = document.createElement('div');
             const h2 = document.createElement('h2');
             const p1 = document.createElement('p');
             const p2 = document.createElement('p');
-            const a = document.querySelector('.learn_more')
+            const a = document.createElement('a')
 
-            const iconReact = document.querySelector('.icons_reaction')
-            const icons = document.querySelector('.iconsreact')
-            const react1 = document.querySelector('.reaction1')
-            const react2 = document.querySelector('.reaction2')
+            const iconReact = document.createElement('div')
+            const icons = document.createElement('div')
+            const react1 = document.createElement('div')
+            const react2 = document.createElement('div')
+                // class names
 
+                blogCard.className = 'blog_card'
+                blogWord.className = 'blog_word'
+                a.className = 'learn_more'
+
+                iconReact.className = 'icons_reacticon'
+                icons.className = 'iconsreact'
+                react1.className = 'reaction1'
+                react2.className = 'reaction2'
             //assign
-
+            
             h2.innerText = element.title;
-            p1.innerText = element.content
+            // p1.innerHTML = element.content
 
+            a.innerHTML = `<a onclick='viewBlog(${index})' class="learn_more">Learn More 
+            <span style="font-weight: bold;">></span>
+    </a>`
             // ${element[index].likes}
-            react1.innerHTML = `<i class="far fa-thumbs-up"></i><p>88</p>`
+            let maxLength = 7;
+
+            if (element.content.length > maxLength) {
+                p1.innerHTML = element.content.substr(0, maxLength) + '...'; 
+            }
+
+            react1.innerHTML = `<i class="far fa-thumbs-up"></i><p>${element.likes.length}</p>`
             react2.innerHTML = `<i class="fa-solid fa-comment"></i><p>${Object.keys(element.comment).length}</p>`
             //append
 
             container.appendChild(blogCard);
+
             blogCard.appendChild(img)
             blogCard.appendChild(blogWord);
             blogCard.appendChild(iconReact)
@@ -60,4 +82,9 @@ function viewBlogs(){
     })
     
 }
+
 viewBlogs()
+
+function viewBlog(index){
+    console.log(index)
+}
