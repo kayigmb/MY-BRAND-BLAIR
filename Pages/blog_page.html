@@ -66,12 +66,13 @@
         <h1>Blogs</h1>
         <!-- blog section holder -->
         <div class="blog_cards_container">
+            
             <!-- Individual card -->
             <div class="blog_card">
                 <img src="../img/blogimage.png" alt="">
                 <div class="blog_word">
-                    <h2>Node Js</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur... </p>
+                    <h2 id="title">Node Js</h2>
+                    <p id="content">Lorem ipsum dolor sit amet, consectetur... </p>
                     <a href="blog_one.html" class="learn_more">Learn More 
                             <span style="font-weight: bold;">></span>
                     </a>
@@ -87,113 +88,7 @@
                     
                 </div>
             
-            <!-- Individual card -->
-            <div class="blog_card">
-                <img src="../img/blogimage.png" alt="">
-                <div class="blog_word">
-                    <h2>Node Js</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur... </p>
-                    <a href="blog_one.html" class="learn_more">Learn More 
-                            <span style="font-weight: bold;">></span>
-                    </a>
-                </div>
-                <!-- collection of reaction -->
-
-                <div class="icons_reaction">
-                    <div class="iconsreact">
-                        <div class="reaction1"><i class="far fa-thumbs-up"></i><p>20+</p></div>
-                       <div class="reaction1"> <i class="fa-solid fa-comment"></i><p>0</p></div>
-                    </div>                        
-                </div>
-                    
-                </div>
-            
-            <!-- Individual card -->
-            <div class="blog_card">
-                <img src="../img/blogimage.png" alt="">
-                <div class="blog_word">
-                    <h2>Node Js</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur... </p>
-                    <a href="blog_one.html" class="learn_more">Learn More 
-                            <span style="font-weight: bold;">></span>
-                    </a>
-                </div>
-                <!-- collection of reaction -->
-
-                <div class="icons_reaction">
-                    <div class="iconsreact">
-                        <div class="reaction1"><i class="far fa-thumbs-up"></i><p>20+</p></div>
-                       <div class="reaction1"> <i class="fa-solid fa-comment"></i><p>0</p></div>
-                    </div>                        
-                </div>
-                    
-                </div>
-            
-   <!-- Individual card -->
-   <div class="blog_card">
-    <img src="../img/blogimage.png" alt="">
-    <div class="blog_word">
-        <h2>Node Js</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur... </p>
-        <a href="blog_one.html" class="learn_more">Learn More 
-                <span style="font-weight: bold;">></span>
-        </a>
-    </div>
-    <!-- collection of reaction -->
-
-    <div class="icons_reaction">
-        <div class="iconsreact">
-            <div class="reaction1"><i class="far fa-thumbs-up"></i><p>20+</p></div>
-           <div class="reaction1"> <i class="fa-solid fa-comment"></i><p>0</p></div>
-        </div>                        
-    </div>
-        
-    </div>
-              
- <!-- Individual card -->
- <div class="blog_card">
-    <img src="../img/blogimage.png" alt="">
-    <div class="blog_word">
-        <h2>Node Js</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur... </p>
-        <a href="blog_one.html" class="learn_more">Learn More 
-                <span style="font-weight: bold;">></span>
-        </a>
-    </div>
-    <!-- collection of reaction -->
-
-    <div class="icons_reaction">
-        <div class="iconsreact">
-            <div class="reaction1"><i class="far fa-thumbs-up"></i><p>20+</p></div>
-           <div class="reaction1"> <i class="fa-solid fa-comment"></i><p>0</p></div>
-        </div>                        
-    </div>
-        
-    </div>
-              
-            <!-- Individual card -->
-            <div class="blog_card">
-                <img src="../img/blogimage.png" alt="">
-                <div class="blog_word">
-                    <h2>Node Js</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur... </p>
-                    <a href="blog_one.html" class="learn_more">Learn More 
-                            <span style="font-weight: bold;">></span>
-                    </a>
-                </div>
-                <!-- collection of reaction -->
-
-                <div class="icons_reaction">
-                    <div class="iconsreact">
-                        <div class="reaction1"><i class="far fa-thumbs-up"></i><p>20+</p></div>
-                       <div class="reaction1"> <i class="fa-solid fa-comment"></i><p>0</p></div>
-                    </div>                        
-                </div>
-                    
-                </div>
-
-
-
+     
 
             </div>
         </div>
@@ -201,23 +96,6 @@
     </main>
 
     </section>
-    <script>
-        const hmenu = document.querySelector('.hmenu');
-        const mnav = document.querySelector('.mnav');
-        const menuItems = document.querySelectorAll('.mnav a');
-        
-        hmenu.addEventListener('click',function() {
-            hmenu.classList.toggle('is-active');
-            mnav.classList.toggle('is-active');
-        });
-        menuItems.forEach(function(menuItem) {
-                  menuItem.addEventListener('click', function() {
-                 hmenu.classList.remove('is-active');
-                 mnav.classList.remove('is-active');
-});
-});
-
-</script>
-
+    <script src="blog_pages.js"></script>
 </body>
 </html>

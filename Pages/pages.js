@@ -19,7 +19,7 @@ form.addEventListener("submit", (e) => {
 
 // username keyup event
 username.addEventListener("keyup",()=>{
-    errorDiv.innerHTML = '';
+    errorDiv.innerHTML= '';
     validateName()
 });
 

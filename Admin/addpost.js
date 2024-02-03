@@ -21,6 +21,7 @@ var content = new RichTextEditor("#content");
 const title = document.getElementById('title');
 const error = document.getElementById('error');
 var contentEnter = document.getElementById('content')
+
 const author = document.getElementById('name');
 const form = document.querySelector('form');
 const image =  document.getElementById('image');
@@ -70,20 +71,28 @@ function errorMessage(message){
 }
  
 // function add post function
-function addPost(){
+function addPost() {
     const titleEnter = title.value.trim();
     const contentEntered = contentEnter.value.trim();
     const authorEnter = author.value.trim();
 
+    let posts = JSON.parse(localStorage.getItem("post")) || [];
 
-    let posts = JSON.parse(localStorage.getItem("post"))||[];
+    if (!Array.isArray(posts)) {
+        posts = [];
+    }
+    posts.push({
+        title: titleEnter,
+        author: authorEnter,
+        content: contentEntered,
+        likes: "",
+        comment: {
+            name: '',
+            email: '',
+            text: ''
+        }
+    });
 
-        posts.push({
-            title: titleEnter,
-            author: authorEnter,
-            content: contentEntered
-        });
-    
     localStorage.setItem("post", JSON.stringify(posts));
     window.location.href = 'manageposts.html';
 }
@@ -96,16 +105,22 @@ function addPost(){
 
 // function update()
 function update() {
+
     let updateInfo = JSON.parse(localStorage.getItem('current'));
+    let post = JSON.parse(localStorage.getItem('post'));
+
+
     const updateBtn = document.querySelector('.btn1'); 
     const publish = document.querySelector('.btn2'); 
     
     if (updateInfo !== null && updateInfo !== undefined ) {
         updateBtn.style.display = "block";
-        publish.style.display = "none"
-        title.value = updateInfo.title;
-        author.value = updateInfo.author;
-        content.setHTML(updateInfo.content)
+        publish.style.display = "none";
+
+        title.value = post[updateInfo].title;
+        author.value = post[updateInfo].author;
+        content.setHTML(post[updateInfo].content)
+
     } else {
         updateBtn.style.display = "none"; 
     }   
@@ -117,22 +132,27 @@ function updateAction() {
     updatePost();
     
 }
+
 // update button
-function updatePost(){
-    const titleEnter = title.value.trim();
-    const contentEntered = contentEnter.value.trim();
-    const authorEnter = author.value.trim();
+// need to pull the comments and likes 
 
-    let posts = JSON.parse(localStorage.getItem("post"))||[];
+    function updatePost(){
+        const titleEnter = title.value.trim();
+        const contentEntered = contentEnter.value;
+        const authorEnter = author.value.trim();
+        
+        
+        let posts = JSON.parse(localStorage.getItem("post"))||[];
+        let updateInfo = JSON.parse(localStorage.getItem('current'));
+        
+        posts[updateInfo].title = titleEnter
+        posts[updateInfo].author = authorEnter
+        posts[updateInfo].content = contentEntered
+        console.log(posts[updateInfo])
 
-        posts.push({
-            title: titleEnter,
-            author: authorEnter,
-            content: contentEntered
-        });
-    
-    localStorage.setItem("post", JSON.stringify(posts));
-    localStorage.removeItem('current');
-    window.location.reload();
-}
+
+        localStorage.setItem("post", JSON.stringify(posts));
+        localStorage.removeItem('current');
+        window.location.href = "manageposts.html";
+    }
 

@@ -27,24 +27,33 @@ form.addEventListener('submit', (e) => {
 });
 
 
+let valid = true;
 
 const name = document.getElementById('name');
 const email = document.getElementById('email');
 const textarea = document.querySelector('textarea');
+// VALIDATE NAME
+name.addEventListener('keyup', () =>{
+    error.innerHTML = ''
+    validateName()
+})
 
-function validation() {
-    
-    const enteredName = name.value.trim();    
-    const enteredEmail = email.value.trim();    
-    const enteredText = textarea.value.trim();
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    error.innerHTML = '';
-    let valid = true;
+function validateName(){
+    const enteredName = name.value.trim();  
     if (enteredName === '') {
         errorMessage(" Enter a name");
         valid = false
     }
+}
+// VALIDATE EMAIL
+email.addEventListener('keyup', ()=>{
+    error.innerHTML = ''
+    validateEmail()
+})
+
+function validateEmail(){
+    const enteredEmail = email.value.trim(); 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (enteredEmail === ""){
         errorMessage('Enter an email')
         valid = false
@@ -53,16 +62,38 @@ function validation() {
         errorMessage('Enter a valid email')
         valid = false
     }
+}
+// VALIDATE TEXT AREA
+textarea.addEventListener('keyup', ()=>{
+    error.innerHTML = ''
+    validateTextArea()
+})
 
+function validateTextArea(){
+    const enteredText = textarea.value.trim();
     if(enteredText === ""){
         errorMessage('Enter a  text');
         valid = false
     }
+}
+// VALIDATE EVERYTHING
+function validation() {
+    
+    const enteredName = name.value.trim();    
+    const enteredEmail = email.value.trim();    
+    const enteredText = textarea.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+    error.innerHTML = '';
+
+    validateEmail();
+    validateName()
+    validateTextArea()
     if(valid){
         contactUser();
     }
 }
+
 
 function errorMessage(message) {
     const word = document.createElement('p');
@@ -116,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
+// blogs
 
 
 

@@ -17,16 +17,24 @@ menuItems.forEach(function(menuItem) {
 
 // add post
     const managePost = document.querySelector('.manage-post');
-    
+    var cleartext = document.querySelector('.show-section');
 
     function showPost(){       
 
-        let blogs = JSON.parse(localStorage.getItem('post'))||[];
+        let blogs = [];
+        blogs = JSON.parse(localStorage.getItem('post'));
+
         const empty  = document.createElement('h1');
+
         if(blogs.length < 1){
             empty.innerHTML = 'Empty Posts'
+    
         }
+          
         managePost.appendChild(empty);
+        
+
+        // posts each
         blogs.forEach((element,index)=>{
 
         const postContainer = document.createElement('div');
@@ -46,7 +54,8 @@ menuItems.forEach(function(menuItem) {
         icons.innerHTML += `<i class="fas fa-trash-alt" onclick="deletePost(${index})"></i>`
 
         // append
-        managePost.appendChild(postContainer)
+        managePost.appendChild(cleartext)
+        cleartext.appendChild(postContainer)
         postContainer.appendChild(title)
         postContainer.appendChild(author)
         postContainer.appendChild(icons)
@@ -67,7 +76,7 @@ function deletePost(index){
     blog.splice(index, 1);
     localStorage.setItem('post', JSON.stringify(blog));
 
-    var cleartext = document.querySelector('.manage-post');
+    
     cleartext.innerHTML = '';
 
     showPost()
@@ -78,13 +87,14 @@ function edit(index){
     let blog = JSON.parse(localStorage.getItem('post'))||[];
 
     const current = blog[index];
+    const currentIndex = blog.indexOf(current);
 
-    localStorage.setItem('current', JSON.stringify(current));
-    window.location.href = "addpost.html"
-
-    deletePost(index);
+    console.log(currentIndex)
+    localStorage.setItem('current', currentIndex);
+     window.location.href = "addpost.html"
 }
 
 //view
+
 
 
