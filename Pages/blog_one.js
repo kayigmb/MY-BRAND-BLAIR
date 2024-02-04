@@ -86,7 +86,7 @@ function openLink(id) {
         addComment(id);
     };
 
-    showComment(id)
+    // showComment(id)
 }
 
 
@@ -114,29 +114,28 @@ openPage();
 
 
 // add comment 
-const textName = document.getElementById('name');
-const email = document.getElementById('email');
-const textarea = document.querySelector('textarea');
+
 
 function addComment(id){
     let posts = JSON.parse(localStorage.getItem('post')) || [];  
-    
-    const nameEnter = textName.value.trim();
-    const emailEnter = email.value.trim();
-    const textareaEnter = textarea.value.trim();
-    
+
+    const textName = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const textarea = document.getElementById('comment').value;    
+   
     posts[id].comment.push({
-        name:nameEnter,
-        email:emailEnter,
-        text:textareaEnter
+        name:textName,
+        email:email,
+        text:textarea
     });
 
     localStorage.setItem('post',JSON.stringify(posts));
 
     showComment()
-
 }
-
 
 // show the comment 
 
+function showComment(){
+    console.log('Comment')
+}
