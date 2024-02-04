@@ -13,122 +13,74 @@ const hmenu = document.querySelector('.hmenu');
                      mnav.classList.remove('is-active');
     });
     });
-// form control
-const form = document.querySelector('form');
 
-form.addEventListener('submit', (e)=>{
-    e.preventDefault();
-    validate();
-})
 
-const name = document.getElementById('name');
-const email = document.getElementById('email');
-const textarea = document.querySelector('textarea');
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const error = document.getElementById('error')
-// validate  form
-function validate() {
-    const nameEnter = name.value.trim();
-    const emailEnter = email.value.trim();
-    const textareaEnter = textarea.value.trim(); 
+// sidebar 
+  const aside = document.querySelector('aside');
 
-    error.innerHTML = ""; 
-    let valid = true; 
+function sideBar(){
+    let post =  JSON.parse(localStorage.getItem('post')) || [];
+  
+    post.forEach((e,id) => {
+        const each_link = document.createElement('div');
+        const  h3 = document.createElement('h3');
+        const a = document.createElement('a');
+        const hr = document.createElement('hr');
+        // class name
+        each_link.className = 'eachlink'
 
-    if (nameEnter === "") {
-        errorMessage('Enter name');
-        valid = false;
-    }
-
-    if (emailEnter === "") {
-        errorMessage('Enter email');
-        valid = false;
-    } else if (!emailRegex.test(emailEnter)) {
-        errorMessage('Enter valid email');
-        valid = false;
-    }
-
-    if (textareaEnter === "") {
-        errorMessage('Enter a comment');
-        valid = false;
-    }
-     if (valid) {
-        addComment();
-    }
+        // asign
+        h3.innerText = e.title
+        a.innerHTML = `<a onclick="openLink(${id})">Read More ></a>`
+         a.style.cursor = 'pointer' 
+        // append
+        aside.appendChild(each_link)
+        aside.appendChild(hr)
+        each_link.appendChild(h3)
+        each_link.appendChild(a)
+    })
 }
+sideBar()
 
-// error message function
-function errorMessage(message) {
-    const text = document.createElement('p')
-    text.innerHTML = message
-    error.appendChild(text)
-}
+function openLink(id) {
 
+    let posts = JSON.parse(localStorage.getItem('post')) || [];
+    const mainContent = document.querySelector('.maincontent');
+    const template = document.getElementById('template');
 
-// show the comment
-function showComment(){
-  var comments = [];
     
-  if (localStorage.getItem('comment') !== null) {
-    comments = JSON.parse(localStorage.getItem('comment'));
-    }
-    const clear = document.getElementById('clear')
-    clear.innerHTML = ""
-    comments.forEach((word) => {
-        // declaring the comment       
-        const heading = document.createElement('h3');
-        const commentWord = document.createElement('p');
-        const commentInfo = document.createElement('div');
-        const commentSection = document.createElement('div')
-        const original = document.getElementById('original')
-        
-        // classnames
-        commentInfo.className = 'comment_info'
-        commentSection.className = 'comments_section'
 
-        
-        // assignin the values
+    // Clone the template
+    const clonedTemplate = template.content.cloneNode(true);
 
-        heading.textContent = word.name;
-        commentWord.textContent = word.textarea;
+    const h1 = clonedTemplate.querySelector('h1');
+    const img = clonedTemplate.querySelector('img');
+    const h3 = clonedTemplate.querySelector('.bloginfo h3');
+    const article = clonedTemplate.querySelector('.article');
+   
+    // append 
+    mainContent.appendChild(clonedTemplate);
+    // Assign content
+    h1.innerText = posts[id].title;
+    img.src = posts[id].image;
+    h3.innerText = `Author: ${posts[id].author}`;
 
-        
-        // append the comment
-        original.append(clear)
-        clear.appendChild(commentSection);
-        commentSection.appendChild(commentInfo);
-        commentInfo.appendChild(heading);
-        commentInfo.appendChild(commentWord);
-        
-    });
+    article.innerHTML = '';
 
-    const commentNum = document.getElementById('commentnumber');
+    const p = document.createElement('p');
+    p.innerHTML = posts[id].content;
+    article.appendChild(p);
 
-    commentNum.innerHTML = comments.length
-    
+    // mainContent.innerText = ''    
 }
 
-window.onload = showComment()
-
-
-
-// add comments
-function addComment(){
-    const nameEnter = name.value.trim();
-    const emailEnter = email.value.trim();
-    const textareaEnter = textarea.value.trim();
-    let record = JSON.parse(localStorage.getItem('comment'))||[];
-    
-    record.push({
-        name:nameEnter,
-        email:emailEnter,
-        textarea:textareaEnter
-    });
-
-    localStorage.setItem('comment',JSON.stringify(record));
-    showComment()
+function openPage() {
+        const index = JSON.parse(localStorage.getItem('blogCurrent'))
+        if (index !== null){
+            openLink(index)
+        }
+        localStorage.removeItem('blogCurrent')
 }
 
-
-
+openPage();
 

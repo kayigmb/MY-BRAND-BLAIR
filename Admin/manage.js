@@ -88,8 +88,7 @@ function edit(index){
 
     const current = blog[index];
     const currentIndex = blog.indexOf(current);
-
-    console.log(currentIndex)
+    localStorage.setItem('imageu', blog[index].image)
     localStorage.setItem('current', currentIndex);
      window.location.href = "addpost.html"
 }

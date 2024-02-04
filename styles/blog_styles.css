@@ -166,6 +166,7 @@ h1{
 .blog_word a{
     color: var(--yellow);
     text-decoration: none;  
+    cursor: pointer;
 }
 
 

@@ -46,9 +46,9 @@ function viewBlogs(){
                 react1.className = 'reaction1'
                 react2.className = 'reaction2'
             //assign
-            
             h2.innerText = element.title;
-            // p1.innerHTML = element.content
+            img.src = element.image;
+            p1.innerHTML = element.content
 
             a.innerHTML = `<a onclick='viewBlog(${index})' class="learn_more">Learn More 
             <span style="font-weight: bold;">></span>
@@ -85,6 +85,13 @@ function viewBlogs(){
 
 viewBlogs()
 
+
+// single blog index
+
 function viewBlog(index){
-    console.log(index)
+    
+    const currentBlog = localStorage.setItem('blogCurrent', JSON.stringify(index))
+    window.location.href = 'blog_one.html'
+
 }
+

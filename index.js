@@ -20,6 +20,7 @@ const form = document.getElementById('form');
 const error = document.getElementById('errorContainer');
 
 
+var valid = true
 
 form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -27,74 +28,80 @@ form.addEventListener('submit', (e) => {
 });
 
 
-let valid = true;
+
 
 const name = document.getElementById('name');
 const email = document.getElementById('email');
-const textarea = document.querySelector('textarea');
+const textarea = document.getElementById('text')
+
+
 // VALIDATE NAME
 name.addEventListener('keyup', () =>{
     error.innerHTML = ''
     validateName()
 })
 
-function validateName(){
+function validateName() {
     const enteredName = name.value.trim();  
     if (enteredName === '') {
-        errorMessage(" Enter a name");
-        valid = false
+        errorMessage("Enter a name");
+        valid = false;
     }
-}
-// VALIDATE EMAIL
-email.addEventListener('keyup', ()=>{
-    error.innerHTML = ''
-    validateEmail()
-})
 
-function validateEmail(){
+}
+
+// VALIDATE EMAIL
+email.addEventListener('keyup', () => {
+    error.innerHTML = '';
+    validateEmail();
+});
+
+function validateEmail() {
     const enteredEmail = email.value.trim(); 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (enteredEmail === ""){
-        errorMessage('Enter an email')
-        valid = false
 
-    } else if(!emailRegex.test(enteredEmail)){
-        errorMessage('Enter a valid email')
-        valid = false
+    if (enteredEmail === '') {
+        errorMessage('Enter an email');
+        valid = false; 
+    } else if (!emailRegex.test(enteredEmail)) {
+        errorMessage('Enter a valid email');
+        valid = false;
+    } else {
+        valid = true; 
     }
-}
+ }
+
 // VALIDATE TEXT AREA
-textarea.addEventListener('keyup', ()=>{
-    error.innerHTML = ''
-    validateTextArea()
-})
+textarea.addEventListener('keyup', () => {
+    error.innerHTML = '';
+    validateTextArea();
+});
 
-function validateTextArea(){
+function validateTextArea() {
     const enteredText = textarea.value.trim();
-    if(enteredText === ""){
-        errorMessage('Enter a  text');
-        valid = false
+
+    if (enteredText === "") {
+        errorMessage('Enter a text');
+        valid = false;
     }
 }
+
+// debug
+
+
 // VALIDATE EVERYTHING
 function validation() {
-    
-    const enteredName = name.value.trim();    
-    const enteredEmail = email.value.trim();    
-    const enteredText = textarea.value.trim();
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     error.innerHTML = '';
 
     validateEmail();
-    validateName()
-    validateTextArea()
-    if(valid){
-        contactUser();
-    }
+    validateName();
+    validateTextArea();
+
+    if (valid == true) {
+       contactUser();
+    } 
 }
-
-
 function errorMessage(message) {
     const word = document.createElement('p');
     error.appendChild(word);
@@ -102,6 +109,7 @@ function errorMessage(message) {
 }
 
 //  contact the user 
+
 function contactUser(){
     const enteredName = name.value.trim();    
     const enteredEmail = email.value.trim();    
@@ -115,7 +123,8 @@ function contactUser(){
         text:enteredText
     });
     localStorage.setItem('messages', JSON.stringify(messageSent));
-}
+    window.location.reload();
+}   
 
 // slider 
 document.addEventListener("DOMContentLoaded", function () {
