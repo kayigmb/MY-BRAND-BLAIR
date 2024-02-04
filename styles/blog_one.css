@@ -368,19 +368,25 @@ main h1{
 
 /* each reaction icon */
 
-.reaction{
+.reaction1,
+.reaction2{
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 3px;
 }
-.reaction i{
+.reaction1 i,
+.reaction2 i{
     font-size: 30px;
+    cursor: pointer;
+
 }
-.reaction p{
+.reaction1 p,
+.reaction2 p{
+    font-size: 30px;
     color: green;
-    font-size: 30px;
 }
+
 
 /* comment section*/
 

@@ -86,8 +86,6 @@ function validateTextArea() {
     }
 }
 
-// debug
-
 
 // VALIDATE EVERYTHING
 function validation() {
@@ -102,6 +100,7 @@ function validation() {
        contactUser();
     } 
 }
+
 function errorMessage(message) {
     const word = document.createElement('p');
     error.appendChild(word);
@@ -115,7 +114,7 @@ function contactUser(){
     const enteredEmail = email.value.trim();    
     const enteredText = textarea.value.trim();
     
-    let messageSent = JSON.parse(localStorage.getItem('messages'))||[];
+    let messageSent = JSON.parse(localStorage.getItem('messages')) || [];
 
     messageSent.push({
         name: enteredName,

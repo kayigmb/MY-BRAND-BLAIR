@@ -25,8 +25,6 @@ function showMessages() {
         messageSection.innerHTML = "<h1>Empty messages</h1>"
     }
 
-        // const clear = document.getElementById('clear');
-        // clear.innerHTML = "";
 
     messages.forEach((message, index) => {
        

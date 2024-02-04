@@ -31,8 +31,9 @@ function sideBar(){
 
         // asign
         h3.innerText = e.title
-        a.innerHTML = `<a onclick="openLink(${id})">Read More ></a>`
+        a.innerHTML = `<a  onclick="openLink(${id})">Read More ></a>`
          a.style.cursor = 'pointer' 
+         a.href = 'javascript:void(0)'
         // append
         aside.appendChild(each_link)
         aside.appendChild(hr)
@@ -42,38 +43,65 @@ function sideBar(){
 }
 sideBar()
 
-function openLink(id) {
 
+function openLink(id) {
     let posts = JSON.parse(localStorage.getItem('post')) || [];
+    
     const mainContent = document.querySelector('.maincontent');
     const template = document.getElementById('template');
-
-    
-
-    // Clone the template
+    const mainclear = document.getElementById('mainclear');
+   
     const clonedTemplate = template.content.cloneNode(true);
-
+    mainclear.innerText = '';
     const h1 = clonedTemplate.querySelector('h1');
     const img = clonedTemplate.querySelector('img');
     const h3 = clonedTemplate.querySelector('.bloginfo h3');
     const article = clonedTemplate.querySelector('.article');
    
     // append 
-    mainContent.appendChild(clonedTemplate);
+    mainContent.appendChild(mainclear);
+    mainclear.appendChild(clonedTemplate);
+
     // Assign content
     h1.innerText = posts[id].title;
     img.src = posts[id].image;
     h3.innerText = `Author: ${posts[id].author}`;
 
     article.innerHTML = '';
-
     const p = document.createElement('p');
     p.innerHTML = posts[id].content;
     article.appendChild(p);
 
-    // mainContent.innerText = ''    
+    const reaction1 = document.querySelector('.reaction1');
+    reaction1.innerHTML = `<i class="far fa-thumbs-up" onclick="like(${id})"></i>
+    <p id='like_count'>${posts[id].likes}</p>`;
+
+    const original = document.getElementById('original');
+    const form = document.querySelector('.comment_form');
+
+    const btn = document.getElementById('btn')
+   
+
+    btn.onclick = () => {
+        addComment(id);
+    };
+
+    showComment(id)
 }
 
+
+// like function
+function like(id){
+    const changeLike = document.getElementById('like_count');
+    let posts = JSON.parse(localStorage.getItem('post')) || [];  
+    posts[id].likes += 1    
+    localStorage.setItem('post', JSON.stringify(posts));
+    changeLike.innerText = posts[id].likes
+}
+
+
+
+// open page from blog pages
 function openPage() {
         const index = JSON.parse(localStorage.getItem('blogCurrent'))
         if (index !== null){
@@ -83,4 +111,32 @@ function openPage() {
 }
 
 openPage();
+
+
+// add comment 
+const textName = document.getElementById('name');
+const email = document.getElementById('email');
+const textarea = document.querySelector('textarea');
+
+function addComment(id){
+    let posts = JSON.parse(localStorage.getItem('post')) || [];  
+    
+    const nameEnter = textName.value.trim();
+    const emailEnter = email.value.trim();
+    const textareaEnter = textarea.value.trim();
+    
+    posts[id].comment.push({
+        name:nameEnter,
+        email:emailEnter,
+        text:textareaEnter
+    });
+
+    localStorage.setItem('post',JSON.stringify(posts));
+
+    showComment()
+
+}
+
+
+// show the comment 
 

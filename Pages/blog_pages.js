@@ -60,7 +60,7 @@ function viewBlogs(){
                 p1.innerHTML = element.content.substr(0, maxLength) + '...'; 
             }
 
-            react1.innerHTML = `<i class="far fa-thumbs-up"></i><p>${element.likes.length}</p>`
+            react1.innerHTML = `<i class="far fa-thumbs-up"></i><p>${element.likes}</p>`
             react2.innerHTML = `<i class="fa-solid fa-comment"></i><p>${Object.keys(element.comment).length}</p>`
             //append
 

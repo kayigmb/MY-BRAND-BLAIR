@@ -117,12 +117,8 @@ function addPost() {
         author: authorEnter,
         content: contentEntered,
         image:images,
-        likes: "",
-        comment: {
-            name: '',
-            email: '',
-            text: ''
-        }
+        likes: 0,
+        comment:[]
     });
 
     localStorage.setItem("post", JSON.stringify(posts));
@@ -157,7 +153,7 @@ function update() {
         image = images;
 
     } else {
-        updateBtn.style.display = "none"; 
+        updateBtn.style.display = "no   ne"; 
     }   
 }
 
