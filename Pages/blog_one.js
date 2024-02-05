@@ -20,7 +20,7 @@ const hmenu = document.querySelector('.hmenu');
 
 function sideBar(){
     let post =  JSON.parse(localStorage.getItem('post')) || [];
-  
+  console.log(post)
     post.forEach((e,id) => {
         const each_link = document.createElement('div');
         const  h3 = document.createElement('h3');
@@ -41,8 +41,15 @@ function sideBar(){
         each_link.appendChild(a)
     })
 }
+
 sideBar()
 
+function openBlogLink() {
+    let blog = JSON.parse(localStorage.getItem('openblog'));
+    openLink(blog);    
+    localStorage.removeItem('openblog')
+}
+openBlogLink()
 
 function openLink(id) {
     let posts = JSON.parse(localStorage.getItem('post')) || [];
@@ -90,6 +97,7 @@ function openLink(id) {
         addComment(id);
     };
 
+    
     showComment(id)
 }
 
@@ -213,15 +221,6 @@ function showComment(id){
       });
 
 }
-
-// open link
-
-function openBlogLink() {
-    let blog = JSON.parse(localStorage.getItem('openblog'));
-    openLink(blog);    
-    localStorage.removeItem('openblog')
-}
-openBlogLink()
 
 // ************************************
 
