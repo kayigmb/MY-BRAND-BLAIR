@@ -185,7 +185,11 @@ function blogPagesShow(){
         // assign
         image.src = e.image
         h3.innerText = e.title
-        p.innerHTML = e.content
+        let maxLength = 7;
+
+            if (e.content.length > maxLength) {
+                p.innerHTML = e.content.substr(0, maxLength) + '...'; 
+            }
         a.innerHTML = `<a href="Pages/blog_page.html" class="learn_more">Learn More 
         <span style="font-weight: bold;">></span>
 </a> `  
