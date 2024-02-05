@@ -75,7 +75,11 @@ function openLink(id) {
     const reaction1 = document.querySelector('.reaction1');
     reaction1.innerHTML = `<i class="far fa-thumbs-up" onclick="like(${id})"></i>
     <p id='like_count'>${posts[id].likes}</p>`;
-
+    
+    const reaction2 = document.querySelector('.reaction2');
+    reaction2.innerHTML = `<i class="far fa-comment"></i>
+    <p>${posts[id].comment.length}</p>`
+    
     const original = document.getElementById('original');
     const form = document.querySelector('.comment_form');
 
@@ -86,7 +90,7 @@ function openLink(id) {
         addComment(id);
     };
 
-    // showComment(id)
+    showComment(id)
 }
 
 
@@ -115,7 +119,6 @@ openPage();
 
 // add comment 
 
-
 function addComment(id){
     let posts = JSON.parse(localStorage.getItem('post')) || [];  
 
@@ -131,11 +134,47 @@ function addComment(id){
 
     localStorage.setItem('post',JSON.stringify(posts));
 
-    showComment()
+    showComment(id)
 }
+
 
 // show the comment 
 
-function showComment(){
-    console.log('Comment')
+function showComment(id){
+
+    var comments = [];
+    
+    if (localStorage.getItem('post') !== null) {
+      comments = JSON.parse(localStorage.getItem('post'));
+      }
+      const clear = document.getElementById('clear')
+      clear.innerHTML = ""
+      comments[id].comment.forEach((word) => {
+          // declaring the comment       
+          const heading = document.createElement('h3');
+          const commentWord = document.createElement('p');
+          const commentInfo = document.createElement('div');
+          const commentSection = document.createElement('div')
+          const original = document.getElementById('original')
+          
+          // classnames
+          commentInfo.className = 'comment_info'
+          commentSection.className = 'comments_section'
+  
+          
+          // assignin the values
+  
+          heading.textContent = word.name;
+          commentWord.textContent = word.text;
+  
+          
+          // append the comment
+          original.append(clear)
+          clear.appendChild(commentSection);
+          commentSection.appendChild(commentInfo);
+          commentInfo.appendChild(heading);
+          commentInfo.appendChild(commentWord);
+          
+      });
+
 }
