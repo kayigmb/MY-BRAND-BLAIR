@@ -18,18 +18,21 @@ menuItems.forEach(function(menuItem) {
 
 
 function totalComments(){
-    let comments = JSON.parse(localStorage.getItem('comment'))||[];
+    const commenting = JSON.parse(localStorage.getItem('post'))||[];
     const comment = document.getElementById('comment');
-    comment.innerText = comments.length;
-    console.log(comments.length)
+    var count = 0;
+    commenting.forEach((e)=>{
+        count += e.comment.length
+    })        
+    comment.innerText = count;
 }
+
 totalComments();
 
 function totalMessage(){
     let messages = JSON.parse(localStorage.getItem('messages'))||[];
     const messageSent = document.getElementById('messages');
     messageSent.innerText = messages.length;
-    console.log(messages.length);
 }
 totalMessage();
 
@@ -39,3 +42,15 @@ function totalBlogs(){
     blogs.innerHTML = blog.length;
 }   
 totalBlogs()
+
+function totalLikes(){
+    var likes = JSON.parse(localStorage.getItem('post'))||[];
+    const like = document.getElementById('likes');
+    var counting = 0;
+    likes.forEach((e)=>{
+        counting += e.likes
+    })        
+    like.innerText = counting;
+
+}
+totalLikes()

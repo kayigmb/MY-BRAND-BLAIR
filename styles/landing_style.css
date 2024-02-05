@@ -828,15 +828,19 @@ select option{
      display: flex;
      align-items: flex-end;
      justify-content: space-between;
+     flex-direction: row;
  }
- .reaction1{
+
+ .reaction1,
+ .reaction2{
      width: 30%;
      display: flex;
-     gap: 10px;
- 
+     gap: 10px; 
+
  }
  
- .reaction1 p{
+ .reaction1 p,
+ .reaction2 p{
      font-size: 15px;
      color: green;
      font-weight: bold;

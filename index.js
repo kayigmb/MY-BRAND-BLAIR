@@ -157,8 +157,61 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // blogs
 
+function blogPagesShow(){
+
+    const pages = document.querySelector('.pages')
+
+    const posts =  JSON.parse(localStorage.getItem('post')) || [];
+
+    posts.forEach((e)=>{
+        const blog_individual = document.createElement('div');
+        const image = document.createElement('img');
+        const blog_word = document.createElement('div');
+        const h3 = document.createElement('h3');
+        const p = document.createElement('p')
+        const a = document.createElement('a')
+        const  iconReact = document.createElement('div');
+        const icons = document.createElement('div');
+        const react1 = document.createElement('div');
+        const react2 = document.createElement('div');
+
+        //class name
+        blog_individual.className = 'blog_individual'
+        blog_word.className = 'blog_word'
+        iconReact.className = 'icons_reaction'
+        icons.className = 'iconsreact'
+        react1.className = 'reaction1'
+        react2.className = 'reaction2'
+        // assign
+        image.src = e.image
+        h3.innerText = e.title
+        p.innerHTML = e.content
+        a.innerHTML = `<a href="Pages/blog_page.html" class="learn_more">Learn More 
+        <span style="font-weight: bold;">></span>
+</a> `  
+        react1.innerHTML = `<i class="far fa-thumbs-up"></i><p>${e.likes}</p>`
+        react2.innerHTML = `<i class="fa-solid fa-comment"></i><p>${Object.keys(e.comment).length}</p>`
+
+        // append
+        pages.appendChild(blog_individual)
 
 
+        blog_individual.appendChild(image)
+        blog_individual.appendChild(blog_word)
+
+        blog_word.appendChild(h3)
+        blog_word.appendChild(p)
+        blog_word.appendChild(a)
+        blog_individual.appendChild(iconReact)
+        iconReact.appendChild(icons)
+        icons.appendChild(react1)
+        icons.appendChild(react2)
+    
+    })
+
+}
+
+blogPagesShow()
 
 
 

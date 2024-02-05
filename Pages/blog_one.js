@@ -121,23 +121,58 @@ openPage();
 
 function addComment(id){
     let posts = JSON.parse(localStorage.getItem('post')) || [];  
-
+    const error = document.getElementById('error')
+    error.innerHTML = ''
     const textName = document.getElementById('name').value;
     const email = document.getElementById('email').value;
-    const textarea = document.getElementById('comment').value;    
+    const textarea = document.getElementById('comment').value;   
+
+    const name = document.getElementById('name').value.trim();
+    const emailed = document.getElementById('email').value.trim();
+    const text = document.getElementById('comment').value.trim();
+    
+    var valid = true; 
+    if(name === ''){
+        errorMessage('Enter a name')
+        valid = false
+    }
+    if(emailed === ''){
+        errorMessage('Enter an email')
+        valid = false
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailed)) {
+        errorMessage('Enter a valid email');
+        valid = false;
+    } 
+    if(text === ''){
+        errorMessage('Enter a comment')
+        valid = false
+
+    }
+
+
+    if(valid){
    
     posts[id].comment.push({
         name:textName,
         email:email,
         text:textarea
     });
-
+}
     localStorage.setItem('post',JSON.stringify(posts));
 
     showComment(id)
 }
 
-
+// error message function
+function errorMessage(message){
+    const error = document.getElementById('error')
+   
+    const errorWord = document.createElement("p");
+    errorWord.innerText = message;
+    error.appendChild(errorWord);
+}
 // show the comment 
 
 function showComment(id){
@@ -178,3 +213,28 @@ function showComment(id){
       });
 
 }
+
+// ************************************
+
+// const name = document.getElementById('name').value.trim();
+// const emailed = document.getElementById('email').value.trim();
+// const text = document.getElementById('comment').value.trim();
+
+// name.addEventListener('keyup', (e)=>{
+//         if(e === ''){
+//             errorMessage('Please enter a name');
+//         }
+
+
+// })  
+// emailed.addEventListener('keyup', (e)=>{
+//     if(e === ''){
+//         errorMessage('Please enter an email');
+//     }
+
+    
+// })  
+// text.addEventListener('keyup', (e)=>{
+//     error.innerText = ''
+
+// })
