@@ -49,7 +49,7 @@ menuItems.forEach(function(menuItem) {
         // assign
         title.innerText = element.title
         author.innerText = element.author
-        icons.innerHTML = '<i class="fas fa-eye"></i>'
+        icons.innerHTML = `<i class="fas fa-eye" onclick="view(${index})"></i>`
         icons.innerHTML += `<i class="fas fa-edit" onclick="edit(${index})"></i>`
         icons.innerHTML += `<i class="fas fa-trash-alt" onclick="deletePost(${index})"></i>`
 
@@ -95,5 +95,7 @@ function edit(index){
 
 //view
 
-
-
+function view(index){
+    const blog = localStorage.setItem('openblog',JSON.stringify(index))
+    window.open('../Pages/blog_one.html','_blank');
+}

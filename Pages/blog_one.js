@@ -214,6 +214,15 @@ function showComment(id){
 
 }
 
+// open link
+
+function openBlogLink() {
+    let blog = JSON.parse(localStorage.getItem('openblog'));
+    openLink(blog);    
+    localStorage.removeItem('openblog')
+}
+openBlogLink()
+
 // ************************************
 
 // const name = document.getElementById('name').value.trim();
