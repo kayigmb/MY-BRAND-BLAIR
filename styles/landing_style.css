@@ -99,12 +99,14 @@ section{
     margin: 6px 10px;
     transform: 0.4s;
 }
+
 .hmenu.is-active:before{
     transform: rotate(-45deg) translate(-8px, 6px);
 }
 .hmenu.is-active:after {
     transform: rotate(45deg) translate(-8px, -9px);
 }
+
 .hmenu.is-active .hbar{
     opacity: 0;
 }

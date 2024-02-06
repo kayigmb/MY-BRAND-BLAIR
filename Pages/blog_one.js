@@ -3,20 +3,22 @@ const hmenu = document.querySelector('.hmenu');
             const mnav = document.querySelector('.mnav');
             const menuItems = document.querySelectorAll('.mnav a');
             
-            hmenu.addEventListener('click',function() {
+            hmenu.addEventListener('click',()=>{
                 hmenu.classList.toggle('is-active');
                 mnav.classList.toggle('is-active');
             });
-            menuItems.forEach(function(menuItem) {
+
+            menuItems.forEach((menuItem)=>{
                       menuItem.addEventListener('click', function() {
                      hmenu.classList.remove('is-active');
                      mnav.classList.remove('is-active');
     });
-    });
+
+});
 
 
 // sidebar 
-  const aside = document.querySelector('aside');
+const aside = document.querySelector('aside');
 
 function sideBar(){
     let post =  JSON.parse(localStorage.getItem('post')) || [];
@@ -73,8 +75,7 @@ function openLink(id) {
     mainclear.innerText = '';   
 
     const clonedTemplate = template.content.cloneNode(true); 
-    console.log(clonedTemplate)
-    
+
     const h1 = clonedTemplate.querySelector('h1');
     const img = clonedTemplate.querySelector('img');
     const h3 = clonedTemplate.querySelector('.bloginfo h3');
@@ -174,8 +175,7 @@ function addComment(id){
     }
 
 
-    if(valid){
-   
+    if(valid){   
     posts[id].comment.push({
         name:textName,
         email:email,
@@ -195,8 +195,8 @@ function errorMessage(message){
     errorWord.innerText = message;
     error.appendChild(errorWord);
 }
-// show the comment 
 
+// show the comment 
 function showComment(id){
 
     var comments = [];

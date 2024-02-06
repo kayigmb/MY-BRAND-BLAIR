@@ -7,12 +7,13 @@ const hmenu = document.querySelector('.hmenu');
                     hmenu.classList.toggle('is-active');
                     mnav.classList.toggle('is-active');
                 });
-                menuItems.forEach(function(menuItem) {
-                          menuItem.addEventListener('click', function() {
-                         hmenu.classList.remove('is-active');
-                         mnav.classList.remove('is-active');
-        });
-    });
+
+                menuItems.forEach((menuItem)=>{
+                        menuItem.addEventListener('click', function() {
+                        hmenu.classList.remove('is-active');
+                        mnav.classList.remove('is-active');
+                         });
+                 });    
 
 // validation for landing page contact form
 
@@ -194,7 +195,7 @@ function blogPagesShow(){
         <span style="font-weight: bold;">></span>
 </a> `  
         react1.innerHTML = `<i class="far fa-thumbs-up"></i><p>${e.likes}</p>`
-        react2.innerHTML = `<i class="fa-solid fa-comment"></i><p>${Object.keys(e.comment).length}</p>`
+        react2.innerHTML = `<i class="fa-solid fa-comment"></i><p>${Object.values(e.comment).length}</p>`
 
         // append
         pages.appendChild(blog_individual)
