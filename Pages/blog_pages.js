@@ -48,17 +48,17 @@ function viewBlogs(){
             //assign
             h2.innerText = element.title;
             img.src = element.image;
-            p1.innerHTML = element.content
+            // p1.innerHTML = element.content
 
             a.innerHTML = `<a onclick='viewBlog(${index})' class="learn_more">Learn More 
             <span style="font-weight: bold;">></span>
     </a>`
             // ${element[index].likes}
-            let maxLength = 7;
+            // let maxLength = 7;
 
-            if (element.content.length > maxLength) {
-                p1.innerHTML = element.content.substr(0, maxLength) + '...'; 
-            }
+            // if (element.content.length > maxLength) {
+            //     p1.innerHTML = element.content.substr(0, maxLength) + '...'; 
+            // }
 
             react1.innerHTML = `<i class="far fa-thumbs-up"></i><p>${element.likes}</p>`
             react2.innerHTML = `<i class="fa-solid fa-comment"></i><p>${Object.keys(element.comment).length}</p>`
@@ -71,7 +71,7 @@ function viewBlogs(){
             blogCard.appendChild(iconReact)
 
             blogWord.appendChild(h2);
-            blogWord.appendChild(p1);
+            // blogWord.appendChild(p1);
             blogWord.appendChild(a);
 
             iconReact.appendChild(icons)

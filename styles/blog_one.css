@@ -347,7 +347,8 @@ main h1{
 
 .article{
     margin-top:50px;
-
+    height: auto;
+    background-color: #fff;
 }
 .article p{
     color: #000;
@@ -356,6 +357,8 @@ main h1{
     font-style: normal;
     font-weight: 500;
     line-height: 123.6%; 
+    height: auto;
+    background-color: transparent;
 }
 
 /* Reaction section */

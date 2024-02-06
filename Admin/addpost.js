@@ -153,7 +153,7 @@ function update() {
         image = images;
 
     } else {
-        updateBtn.style.display = "no   ne"; 
+        updateBtn.style.display = "none"; 
     }   
 }
 
@@ -171,7 +171,7 @@ function updatePost(){
         const titleEnter = title.value.trim();
         const contentEntered = contentEnter.value;
         const authorEnter = author.value.trim();
-        
+        const images = localStorage.getItem('imageu');
         // const imageLocal = localStorage.getItem('imageu');
 
         let posts = JSON.parse(localStorage.getItem("post"))||[];
@@ -180,7 +180,7 @@ function updatePost(){
         posts[updateInfo].title = titleEnter
         posts[updateInfo].author = authorEnter
         posts[updateInfo].content = contentEntered
-        // posts[updateInfo].image = imageLocal
+        // posts[updateInfo].image = images
 
         localStorage.setItem("post", JSON.stringify(posts));
         

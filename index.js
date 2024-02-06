@@ -204,7 +204,7 @@ function blogPagesShow(){
         blog_individual.appendChild(blog_word)
 
         blog_word.appendChild(h3)
-        blog_word.appendChild(p)
+        // blog_word.appendChild(p)
         blog_word.appendChild(a)
         blog_individual.appendChild(iconReact)
         iconReact.appendChild(icons)

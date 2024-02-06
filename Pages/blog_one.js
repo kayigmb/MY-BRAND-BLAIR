@@ -31,7 +31,7 @@ function sideBar(){
 
         // asign
         h3.innerText = e.title
-        a.innerHTML = `<a  onclick="openLink(${id})">Read More ></a>`
+        a.innerHTML = `<a  onclick="openNewLink(${id})">Read More ></a>`
          a.style.cursor = 'pointer' 
          a.href = 'javascript:void(0)'
         // append
@@ -44,27 +44,42 @@ function sideBar(){
 
 sideBar()
 
+// view from admin
 function openBlogLink() {
     let blog = JSON.parse(localStorage.getItem('openblog'));
-    openLink(blog);    
+        if(blog !== null){
+            openLink(blog)
+        }
     localStorage.removeItem('openblog')
 }
 openBlogLink()
 
+// side bar 
+function openNewLink(id){  
+    
+    openLink(id)    
+    // window.location.reload()
+}
+
 function openLink(id) {
+    
     let posts = JSON.parse(localStorage.getItem('post')) || [];
     
     const mainContent = document.querySelector('.maincontent');
     const template = document.getElementById('template');
-    const mainclear = document.getElementById('mainclear');
    
-    const clonedTemplate = template.content.cloneNode(true);
-    mainclear.innerText = '';
+    const mainclear = document.getElementById('mainclear');
+    
+    mainclear.innerText = '';   
+
+    const clonedTemplate = template.content.cloneNode(true); 
+    console.log(clonedTemplate)
+    
     const h1 = clonedTemplate.querySelector('h1');
     const img = clonedTemplate.querySelector('img');
     const h3 = clonedTemplate.querySelector('.bloginfo h3');
     const article = clonedTemplate.querySelector('.article');
-   
+       
     // append 
     mainContent.appendChild(mainclear);
     mainclear.appendChild(clonedTemplate);
@@ -87,8 +102,8 @@ function openLink(id) {
     reaction2.innerHTML = `<i class="far fa-comment"></i>
     <p>${posts[id].comment.length}</p>`
     
-    const original = document.getElementById('original');
-    const form = document.querySelector('.comment_form');
+    // const original = document.getElementById('original');
+    // const form = document.querySelector('.comment_form');
 
     const btn = document.getElementById('btn')
    
@@ -96,7 +111,6 @@ function openLink(id) {
     btn.onclick = () => {
         addComment(id);
     };
-
     
     showComment(id)
 }
