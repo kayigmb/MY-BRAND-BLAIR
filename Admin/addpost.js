@@ -7,6 +7,7 @@ hmenu.addEventListener('click',function() {
     hmenu.classList.toggle('is-active');
     mnav.classList.toggle('is-active');
 });
+
 menuItems.forEach(function(menuItem) {
           menuItem.addEventListener('click', function() {
          hmenu.classList.remove('is-active');
@@ -71,6 +72,8 @@ function errorMessage(message){
 }
 
 var img;
+
+
 // image.addEventListener('change', ()=>{
 //     const fr = new FileReader()
 //     fr.readAsDataURL(image.files[0]);
@@ -158,6 +161,7 @@ function update() {
 }
 
 update()
+
 // update action
 function updateAction() {
     updatePost();
@@ -165,6 +169,7 @@ function updateAction() {
 }
 
 // update button
+
 // need to pull the comments and likes 
 
 function updatePost(){

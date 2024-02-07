@@ -196,6 +196,7 @@ function errorMessage(message){
     error.appendChild(errorWord);
 }
 
+
 // show the comment 
 function showComment(id){
 

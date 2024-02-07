@@ -191,7 +191,7 @@ function blogPagesShow(){
             if (e.content.length > maxLength) {
                 p.innerHTML = e.content.substr(0, maxLength) + '...'; 
             }
-        a.innerHTML = `<a href="Pages/blog_page.html" class="learn_more">Learn More 
+        a.innerHTML = `<a href="Pages/blog_page.html" class="learn_more">View More 
         <span style="font-weight: bold;">></span>
 </a> `  
         react1.innerHTML = `<i class="far fa-thumbs-up"></i><p>${e.likes}</p>`

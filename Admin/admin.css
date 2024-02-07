@@ -340,13 +340,26 @@ textarea{
     border-radius: 13px;
     font-size: clamp(14px,20px,100%);
     font-weight: bold;
+    
+    
+}
+.manage-each-post p{
+    flex: 1;
+
+    margin-left: 5px; 
 }
 .manage-icons{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around ;
     gap:clamp(5px,3vw,30px);
     cursor: pointer;
+    flex: 1;
+
+    
+}
+.manage-icons i{
+    flex: 1;
 }
 
 .manage-icons i:nth-child(1){
@@ -384,6 +397,7 @@ button{
     border-radius: 13px;
     display: flex;
     height: 80px;
+
     justify-content: space-around;
     align-items: center;
     margin-top: 30px;
@@ -395,6 +409,8 @@ button{
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     overflow: hidden;
+    flex: 1;   
+
 }
 .messanger-message {
     width: 30%;
@@ -402,11 +418,14 @@ button{
 
 .messanger-email{
     /* text-overflow: ellipsis; */
+    flex: 1;
+
 }
 .message-react{
         display: flex;
         gap: 10px;
         cursor: pointer;
+        flex:1;
 } 
 .message-react i:nth-child(1){
     color: green;
@@ -414,7 +433,10 @@ button{
 .message-react i:nth-child(2){
     color: red;
 }
-
+.messanger-name{
+    flex:1;
+    margin-left: 5px;
+}
 .messanger-message p:hover{
             transform: scale(2);
             border: 1px solid var(--black);
