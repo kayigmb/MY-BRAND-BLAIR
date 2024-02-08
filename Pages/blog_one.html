@@ -11,21 +11,16 @@
         <!-- Aside bar -->
         <aside>
             <div class="image">
-                <h1>Related Pages</h1>
+                <h1><a href="blog_page.html">Related Pages</a></h1>
             </div>
             <hr>
-            <!-- each blog link -->
-            <div class="eachlink">
-                <h3>Node Js</h3>
-                <a href="../Pages/blog_page.html">Read More ></a>
-            </div>
-            <hr>
-            <!-- each blog link -->
+
+            <!-- each blog link
             <div class="eachlink">
                 <h3>Node Js</h3>
                 <a href="#">Read More ></a>
             </div>
-            <hr>            
+            <hr>             -->
         </aside>
 
 
@@ -80,121 +75,99 @@
 
             <!-- main content -->
            <div class="maincontent">
-            <h1>Node Js</h1>
-            <div class="heading">
-                <div class="imagetitle">
-                    <img src="../img/blogimage.png" alt="blog image">
-                </div>
-                
-                <div class="bloginfo">
-                    <h3><span>Author:</span> Blair Kayigamba</h3>
-                    <p>November 21,2019</p>
-                </div>
-            </div>
-
-            <div class="article">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Obcaecati, maiores fugiat nam amet doloribus optio ab dolorem sint cumque possimus qui
-                     placeat nemo molestias esse sequi odio facilis sunt a laudantium consequatur molestiae 
-                     deleniti sed similique! Doloremque ducimus, sit exercitationem quis veniam culpa ut earum, 
-                     ea explicabo delectus voluptatum iste!
-                </p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo nam itaque, numquam modi magnam 
-                    dolore ipsa provident quam amet reiciendis nihil! Commodi quaerat, reprehenderit aut ex quibusdam
-                     impedit accusantium possimus culpa nesciunt eligendi perferendis. Ab rem in saepe aliquid, tempora
-                      eaque iure facere voluptatibus? Exercitationem at ratione incidunt voluptatibus, accusamus 
-                      odit excepturi laudantium quo quos quae, deleniti mollitia voluptatem sed quam vero voluptates.
-                       Id repellat exercitationem similique earum! Facilis aspernatur adipisci sint, expedita, 
-                       repellendus doloribus quos doloremque quo totam et quisquam molestias veniam nulla nisi 
-                       necessitatibus exercitationem, blanditiis eligendi voluptate?
-                </p>
-            
-            </div>
-
-            <div class="blog_reaction">
-                <!-- each reaction icon -->
-                <div class="reaction">
-                    <i class="far fa-thumbs-up"></i>
-                    <p>3</p>
-                </div>
-                <!-- each reaction icon -->
-                <div class="reaction">
-                    <i class="far fa-comment"></i>
-                    <p>2</p>
-                </div>
-                
-            </div>
-
-            <div class="comment_section">
-                <h2>Comments: 2</h2>
-            </div>
-            <!-- Comment form to add a comment -->
-            <div class="comment_form">
-                <!-- each input comment -->
-                <div class="each_input_comment">
-                    <label for="">Enter Name:</label>
-                    <input type="text" name="" id="">
-                </div>
-                <!-- each input comment -->
-                <div class="each_input_comment">
-                    <label for="">Enter Email:</label>
-                    <input type="text" name="" id="">
-                </div>
-                <!-- each input comment --> 
-                <div class="each_input_comment">
-                        <label for="">Comment:</label>
-                        <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
-                </div>  
-                <button>Post Comment</button>
-                
-            </div>
-
-            <!-- section for comments -->
-            <div class="comments_section">
-                <div class="comment_info">
-                    <h3>John</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur
-                         adipisicing elit. Assumenda fuga dolorem aspernatur vero dicta sunt debitis sed eius.
-                          Repudiandae, tempore?
-                    </p>
-                </div>
-                <!-- <div class="comment_react">
-                    <button>Reply</button>
-                </div> -->
-                </div>
-                  <!-- section for comments -->
-            <div class="comments_section">
-                <div class="comment_info">
-                    <h3>John</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur
-                         adipisicing elit. Assumenda fuga dolorem aspernatur vero dicta sunt debitis sed eius.
-                          Repudiandae, tempore?
-                    </p>
-                </div>
-                <!-- <div class="comment_react">
-                    <button>Reply</button>
-                </div> -->
-                </div>
-            </div>
-           </div>
-        </main>
-        
-        <script>
-            const hmenu = document.querySelector('.hmenu');
-            const mnav = document.querySelector('.mnav');
-            const menuItems = document.querySelectorAll('.mnav a');
-            
-            hmenu.addEventListener('click',function() {
-                hmenu.classList.toggle('is-active');
-                mnav.classList.toggle('is-active');
-            });
-            menuItems.forEach(function(menuItem) {
-                      menuItem.addEventListener('click', function() {
-                     hmenu.classList.remove('is-active');
-                     mnav.classList.remove('is-active');
-    });
-    });
+              <div id="mainclear">
+                <template id="template">
+                    <h1>Node Js</h1>
+                    <div class="heading">
+                        <div class="imagetitle">
+                            <img src="../img/blogimage.png" alt="blog image">
+                        </div>
+                        
+                        <div class="bloginfo">
+                            <h3><span>Author:</span> Blair Kayigamba</h3>
+                            <!-- <p>November 21,2019</p> -->
+                        </div>
+                    </div>
     
-    </script>
-</body>
+                    <div class="article">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                            Obcaecati, maiores fugiat nam amet doloribus optio ab dolorem sint cumque possimus qui
+                            placeat nemo molestias esse sequi odio facilis sunt a laudantium consequatur molestiae 
+                            deleniti sed similique! Doloremque ducimus, sit exercitationem quis veniam culpa ut earum, 
+                            ea explicabo delectus voluptatum iste!
+                        </p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo nam itaque, numquam modi magnam 
+                            dolore ipsa provident quam amet reiciendis nihil! Commodi quaerat, reprehenderit aut ex quibusdam
+                            impedit accusantium possimus culpa nesciunt eligendi perferendis. Ab rem in saepe aliquid, tempora
+                            eaque iure facere voluptatibus? Exercitationem at ratione incidunt voluptatibus, accusamus 
+                            odit excepturi laudantium quo quos quae, deleniti mollitia voluptatem sed quam vero voluptates.
+                            Id repellat exercitationem similique earum! Facilis aspernatur adipisci sint, expedita, 
+                            repellendus doloribus quos doloremque quo totam et quisquam molestias veniam nulla nisi 
+                            necessitatibus exercitationem, blanditiis eligendi voluptate?
+                        </p>
+                    
+                    </div>
+                
+    
+                        <div class="blog_reaction">
+                            <!-- each reaction icon -->
+                            <div class="reaction1">
+                                <!-- <i class="far fa-thumbs-up" onclick=""></i>
+                                <p>3</p> -->
+                            </div>
+                            <!-- each reaction icon -->
+                            <div class="reaction2">
+                                <!-- <i class="far fa-comment"></i>
+                                <p>2</p> -->
+                            </div>
+                            
+                        </div>
+    
+                        <div class="comment_section" id="original">
+                            <h2>Comments: <span id="commentnumber"></span></h2>
+                            <!-- Comment form to add a comment -->
+                            <div class="comment_form">
+                                <!-- each input comment -->
+                                <div class="each_input_comment">
+                                    <label for="name">Enter Name:</label>
+                                    <input type="text" id="name">
+                                </div>
+                                <!-- each input comment -->
+                                <div class="each_input_comment">
+                                    <label for="email">Enter Email:</label>
+                                    <input type="text" id="email">
+                                </div>
+                                <!-- each input comment -->
+                                <div class="each_input_comment">
+                                    <label for="comment">Comment:</label>
+                                    <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+                                </div>
+                                <div class="error" id="error"></div>
+                                <button id="btn">Post Comment</button>
+                                <div class="commentclear" id="clear">
+    
+                                </div>
+                            </div>
+                        
+            <!-- - <div class="comments_section">
+                        <div class="comment_info">
+                            <h3>John</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur
+                             adipisicing elit. Assumenda fuga dolorem aspernatur vero dicta sunt debitis sed eius.
+                            Repudiandae, tempore?
+                            </p>
+                        </div>               
+                </div> -->
+                            
+                        </div>
+                </template>
+                            
+              </div>           
+                    
+                    
+            </div>
+           
+        </main>
+        <script src="blog_one.js"></script>    
+    </body>
 </html>

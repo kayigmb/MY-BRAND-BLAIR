@@ -42,6 +42,13 @@ nav{
     right: 0;
     display: block;
 }
+.show-nav{
+    display: none;
+}
+nav:hover {
+    width: 200px;
+    position: fixed;
+}
 
 section{
     width:calc(100% - 108px);
@@ -92,12 +99,14 @@ section{
     margin: 6px 10px;
     transform: 0.4s;
 }
+
 .hmenu.is-active:before{
     transform: rotate(-45deg) translate(-8px, 6px);
 }
 .hmenu.is-active:after {
     transform: rotate(45deg) translate(-8px, -9px);
 }
+
 .hmenu.is-active .hbar{
     opacity: 0;
 }
@@ -105,29 +114,43 @@ section{
 .mnav{
     display: none;
     position: fixed;
-    right: -100%;
-    width: 70%;
-    min-height: 100vh;
+    left: -100%;
+    width: 40%;
+    min-height: 60vh;
     z-index: 97;
     background-color:var(--light_grey);
     transition: 0.5s;
 
 }
+
 .mnav a{
     display: block;
-    text-align: center;
+    text-align: left;
     padding: 20px;
-    width: 50%;
+    width:60%;
     border-radius: 20px;
-    margin: 10px auto 20px;
+    margin: 10px auto;
     background-color: var(--dark_grey);
     text-decoration: none;
     color:var(--white);
 }
 .mnav.is-active{
-    right:0;
+    left:0;
 }
-
+.mnav a i{
+    font-size: 20px;
+}
+@media (max-width: 568px){
+    .mnav{
+        width: 80%;
+    }
+}   
+@media (max-width: 368px){
+    .mnav{
+        width: 100%;
+    }
+} 
+ 
 /* *****************menu bar***************** */
 .menu {
     width: 100%;
@@ -140,6 +163,7 @@ section{
     text-align: center;
     
 }
+
 
 /* dark and light mode */
 .nlmode {
@@ -162,23 +186,26 @@ section{
     background-color: var(--light_grey);
     border-radius: 30px;
     color: var(--black);
-    margin: 30px auto;
+    /* margin: 30px auto; */
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
 }
+
+
 .menuSection{
     margin-top:60px;
 }
-.menuSection a {
+.menu-spread a {
     font-size: 20px;  
-    display: block;
-    
+    display:block;    
+    align-items: center;
     color: var(--black);
     text-decoration: none;
     transition:0.3s  ease;
 }
+
 .hover-text {
     visibility: hidden;
     opacity: 0;
@@ -195,6 +222,30 @@ section{
     border-radius: 4px;
     white-space: nowrap;
 }
+
+
+.menu-spread{
+    height: 60px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding:20px;
+
+}
+.hover-name{
+    display: none;
+}
+nav:hover .hover-name{
+    display: block;
+}
+nav:hover .menu-spread{
+    margin:5px;
+    padding: 0;
+    justify-content: flex-start;
+}
+
 
 .menu_components:hover{
 background-color: var(--yellow);
@@ -358,11 +409,10 @@ background-color: var(--yellow);
         white-space:wrap;
         box-sizing: border-box;
 }
-@media (max-width: 500px) {
+@media (max-width: 565px) {
     .about_page p{
-        font-size:35px;    
+        font-size:39px;    
         padding: 0 1.5rem; 
-            
 }
 }
 
@@ -719,19 +769,30 @@ select option{
 .blog_pages{
     margin:30px auto;
     width: 93%;
+    height:auto;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap:10px;
-    justify-content:space-between;
+    z-index: 91;
+    overflow: auto;
     align-items: center;
+    position: relative;
+}
+.pages{
+    position: absolute;
+    overflow:auto;
+    min-width: 90%;
+    display: flex;
+    gap: 30px;
 }
 
 .blog_individual{
-    width: clamp(305px,20vw,400px);
-    min-height: 480px;
+    width: 20vw;
+    min-height: auto;
     background-color: white;
     border: 1px solid white;
     margin-bottom:20px;
+    
 }
 /*blog card image  */
 .blog_individual img{
@@ -745,8 +806,13 @@ select option{
     height: calc(100%-280px);
 }
 /* blog card title */
-.blog_word h2{
+.blog_word h3{
     color:var(--black);
+     display: -webkit-box;
+    /* -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+     text-overflow: ellipsis;   */
 }
 /* blog card paragraph */
 .blog_word p{
@@ -768,33 +834,62 @@ select option{
  .iconsreact{
      display: flex;
      align-items: flex-end;
-     justify-content: flex-start;
+     justify-content: space-between;
+     flex-direction: row;
  }
- .reaction1{
+
+ .reaction1,
+ .reaction2{
      width: 30%;
      display: flex;
-     gap: 10px;
- 
+     gap: 10px; 
+
  }
  
- .reaction1 p{
+ .reaction1 p,
+ .reaction2 p{
      font-size: 15px;
      color: green;
      font-weight: bold;
  }
+.slide-content{
+    width: auto;
+    height: 600px;
+    overflow: scroll;
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.left, .right{
+    width: 50px;
+    height:50px;
+    font-size: 35px;
+    z-index: 96;
+    margin-top: 30vh;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
  @media (max-width: 1090px) {
     .blog_pages{
         margin: 20px auto;
-
+   }
+    
+    .blog_individual{
+        width:300px;
     }
 
     .blog_pages,
     .services_show{
-        width: 100%;
+      
         justify-content: center;
         display: flex;
         align-items: center;   
-        flex-wrap: wrap;     
+    }
+
+    .services_show{
+        flex-wrap: wrap;   
+        width: 100%;  
     }
  }
 
@@ -802,7 +897,7 @@ select option{
 
 .contactsinfo{
     width: 78%;
-    height: 100%;
+    height: auto;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -888,7 +983,7 @@ form{
     width: 90%;
     background-color: var(--white);
     border-radius: 10px;
-    height: 500px;
+    height: auto;
     padding-top: 20px;
     
 }
@@ -900,6 +995,17 @@ form label{
 }
 .inputs{
     margin: 20px 0px 0px 20px;
+    
+}
+
+#errorContainer{
+    margin: 20px 0px 0px 20px;
+    height: auto;
+    width: auto;
+    color:red;
+}
+#errorContainer p{
+    margin-top: 5px;
 }
 input[type="text"]{
     background-color: var(--light_grey);
@@ -918,7 +1024,7 @@ textarea{
     
     .contactsinfo{
         flex-wrap: wrap;
-
+        height: auto;;
     }
     .leaveinfo {
        width: 100%;
@@ -938,7 +1044,7 @@ textarea{
     form{
         width:100%;
     }
-    .info{
+    .info{  
         width: 100%;
     }
     .infos{

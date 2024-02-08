@@ -156,11 +156,17 @@ h1{
 .blog_word p{
     color: var(--dark_grey);
     margin-bottom: 30px;
+    /* display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis; */
 }
 /* blog card link */
 .blog_word a{
     color: var(--yellow);
     text-decoration: none;  
+    cursor: pointer;
 }
 
 
@@ -212,7 +218,7 @@ h1{
 .mnav{
     display: none;
     position: fixed;
-    right: -100%;
+    left: -100%;
     width: 70%;
     min-height: 100vh;
     z-index: 97;
@@ -232,7 +238,7 @@ h1{
     color:var(--white);
 }
 .mnav.is-active{
-    right:0;
+    left:0;
 }
 
 
@@ -280,16 +286,20 @@ h1{
 .iconsreact{
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content:space-around;
+
+
 }
-.reaction1{
+.reaction1,
+.reaction2{
     width: 30%;
     display: flex;
     gap: 10px;
 
 }
 
-.reaction1 p{
+.reaction1 p,
+.reaction2 p{
     font-size: 15px;
     color: green;
     font-weight: bold;

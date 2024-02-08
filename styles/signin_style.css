@@ -174,3 +174,16 @@ label{
     width: clamp(430px,50%,80%);
  }
 }
+
+.error{
+    margin-top: 10px;
+    width: 100%;
+    height: auto;
+
+}
+
+.error p{
+    font-size: 20px;
+    margin-top: 5px;
+    color: red;
+}

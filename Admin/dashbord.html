@@ -85,22 +85,22 @@
                     <!-- each board  -->
                     <div class="board">
                         <h1>Blogs</h1>
-                        <p>3</p>
+                        <p id="blog"> </p>
                     </div>
                     <!-- each board  -->
                         <div class="board">
                             <h1>Messages</h1>
-                            <p>3</p>
+                            <p id="messages"></p>
                         </div>
                     <!-- each board  -->
                         <div class="board">
                             <h1>Likes</h1>
-                            <p>12</p>
+                            <p id="likes"></p>
                         </div>
                     <!-- each board  -->
                         <div class="board">
                             <h1>Comments</h1>
-                            <p>2</p>
+                            <p id="comment"></p>
                         </div>
                     
 
@@ -110,23 +110,9 @@
         </main>
 
         <!-- SCRIPT -->
-        <script>
-            const hmenu = document.querySelector('.hmenu');
-            const mnav = document.querySelector('.mnav');
-            const menuItems = document.querySelectorAll('.mnav a');
-            
-            hmenu.addEventListener('click',function() {
-                hmenu.classList.toggle('is-active');
-                mnav.classList.toggle('is-active');
-            });
-            menuItems.forEach(function(menuItem) {
-                      menuItem.addEventListener('click', function() {
-                     hmenu.classList.remove('is-active');
-                     mnav.classList.remove('is-active');
-    });
-    });
-    
-    </script>
+        <script src="dashboard.js"></script>
+        <script src="admin.js"></script>
+
 
 </body>
 </html>

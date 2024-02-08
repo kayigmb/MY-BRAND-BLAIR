@@ -6,6 +6,10 @@
     <title>Add Post</title>
     <link rel="stylesheet" href="admin.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../richtexteditor/rte_theme_default.css" />
+	<script type="text/javascript" src="../richtexteditor/rte.js"></script>
+    <script>RTE_DefaultConfig.url_base='../richtexteditor'</script>
+	<script type="text/javascript" src='../richtexteditor/plugins/all_plugins.js'></script>
 
 </head>
 <body>
@@ -15,7 +19,6 @@
              <!-- each nav link -->
              <div class="eachnav">
                 <a href="dashbord.html" >Dashboard</a>
-               
             </div>
             <hr>
                 <!-- each nav link -->
@@ -80,93 +83,36 @@
            </header>
            <!-- main content -->
            <div class="main_content">
-                <div class="addpost">
+                <form action="#">
+                    <div class="addpost">
                         <input type="text" name="Title" id="title" placeholder="Title">
-                        
-                        <div class="texteditor">
-                            <!-- text editor header/links -->
-                                <div class="editorheader">  
-                                    <button type="button" class="btn" data-element="bold">
-                                        <i class="fas fa-bold"></i>
-                                    </button>
-                                    <button type="button" class="btn" data-element="italic">
-                                        <i class="fas fa-italic"></i>
-                                    </button>
-                                    <button type="button" class="btn" data-element="underline">
-                                        <i class="fas fa-underline"></i>
-                                    </button>
-                                    <button type="button" class="btn" data-element="createLink">
-                                        <i class="fas fa-link"></i>
-                                    </button>
-                                    <button type="button" class="btn" data-element="insertImage">
-                                        <i class="fas fa-images"></i>
-                                    </button>
-                                    <button type="button" class="btn" data-element="justifyLeft">
-                                        <i class="fas fa-align-left"></i>
-                                    </button>
-                                    <button type="button" class="btn" data-element="justifyCenter">
-                                        <i class="fas fa-align-center"></i>
-                                    </button>
-                                    <button type="button" class="btn" data-element="justifyRight">
-                                        <i class="fas fa-align-right"></i>
-                                    </button>
-                                    <button type="button" class="btn" data-element="fontSize">
-                                        <i class="fas fa-text-height"></i> 
-                                    </button>                                
 
-                                </div>
-                            <!-- content editor -->
-                                <div class="content" contenteditable="true" data-placeholder="Enter here">
+                        <input type="text" name="Author" id="name" placeholder="Author">
+
+                        <input type="file" name="Image" id="image">
+
+                          <div class="texteditor">
+                            <!-- text editor header/links -->
+                            <div class="richcontainer">
                                 
+                                <textarea name="text" id="content"  cols="30" rows="10"></textarea>
+                               
+                                <div id="error">
+                                    
                                 </div>
-                        </div> 
-                             <!-- buttons -->
-                        <div class="buttons">
-                            <!-- the js is to open the input text from the button -->
-                            <!-- <button onclick="document.getElementById('file').click()" class="btn1">Add Image</button> -->
-                            <!-- incorporate when choosen file name changes -->
-                            <input type="file" id="file" style="display: none;">
-                            <button class="btn2">Publish</button>
-                        </div>
-                </div>
-           </div>
+                            <!-- buttons -->
+                                <div class="buttons" id="buttons">       
+                                    <button class="btn1" id="btn1">Update</button>                 
+                                    <button class="btn2" id="btn" >Publish</button>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+            </form>
        </main>
    
-       <script>
-        const hmenu = document.querySelector('.hmenu');
-        const mnav = document.querySelector('.mnav');
-        const menuItems = document.querySelectorAll('.mnav a');
-        
-        hmenu.addEventListener('click',function() {
-            hmenu.classList.toggle('is-active');
-            mnav.classList.toggle('is-active');
-        });
-        menuItems.forEach(function(menuItem) {
-                  menuItem.addEventListener('click', function() {
-                 hmenu.classList.remove('is-active');
-                 mnav.classList.remove('is-active');
-        });
-        });
+      <script src="addpost.js"></script>
+    <!-- <script src="admin.js"></script> -->
 
-        const btn = document.querySelectorAll('.btn');
-
-        btn.forEach( element =>{
-            element.addEventListener('click', () =>{
-            let command = element.dataset['element'];
-            element.classList.toggle('active');
-            if(command == 'createLink') {
-                let url = prompt('Enter the link', 'http://')
-                document.execCommand(command,false,url);
-            }
-            if(command == 'insertImage'){
-                document.getElementById('file').click();
-            }
-            else{
-                document.execCommand(command,false,null)
-            }
-        });
-        })
-        
-</script>
 </body>
 </html>
