@@ -175,14 +175,14 @@ label{
  }
 }
 
-.error{
+#error{
     margin-top: 10px;
     width: 100%;
     height: auto;
 
 }
 
-.error p{
+#error p{
     font-size: 20px;
     margin-top: 5px;
     color: red;

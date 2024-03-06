@@ -15,20 +15,67 @@ menuItems.forEach(function(menuItem) {
 });
 })
 
+
+//logout
+function logout(){
+
+    sessionStorage.removeItem('token');
+   
+}
+
+//the user name
+const userName = document.getElementById('userName');
+
+var author
+
+function getUserName(){
+
+            const user = sessionStorage.getItem('token') || [];
+
+           if(user.length === 0){
+
+                window.location.href = '../Pages/sign_in.html'
+
+           }else{
+                axios({
+                    url: 'https://mybrand-be-4hmq.onrender.com/api/protected',
+                    headers: { 'Authorization': 'Bearer ' + user}
+                })
+                .then((res)=> {
+
+                    // sessionStorage.setItem('author',res.data.user.username)
+                    userName.innerText = `${res.data.user.username}`
+
+                    console.log(res.data.user.username)
+                    // localStorage.setItem('author',res.data.user.username)
+                    
+
+                })
+                .catch((err)=> console.error(err))
+           }
+
+}
+
+getUserName()
+
 // rich text
 var content = new RichTextEditor("#content");
+
+
+
 
 // validate the input value
 const title = document.getElementById('title');
 const error = document.getElementById('error');
 var contentEnter = document.getElementById('content')
 
-const author = document.getElementById('name');
 const form = document.querySelector('form');
 const image =  document.getElementById('image');
 
-// form call
 
+
+
+// form call
 form.addEventListener('submit',(e)=>{
     e.preventDefault();
     validateForm();
@@ -39,8 +86,10 @@ function validateForm() {
     error.innerHTML = ''
     const titleEnter = title.value.trim();
     const contentEntered = contentEnter.value;
-    const authorEnter = author.value.trim();
+    const imageSee = image.value
+
     var valid = true;
+
     if(titleEnter === ''){
         errorMessage("Please enter a title");   
         valid = false;
@@ -49,13 +98,15 @@ function validateForm() {
         errorMessage("Please enter a content");
         valid = false;
     }
-    if(authorEnter === ''){
-        errorMessage('Please enter the author name');
+    if(!imageSee){
+        errorMessage("Please enter an image");
         valid = false;
     }
+   
 
     if (valid) {
-        let updateInfo = JSON.parse(localStorage.getItem('current'));
+        let updateInfo = sessionStorage.getItem('blogUpdate');
+
         if (updateInfo !== null && updateInfo !== undefined) {
             updatePost();
         } else {
@@ -71,62 +122,55 @@ function errorMessage(message){
     error.appendChild(errorWord);
 }
 
-var img;
-
-
-// image.addEventListener('change', ()=>{
-//     const fr = new FileReader()
-//     fr.readAsDataURL(image.files[0]);
-//     fr.addEventListener('load', ()=>{
-//        const url = fr.result
-//     })
-// });
-
-
-let imageUrl
-image.addEventListener('change', () => {
-    const fr = new FileReader();
-
-    fr.addEventListener('load', () => {
-    imageUrl = fr.result;
-        saveImage()
-    });
-
-    fr.readAsDataURL(image.files[0]);
-
-});
-
-
-
-function saveImage() {
-    const imageu = imageUrl;
-    localStorage.setItem('imageu',imageu);
-}
 
 
 // function add post function
 function addPost() {
+    // const images = localStorage.getItem('imageu');
+
     const titleEnter = title.value.trim();
+    const imageEntered = image.files[0]
     const contentEntered = contentEnter.value.trim();
-    const authorEnter = author.value.trim();
-    const images = localStorage.getItem('imageu');
-    let posts = JSON.parse(localStorage.getItem("post")) || [];
+    
+    const btn = document.getElementById('btn');
+    btn.disabled = true
 
-    if (!Array.isArray(posts)) {
-        posts = [];
-    }
-    posts.push({
-        title: titleEnter,
-        author: authorEnter,
-        content: contentEntered,
-        image:images,
-        likes: 0,
-        comment:[]
-    });
+    // const authorName = sessionStorage.getItem('author');
+    const info = new FormData();
 
-    localStorage.setItem("post", JSON.stringify(posts));
-    window.location.href = 'manageposts.html';
-    localStorage.removeItem("imageu");
+    
+    info.append('title', titleEnter);
+    info.append('image', imageEntered);
+    info.append('content', contentEntered);
+
+    const user = sessionStorage.getItem('token');
+
+    axios({
+        method:'POST',
+        url: 'https://mybrand-be-4hmq.onrender.com/api/blogs',
+        headers: {
+            'Authorization': `Bearer ${user}`,
+            'Content-Type': 'multipart/form-data'
+        },
+
+        data: info
+
+    }).then((res)=>{
+        window.location.href = './manageposts.html'
+        console.log(res);
+        console.log(res.data)
+        alert('success');
+
+    })
+    .catch((err)=>{
+        
+        btn.disabled = false;
+        errorMessage(err.response.data)
+        console.log(err)
+    })
+
+
+    // console.log(titleEnter, contentEntered, imageEntered)
 }
 
 
@@ -135,12 +179,9 @@ function addPost() {
 
 // error in the update
 
-// function update()
 function update() {
 
-    let updateInfo = JSON.parse(localStorage.getItem('current'));
-    let post = JSON.parse(localStorage.getItem('post'));
-
+    let updateInfo = sessionStorage.getItem('blogUpdate')
 
     const updateBtn = document.querySelector('.btn1'); 
     const publish = document.querySelector('.btn2'); 
@@ -149,11 +190,19 @@ function update() {
     if (updateInfo !== null && updateInfo !== undefined ) {
         updateBtn.style.display = "block";
         publish.style.display = "none";
+        const user = sessionStorage.getItem('token');
 
-        title.value = post[updateInfo].title;
-        author.value = post[updateInfo].author;
-        content.setHTML(post[updateInfo].content)
-        image = images;
+        axios({
+            url: `https://mybrand-be-4hmq.onrender.com/api/blogs/${updateInfo}`
+        })
+        .then((res) => {   
+            title.value = res.data.title;
+            content.setHTML(res.data.content);
+        })
+        .catch((error) => {
+            console.error("Error fetching data:", error);
+        });
+       
 
     } else {
         updateBtn.style.display = "none"; 
@@ -164,6 +213,7 @@ update()
 
 // update action
 function updateAction() {
+
     updatePost();
     
 }
@@ -173,24 +223,44 @@ function updateAction() {
 // need to pull the comments and likes 
 
 function updatePost(){
+
         const titleEnter = title.value.trim();
-        const contentEntered = contentEnter.value;
-        const authorEnter = author.value.trim();
-        const images = localStorage.getItem('imageu');
-        // const imageLocal = localStorage.getItem('imageu');
+        const imageEntered = image.files[0]
+        const contentEntered = contentEnter.value.trim();
 
-        let posts = JSON.parse(localStorage.getItem("post"))||[];
-        let updateInfo = JSON.parse(localStorage.getItem('current'));
-        
-        posts[updateInfo].title = titleEnter
-        posts[updateInfo].author = authorEnter
-        posts[updateInfo].content = contentEntered
-        // posts[updateInfo].image = images
+        let post = sessionStorage.getItem('blogUpdate');
+        const user = sessionStorage.getItem('token');
 
-        localStorage.setItem("post", JSON.stringify(posts));
-        
-        localStorage.removeItem('current');
-        localStorage.removeItem('imageu')
-        window.location.href = "manageposts.html";
-    }
+        const form = new FormData();
+
+
+            form.append('image', imageEntered);
+    
+    
+        axios({
+            method: 'PATCH',
+            url: `https://mybrand-be-4hmq.onrender.com/api/blogs/${post}`,
+            headers: {
+
+                'Authorization': `Bearer ${user}`
+
+            },
+            data:{
+                form,
+                title: titleEnter,
+                content:contentEntered
+            }
+        })
+        .then((res) => {
+            console.log(res.data);
+            sessionStorage.removeItem('blogUpdate');
+            window.location.href = "./manageposts.html"
+        })
+        .catch((err) => {
+            console.error(err);
+    
+        });
+           
+
+}
 

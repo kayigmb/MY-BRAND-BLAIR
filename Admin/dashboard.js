@@ -1,21 +1,43 @@
-// drop menu bar
 
-const hmenu = document.querySelector('.hmenu');
-const mnav = document.querySelector('.mnav');
-const menuItems = document.querySelectorAll('.mnav a');
+//logout
+function logout(){
 
-hmenu.addEventListener('click',function() {
-    hmenu.classList.toggle('is-active');
-    mnav.classList.toggle('is-active');
-});
-menuItems.forEach(function(menuItem) {
-          menuItem.addEventListener('click', function() {
-         hmenu.classList.remove('is-active');
-         mnav.classList.remove('is-active');
-});
-})
+    sessionStorage.removeItem('token');
+   
+}
+
+//the user name
+const userName = document.getElementById('userName');
+
+function getUserName(){
+
+    const user = sessionStorage.getItem('token') || [];
+
+   if(user.length === 0){
+
+        window.location.href = '../Pages/sign_in.html'
+
+   }else{
+        axios({
+            url: 'https://mybrand-be-4hmq.onrender.com/api/protected',
+            headers: { 'Authorization': 'Bearer ' + user}
+        })
+        .then((res)=> {
+
+        
+            userName.innerText = `${res.data.user.username}`
+
+        })
+        .catch((err)=> console.error(err))
+   }
+
+}
+
+getUserName()
 
 
+
+//
 
 function totalComments(){
     const commenting = JSON.parse(localStorage.getItem('post'))||[];
@@ -30,16 +52,41 @@ function totalComments(){
 totalComments();
 
 function totalMessage(){
-    let messages = JSON.parse(localStorage.getItem('messages'))||[];
+    
     const messageSent = document.getElementById('messages');
-    messageSent.innerText = messages.length;
+
+    const user = sessionStorage.getItem('token');
+    const blogs = document.getElementById('blog');
+
+    axios({
+        url: 'https://mybrand-be-4hmq.onrender.com/api/queries',
+        headers: { 'Authorization': 'Bearer ' + user}
+    })
+    .then((res)=> {
+        messageSent.innerText = res.data.length;
+    })
+    .catch((err)=> console.error(err))
+
+
+  
 }
 totalMessage();
 
+
 function totalBlogs(){
-    let blog = JSON.parse(localStorage.getItem('post'))||[];
+
+    const user = sessionStorage.getItem('token');
     const blogs = document.getElementById('blog');
-    blogs.innerHTML = blog.length;
+
+    axios({
+        url: 'https://mybrand-be-4hmq.onrender.com/api/blogs',
+        // headers: { 'Authorization': 'Bearer ' + user}
+    })
+    .then((res)=> {
+        blogs.innerHTML = res.data.length;
+    })
+    .catch((err)=> console.error(err))
+    
 }   
 totalBlogs()
 

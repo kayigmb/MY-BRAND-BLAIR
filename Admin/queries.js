@@ -15,18 +15,78 @@ menuItems.forEach(function (menuItem) {
     });
 });
 
+//logout
+function logout(){
+
+    sessionStorage.removeItem('token');
+   
+}
+
+//the user name
+const userName = document.getElementById('userName');
+
+function getUserName(){
+
+    const user = sessionStorage.getItem('token') || [];
+
+   if(user.length === 0){
+
+        window.location.href = '../Pages/sign_in.html'
+
+   }else{
+        axios({
+            url: 'https://mybrand-be-4hmq.onrender.com/api/protected',
+            headers: { 'Authorization': 'Bearer ' + user}
+        })
+        .then((res)=> {
+
+        
+            userName.innerText = `${res.data.user.username}`
+
+        })
+        .catch((err)=> console.error(err))
+   }
+
+}
+getUserName()
+
+
+
 // receive the messages from the contacts
 
 function showMessages() {
-    let messages = JSON.parse(localStorage.getItem('messages'))||[];
-    const messageSection = document.getElementById('message');
+    
+    const user = sessionStorage.getItem('token');
+    axios({
+        url: 'https://mybrand-be-4hmq.onrender.com/api/protected',
+        headers: { 'Authorization': 'Bearer ' + user}
+    })
+    .then((res)=> {
+        const messageSection = document.getElementById('message');
    
-    if(messages.length === 0){
-        messageSection.innerHTML = "<h1>Empty messages</h1>"
-    }
+        if(res.data.user.admin === false){
+            messageSection.innerHTML = "<h1>Unauthorised access to view messages</h1>"
+        }
+    })
 
+    axios({
+        url: 'https://mybrand-be-4hmq.onrender.com/api/queries',
+        headers: { 'Authorization': 'Bearer ' + user}
+    })
+    .then((res)=> {
 
-    messages.forEach((message, index) => {
+        // console.log(res.data)
+        const messages = res.data || [];
+
+        const messageSection = document.getElementById('message');
+   
+        if(messages.length === 0){
+            messageSection.innerHTML = "<h1>Empty messages</h1>"
+        }
+        
+        
+
+        messages.forEach((message, index) => {
        
         // Creating the form
         const eachMessage = document.createElement('div');
@@ -41,7 +101,7 @@ function showMessages() {
         // assign the words
         word.innerText = message.name;
         word2.innerText = message.email;
-        word3.innerText = message.text;
+        word3.innerText = message.content;
         // classnames
         eachMessage.className = 'messages';
         name.className = 'messanger-name';
@@ -62,32 +122,52 @@ function showMessages() {
         messageSection.appendChild(eachMessage);
         // message react
         reaction.innerHTML = `<i class="fas fa-reply" onclick="reply(${index})"></i>`;
-        reaction.innerHTML += `<i class="fas fa-trash-alt" onclick="deleteMessage(${index})"></i>`;
+        // reaction.innerHTML += `<i class="fas fa-trash-alt" onclick="deleteMessage(${index})"></i>`;
     });
-}
 
-function deleteMessage(index) {
-    let messages = [];
     
-    if (localStorage.getItem('messages') !== null) {
-        messages = JSON.parse(localStorage.getItem('messages'));
-    }
+    })
+    .catch((err)=> console.error(err))
 
-    messages.splice(index, 1);
-    localStorage.setItem('messages', JSON.stringify(messages));
 
-    var cleartext = document.getElementById('message');
-    cleartext.innerHTML = '';
-
-    showMessages()
-    
 }
+showMessages()
 
-window.onload = showMessages;
 
 function reply(index){
-    let messages = JSON.parse(localStorage.getItem('messages'))||[];
+    const user = sessionStorage.getItem('token');
     
-    window.location.href = `mailto:${messages[index].email}`;
+    axios({
+        url: 'https://mybrand-be-4hmq.onrender.com/api/queries',
+        headers: { 'Authorization': 'Bearer ' + user}
+    })
+    .then((res)=> {
+        const messages = res.data || [];
+
+        window.location.href = `mailto:${messages[index].email}`;
+
+    })
+    
     
 }
+
+// function deleteMessage(index) {
+//     let messages = [];
+    
+//     if (localStorage.getItem('messages') !== null) {
+//         messages = JSON.parse(localStorage.getItem('messages'));
+//     }
+
+//     messages.splice(index, 1);
+//     localStorage.setItem('messages', JSON.stringify(messages));
+
+//     var cleartext = document.getElementById('message');
+//     cleartext.innerHTML = '';
+
+//     showMessages()
+    
+// }
+
+
+
+

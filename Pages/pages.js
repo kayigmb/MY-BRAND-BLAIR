@@ -1,99 +1,162 @@
-
-// Sign in page links 
-
 function goHome(){
     window.location.href = "/index.html";
 }
-// validation functions
-
-const form = document.getElementById("form");
-const username = document.getElementById("username");
-const password = document.getElementById("password");
-const errorDiv = document.getElementsByClassName("error")[0];
 
 
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    validate();
+
+
+
+const form = document.querySelector('form');
+const error = document.getElementById('error');
+
+const token = sessionStorage.getItem('token');
+
+if(token){
+    window.location.href = '../Admin/dashbord.html'
+}
+
+var valid = true
+
+form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        validation();
 });
 
-// username keyup event
-username.addEventListener("keyup",()=>{
-    errorDiv.innerHTML= '';
+const username = document.getElementById('username');
+const password = document.getElementById('password');
+
+// VALIDATE NAME
+username.addEventListener('keyup', () =>{
+    error.innerHTML = ''
     validateName()
+})
+
+function validateName() {
+    const enteredName = username.value.trim();  
+    if (enteredName === '') {
+        errorMessage("Enter a name");
+        valid = false;
+    }else if (enteredName.length <=3){
+        errorMessage("Username should not less than 3 characters");
+        valid = false;
+    }
+    else if (enteredName.length >= 16){
+        errorMessage("Password should not more than 15 characters");
+        valid = false;
+    }
+
+}
+
+// VALIDATE password
+password.addEventListener('keyup', () => {
+    error.innerHTML = '';
+    validatePassword();
 });
 
-// password keyup event
-password.addEventListener("keyup",()=>{   
-    errorDiv.innerHTML = '';
-    validatePassword()   
-});
+function validatePassword() {
+    const enteredText = password.value.trim();
 
-// validate username
-function validateName(){
-    const userName = username.value.trim();
+    if (enteredText === "") {
+        errorMessage('Enter a password');
+        valid = false;
+    }else if (enteredText.length <= 3) {
 
-    if(userName === ""){        
-        errorMessage("Enter a username")
+        errorMessage("Password should not less than 3 characters");
+        valid = false;
+    }
+    else if (enteredText.length >= 16) {
+
+        errorMessage("Password should not more than 15 haracters");
+        valid = false;
     }
 }
 
-// validate password
-function validatePassword(){
-    const passWord = password.value.trim();
-
-    if(passWord === ""){
-        errorMessage("Enter a password")
-    }
-    else if(passWord.length < 5 ){
-        errorMessage("Password is too short")
-    }
-    else if(passWord.length > 15){
-        errorMessage('Password is too long')
-    }
+function errorMessage(message) {
+    const word = document.createElement('p');
+    error.appendChild(word);
+    word.innerHTML = message;
 }
 
+// VALIDATE EVERYTHING
+function validation() {
 
-// validation 
-function validate(){
-    const userName = username.value.trim();
-    const passWord = password.value.trim();
-
-    errorDiv.innerHTML = '';
+    error.innerHTML = '';
 
     validateName();
-    validatePassword();
+    validatePassword()
 
-    if(userName.length > 0 && passWord.length > 0){
-        validateLogin(userName,passWord)
+    if (valid = true) {
+        console.log('validation finished');
+        login()
     } 
-
-
 }
 
 
-// validate login
-function validateLogin(name,pass){
-        if (name !== "admin"){
-            errorMessage("Wrong login name")
-        }
+const login = async() => {
+            try{
+                    var username = document.getElementById('username').value.trim();
+                    var password = document.getElementById('password').value.trim();
+                    
+                    const btn = document.querySelector('.lgnbtn')
+                    btn.disabled = true;
+                    axios({
+                        method:'POST',
+                        url: 'https://mybrand-be-4hmq.onrender.com/api/signin',
+                        data:{
+                            username: username,
+                            password: password
+                        }
+                    })
+                    .then((response)=>{
+                        // console.log(response.data.user.token); 
+                        sessionStorage.setItem('token', response.data.user.token);
+                        window.location.href = '../Admin/dashbord.html'
+                        
+                    })
+                    .catch((error)=>{
+                        // alert(error.message); 
+                        btn.disabled = false
+                        errorMessage(error.response.data.message)
 
-        if(pass !== "admin123"){
-            errorMessage("Wrong login password")
-        }
-        if(name === "admin" && pass === "admin123"){
-            window.location.href = "/Admin/dashbord.html";
-        }
+                        // console.log(error)
+                    });
+            }catch(error) {
+        
+                console.log(error);
+                
+            }
+}
+
+
+
+
+// document.getElementById('loginForm').addEventListener('submit',async(e)=>{
+//     e.preventDefault();
+
+//     try{
+//         var username = document.getElementById('username').value.trim();
+//         var password = document.getElementById('password').value.trim();
     
-}
+//         axios({
+//             method:'POST',
+//             url: 'https://mybrand-be-4hmq.onrender.com/api/signin',
+//             data:{
+//                 username: username,
+//                 password: password
+//             }
+//         })
+//         .then(function (response) {
+//             // console.log(response.data.user.token); 
+//             sessions.setItem('token', response.data.user.token);
+//             window.location.href = '../Admin/dashbord.html'
+            
+//         })
+//         .catch(function (error) {
+//             alert(error.message); 
+//         });
+//     }catch(error) {
 
-// error message
-function errorMessage(message) {
-    const errorWord = document.createElement("p");
-    errorWord.innerHTML = message;
-    errorDiv.appendChild(errorWord);
-}
+//         console.log(error);
+//     }
 
-
-
-
+// });
