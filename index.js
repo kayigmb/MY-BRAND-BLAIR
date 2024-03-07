@@ -115,6 +115,10 @@ function contactUser(){
     const enteredName = name.value.trim();    
     const enteredEmail = email.value.trim();    
     const enteredText = textarea.value.trim();
+
+    const btn = document.getElementById("btnMessage");
+
+    btn.disabled = true;
     
     axios({
         method:'POST',
@@ -125,11 +129,16 @@ function contactUser(){
             content:enteredText
         }
     }).then((response) => {
-       alert('successful messages sent')
-       window.location.reload()
         
+       alertify.set('notifier','position','top-center')
+       alertify.success('Message Sent Successfully');
+       btn.disabled = false;
+        form.reset();
+    
     }).catch((error) => {
-        console.error(error)
+
+        console.error(error);
+        btn.disabled = false;
     })
    
 }   
@@ -144,32 +153,43 @@ function contactUser(){
 
 // slider 
 document.addEventListener("DOMContentLoaded", function () {
+
     const blogPages = document.querySelector('.blog_pages');
     const leftButton = document.querySelector('.left');
     const rightButton = document.querySelector('.right');
 
     let current = 0;
+
     const pages = document.querySelectorAll('.blog_individual');
+   console.log( blogPages)
+   console.log( pages.element.children.length)
 
     leftButton.addEventListener('click', function () {
+
         if (current > 0) {
             current--;
+            scroll();
         }
-        scroll();
+
     });
 
     rightButton.addEventListener('click', function () {
         if (current < pages.length - 1) {
             current++;
+            scroll();
         }
-        scroll();
+    
     });
 
     function scroll() {
-        const pageWidth = pages[current].offsetWidth;
+        const pageWidth = pages[current].offsetWidth + 10; 
         blogPages.scrollLeft = current * pageWidth;
     }
+
+   
+    
 });
+
 
 
 
@@ -219,7 +239,7 @@ function blogPagesShow() {
 
                 react1.innerHTML = `<i class="far fa-thumbs-up"></i><p>${res.data.likes}</p>`
                 
-        })
+            })
 
             
 

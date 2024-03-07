@@ -40,13 +40,29 @@ getUserName()
 //
 
 function totalComments(){
-    const commenting = JSON.parse(localStorage.getItem('post'))||[];
+
     const comment = document.getElementById('comment');
-    var count = 0;
-    commenting.forEach((e)=>{
-        count += e.comment.length
-    })        
-    comment.innerText = count;
+
+    var count = 0
+    axios({
+        url: 'https://mybrand-be-4hmq.onrender.com/api/blogs'
+    }).then((res)=>{
+
+        res.data.forEach((data)=>{
+            
+            axios({
+                url:`https://mybrand-be-4hmq.onrender.com/api/blogs/${data._id}/comments`,
+            }).then((res)=>{
+                // console.log(res.data.length)
+                count =  count + res.data.length
+                // console.log(count)
+                comment.innerText = count;
+            })
+
+        })
+        
+    })
+
 }
 
 totalComments();
@@ -91,13 +107,29 @@ function totalBlogs(){
 totalBlogs()
 
 function totalLikes(){
-    var likes = JSON.parse(localStorage.getItem('post'))||[];
+   
     const like = document.getElementById('likes');
-    var counting = 0;
-    likes.forEach((e)=>{
-        counting += e.likes
-    })        
-    like.innerText = counting;
+
+    var count = 0
+    axios({
+        url: 'https://mybrand-be-4hmq.onrender.com/api/blogs'
+    }).then((res)=>{
+
+        res.data.forEach((data)=>{
+            
+            axios({
+                url:`https://mybrand-be-4hmq.onrender.com/api/blogs/${data._id}/likes`,
+            }).then((res)=>{
+                // console.log(res.data.likes)
+                count =  count + res.data.likes
+                // // console.log(count)
+                like.innerText = count;
+            })
+
+        })
+
+        
+    })
 
 }
 totalLikes()

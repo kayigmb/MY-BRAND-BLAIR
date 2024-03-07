@@ -780,8 +780,8 @@ select option{
 }
 .pages{
     position: absolute;
-    overflow:auto;
-    min-width: 90%;
+    overflow:scroll;
+    min-width: 100%;
     display: flex;
     gap: 30px;
 }
@@ -853,10 +853,10 @@ select option{
      font-weight: bold;
  }
 .slide-content{
-    width: auto;
+    width: 100%;
     height: 600px;
     overflow: scroll;
-    position: relative;
+    position: relative;  
     display: flex;
     flex-wrap: nowrap;
 }
@@ -876,7 +876,7 @@ select option{
    }
     
     .blog_individual{
-        width:300px;
+        width: 500px;
     }
 
     .blog_pages,

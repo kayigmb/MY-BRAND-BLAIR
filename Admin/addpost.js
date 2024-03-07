@@ -62,8 +62,6 @@ getUserName()
 var content = new RichTextEditor("#content");
 
 
-
-
 // validate the input value
 const title = document.getElementById('title');
 const error = document.getElementById('error');
@@ -98,11 +96,26 @@ function validateForm() {
         errorMessage("Please enter a content");
         valid = false;
     }
-    if(!imageSee){
-        errorMessage("Please enter an image");
-        valid = false;
+    // if(!imageSee){
+    //     errorMessage("Please enter an image");
+    //     valid = false
+    // }
+    const update = sessionStorage.getItem('blogUpdate');
+
+    if(update){
+        if(!imageSee){
+            valid = true
+        }
+        
     }
-   
+
+    if(!update){
+        if(!imageSee){
+            errorMessage("Please enter an image");
+            valid = false
+        }
+    }
+    
 
     if (valid) {
         let updateInfo = sessionStorage.getItem('blogUpdate');
@@ -115,6 +128,8 @@ function validateForm() {
     }
     
 }
+
+
 // error message function
 function errorMessage(message){
     const errorWord = document.createElement("p");
@@ -126,24 +141,42 @@ function errorMessage(message){
 
 // function add post function
 function addPost() {
-    // const images = localStorage.getItem('imageu');
+
+
+
+    // Check if HTML elements are correctly referenced
+    const title = document.getElementById('title');
+    const image = document.getElementById('image');
+    const contentEnter = document.getElementById('content');
+
+
+
+    
+    // Ensure that all required elements are available
+    if (!title || !image || !contentEnter) {
+        console.error("Required HTML elements are missing.");
+        return;
+    }
 
     const titleEnter = title.value.trim();
-    const imageEntered = image.files[0]
+    const imageEntered = image.files[0];
     const contentEntered = contentEnter.value.trim();
-    
+
     const btn = document.getElementById('btn');
-    btn.disabled = true
+    btn.disabled = true;
 
-    // const authorName = sessionStorage.getItem('author');
     const info = new FormData();
-
-    
     info.append('title', titleEnter);
     info.append('image', imageEntered);
     info.append('content', contentEntered);
 
     const user = sessionStorage.getItem('token');
+
+    // Check if token is available
+    if (!user) {
+        console.error("User token is missing.");
+        return;
+    }
 
     axios({
         method:'POST',
@@ -152,27 +185,18 @@ function addPost() {
             'Authorization': `Bearer ${user}`,
             'Content-Type': 'multipart/form-data'
         },
-
         data: info
-
-    }).then((res)=>{
-        window.location.href = './manageposts.html'
-        console.log(res);
-        console.log(res.data)
-        alert('success');
-
-    })
-    .catch((err)=>{
-        
+    }).then((res) => {
+        window.location.href = './manageposts.html';
+        // console.log(res);
+        // console.log(res.data);
+        alertify.success('Successful blog posted ')
+    }).catch((err) => {
         btn.disabled = false;
-        errorMessage(err.response.data)
-        console.log(err)
-    })
-
-
-    // console.log(titleEnter, contentEntered, imageEntered)
+        errorMessage(err.response.data);
+        console.error(err);
+    });
 }
-
 
 
 
@@ -187,17 +211,26 @@ function update() {
     const publish = document.querySelector('.btn2'); 
     const images = localStorage.getItem('imageu');
 
+    
+
     if (updateInfo !== null && updateInfo !== undefined ) {
         updateBtn.style.display = "block";
         publish.style.display = "none";
         const user = sessionStorage.getItem('token');
+        const imageshow = document.getElementById('imageshow');
 
+        imageshow.style.display = "block";
+
+        alertify.set('notifier', 'position', 'top-center');
+        alertify.success('Default image will be displayed in case of no image input')
+    
         axios({
             url: `https://mybrand-be-4hmq.onrender.com/api/blogs/${updateInfo}`
         })
         .then((res) => {   
             title.value = res.data.title;
             content.setHTML(res.data.content);
+            imageshow.src = `${res.data.image}`
         })
         .catch((error) => {
             console.error("Error fetching data:", error);
@@ -213,6 +246,8 @@ update()
 
 // update action
 function updateAction() {
+    alertify.set('notifier', 'position', 'top-center');
+    alertify.success('Successful blog posted ')
 
     updatePost();
     
@@ -223,19 +258,18 @@ function updateAction() {
 // need to pull the comments and likes 
 
 function updatePost(){
-
+      
         const titleEnter = title.value.trim();
-        const imageEntered = image.files[0]
+        const imageEntered =  document.getElementById('image').files[0]
         const contentEntered = contentEnter.value.trim();
 
         let post = sessionStorage.getItem('blogUpdate');
         const user = sessionStorage.getItem('token');
 
         const form = new FormData();
-
-
-            form.append('image', imageEntered);
-    
+        form.append('image', imageEntered);
+        form.append('title', titleEnter)
+        form.append('content', contentEntered)
     
         axios({
             method: 'PATCH',
@@ -245,11 +279,7 @@ function updatePost(){
                 'Authorization': `Bearer ${user}`
 
             },
-            data:{
-                form,
-                title: titleEnter,
-                content:contentEntered
-            }
+            data:form
         })
         .then((res) => {
             console.log(res.data);

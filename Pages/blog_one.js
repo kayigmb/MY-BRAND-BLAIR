@@ -128,7 +128,7 @@ function openLink(posts){
 
 
             const reaction1 = document.querySelector('.reaction1');
-            reaction1.innerHTML = `<i class="far fa-thumbs-up" onclick='like("${res.data._id}")' "></i>
+            reaction1.innerHTML = `<i class="far fa-thumbs-up" id="liked" onclick='like("${res.data._id}")' "></i>
             <p id='like_count'></p>`;         
 
            axios({
@@ -138,15 +138,19 @@ function openLink(posts){
                 like.innerText = res.data.likes            
             })
 
-            axios({
-                url: `https://mybrand-be-4hmq.onrender.com/api/blogs/${res.data._id}/comments`
-            }).then((res)=>{
+            
                 const reaction2 = document.querySelector('.reaction2');
             reaction2.innerHTML = `<i class="far fa-comment"></i>
-            <p>
-                ${res.data.length} 
-            </p>`  
+            <p id="commentCount">   </p>` 
+            axios({
+                url: `https://mybrand-be-4hmq.onrender.com/api/blogs/${res.data._id}/comments`
+            }).then((res)=>
+            {
+                const comment = document.getElementById('commentCount')
+                comment.innerHTML = res.data.length
             })
+          
+        
 
             
         
@@ -217,7 +221,8 @@ function addComment(id){
             }
         }).then((res)=>{
             console.log('success')
-            // console.log(res.data._id)
+            alertify.set('notifier','position','top-center');
+            alertify.success("Comment Posted")
             showComment(id)
 
         }).catch((err)=>{
@@ -246,7 +251,8 @@ function showComment(id) {
     axios({
         url: `https://mybrand-be-4hmq.onrender.com/api/blogs/${id}/comments`
     }).then((res) => {
-
+        const comment = document.getElementById('commentCount')
+        comment.innerHTML = res.data.length
         const clear = document.getElementById('clear');
 
         clear.innerHTML = "";
@@ -285,11 +291,12 @@ function showComment(id) {
 function like(id){
     const changeLike = document.getElementById('like_count');
     const token = sessionStorage.getItem('token');
+    const liking = document.getElementById('liked');
 
     if(!token){
-
-        alert('Unathorized access')
-        window.location.href="./sign_in.html"
+        // window.location.href="./sign_in.html"
+        alertify.set('notifier','position','top-center');
+        alertify.error('Unauthorized access')
     }
     else{
         
@@ -298,16 +305,21 @@ function like(id){
             url:`https://mybrand-be-4hmq.onrender.com/api/blogs/${id}/likes`,
             headers: { 'Authorization': 'Bearer ' + token}
         }).then((res)=>{ 
-            
+            // console.log(res.data)
             // console.log(res.data.blog);  
+            alertify.set('notifier','position','top-center');
+            alertify.success(res.data.message)
+
             axios({
                 method: 'GET',
                 url: `https://mybrand-be-4hmq.onrender.com/api/blogs/${res.data.blog}/likes`,
             })
                 .then((res) => {
 
-            
+                    // liking.style.backgroundColor = "green"
                     changeLike.innerText = res.data.likes
+                    
+                    
                     
                 })
                 .catch((err) => {

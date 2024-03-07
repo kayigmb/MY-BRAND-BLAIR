@@ -15,7 +15,7 @@ if(token){
     window.location.href = '../Admin/dashbord.html'
 }
 
-var valid = true
+let valid = true
 
 form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -31,43 +31,54 @@ username.addEventListener('keyup', () =>{
     validateName()
 })
 
-function validateName() {
-    const enteredName = username.value.trim();  
-    if (enteredName === '') {
-        errorMessage("Enter a name");
-        valid = false;
-    }else if (enteredName.length <=3){
-        errorMessage("Username should not less than 3 characters");
-        valid = false;
-    }
-    else if (enteredName.length >= 16){
-        errorMessage("Password should not more than 15 characters");
-        valid = false;
-    }
-
-}
-
 // VALIDATE password
 password.addEventListener('keyup', () => {
     error.innerHTML = '';
     validatePassword();
 });
 
+function validateName() {
+    const enteredName = username.value.trim();  
+    if (enteredName === '') {
+        errorMessage("Enter a name");
+        return false;
+    } else if (enteredName.length <= 3) {
+        errorMessage("Username should not be less than 3 characters");
+        return false;
+    } else if (enteredName.length >= 16) {
+        errorMessage("Username should not be more than 15 characters");
+        return false;
+    }
+    return true;
+}
+
 function validatePassword() {
     const enteredText = password.value.trim();
 
     if (enteredText === "") {
         errorMessage('Enter a password');
-        valid = false;
-    }else if (enteredText.length <= 3) {
-
-        errorMessage("Password should not less than 3 characters");
-        valid = false;
+        return false;
+    } else if (enteredText.length < 6) {
+        errorMessage("Password should not be less than 6 characters");
+        return false;
+    } else if (enteredText.length >= 16) {
+        errorMessage("Password should not be more than 15 characters");
+        return false;
     }
-    else if (enteredText.length >= 16) {
+    return true;
+}
 
-        errorMessage("Password should not more than 15 haracters");
-        valid = false;
+function validation() {
+    error.innerHTML = '';
+
+    const isNameValid = validateName();
+    const isPasswordValid = validatePassword();
+
+    if (isNameValid && isPasswordValid) {
+        console.log('Validation finished');
+        login();
+    } else {
+        console.log('Validation failed');
     }
 }
 
@@ -77,49 +88,40 @@ function errorMessage(message) {
     word.innerHTML = message;
 }
 
-// VALIDATE EVERYTHING
-function validation() {
-
-    error.innerHTML = '';
-
-    validateName();
-    validatePassword()
-
-    if (valid = true) {
-        console.log('validation finished');
-        login()
-    } 
-}
-
 
 const login = async() => {
-            try{
-                    var username = document.getElementById('username').value.trim();
-                    var password = document.getElementById('password').value.trim();
+            try{            
+                
+                var username = document.getElementById('username').value.trim();
+                var password = document.getElementById('password').value.trim();
+                
+                const btn = document.querySelector('.lgnbtn')
+                btn.disabled = true;
+                axios({
+                    method:'POST',
+                    url: 'https://mybrand-be-4hmq.onrender.com/api/signin',
+                    data:{
+                        username: username,
+                        password: password
+                    }
+                })
+                .then((response)=>{
+                    // console.log(response.data.user.token); 
+                    alertify.set('notifier','position', 'top-center');
+                    alertify.success('Success Login');
+                    sessionStorage.setItem('token', response.data.user.token);
+                    window.location.href = '../Admin/dashbord.html'
+                    btn.disabled = false;
                     
-                    const btn = document.querySelector('.lgnbtn')
-                    btn.disabled = true;
-                    axios({
-                        method:'POST',
-                        url: 'https://mybrand-be-4hmq.onrender.com/api/signin',
-                        data:{
-                            username: username,
-                            password: password
-                        }
-                    })
-                    .then((response)=>{
-                        // console.log(response.data.user.token); 
-                        sessionStorage.setItem('token', response.data.user.token);
-                        window.location.href = '../Admin/dashbord.html'
-                        
-                    })
-                    .catch((error)=>{
-                        // alert(error.message); 
-                        btn.disabled = false
-                        errorMessage(error.response.data.message)
+                })
+                .catch((error)=>{
+                    // alert(error.message); 
+                    btn.disabled = false
+                    errorMessage(error.response.data.message)
 
-                        // console.log(error)
-                    });
+                    // console.log(error)
+                });
+
             }catch(error) {
         
                 console.log(error);
@@ -130,33 +132,4 @@ const login = async() => {
 
 
 
-// document.getElementById('loginForm').addEventListener('submit',async(e)=>{
-//     e.preventDefault();
 
-//     try{
-//         var username = document.getElementById('username').value.trim();
-//         var password = document.getElementById('password').value.trim();
-    
-//         axios({
-//             method:'POST',
-//             url: 'https://mybrand-be-4hmq.onrender.com/api/signin',
-//             data:{
-//                 username: username,
-//                 password: password
-//             }
-//         })
-//         .then(function (response) {
-//             // console.log(response.data.user.token); 
-//             sessions.setItem('token', response.data.user.token);
-//             window.location.href = '../Admin/dashbord.html'
-            
-//         })
-//         .catch(function (error) {
-//             alert(error.message); 
-//         });
-//     }catch(error) {
-
-//         console.log(error);
-//     }
-
-// });

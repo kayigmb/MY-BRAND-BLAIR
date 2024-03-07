@@ -40,7 +40,7 @@ function getUserName(){
         })
         .then((res)=> {
 
-            console.log(res.data)
+            // console.log(res.data)
             userName.innerText = `${res.data.user.username}`
 
         })
@@ -113,9 +113,6 @@ showPost()
 
 function deletePost(index){
 
-
-
-
     const user = sessionStorage.getItem('token');
 
     axios({
@@ -128,10 +125,15 @@ function deletePost(index){
         
 
     }).then((response)=> {
-        alert(response.data)
-        window.location.reload()
+        alertify.set('notifier','position','top-center')
+        alertify.error(response.data)
+        // window.location.reload() 
+        cleartext.innerHTML = ""
+        showPost()   
     }).catch((error)=>{
-        alert(error.response.data.message)
+
+        alertify.set('notifier','position','top-center')
+        alertify.error(error.response.data.message)
     })
   
 }
@@ -142,13 +144,36 @@ function deletePost(index){
 //edit
 
 function edit(index){
-    console.log(index)
-    sessionStorage.setItem('blogUpdate',index)
-    window.location.href = "./addpost.html"
+
+    const user = sessionStorage.getItem('token');
+
+    axios({
+
+        url: `https://mybrand-be-4hmq.onrender.com/api/protected`,
+
+        headers: { 'Authorization': 'Bearer ' + user}
+
+    }).then((response)=> {
+      if(response.data.user.admin === true)
+        {
+            sessionStorage.setItem('blogUpdate',index)
+            window.location.href = "./addpost.html"
+        }
+        else{
+            alertify.set('notifier','position','top-center')
+            alertify.error('Unauthorized access')
+        }
+    }).catch((error)=>{
+        // alert(error.response.data.message)
+        alertify.set('notifier','position','top-center')
+            alertify.error(error.response.data.message)
+    })
+    // console.log(index)
+    
 
 }
 
-// //view
+//view
 
 function view(index){
     sessionStorage.setItem('blogCurrent',index)

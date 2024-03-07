@@ -327,7 +327,7 @@ main h1{
     height: 100%;
 }
 .heading .bloginfo{
-    align-self: flex-end;
+    align-self: flex-end;   
 }
 .bloginfo h3{
     font-weight: normal;
