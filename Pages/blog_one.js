@@ -18,132 +18,166 @@ const hmenu = document.querySelector('.hmenu');
 
 
 // sidebar 
+
 const aside = document.querySelector('aside');
 
-function sideBar(){
-    let post =  JSON.parse(localStorage.getItem('post')) || [];
-  console.log(post)
-    post.forEach((e,id) => {
-        const each_link = document.createElement('div');
-        const  h3 = document.createElement('h3');
-        const a = document.createElement('a');
-        const hr = document.createElement('hr');
-        // class name
-        each_link.className = 'eachlink'
+const sideBar= ()=>{
 
-        // asign
-        h3.innerText = e.title
-        a.innerHTML = `<a  onclick="openNewLink(${id})">Read More ></a>`
-         a.style.cursor = 'pointer' 
-         a.href = 'javascript:void(0)'
-        // append
-        aside.appendChild(each_link)
-        aside.appendChild(hr)
-        each_link.appendChild(h3)
-        each_link.appendChild(a)
-    })
+        axios({
+            url: `https://mybrand-be-4hmq.onrender.com/api/blogs`,
+        })
+        .then((res)=>{
+            const post = res.data
+            // console.log(post)
+            post.forEach((e,id) => {
+                const each_link = document.createElement('div');
+                const  h3 = document.createElement('h3');
+                const a = document.createElement('a');
+                const hr = document.createElement('hr');
+                // class name
+                each_link.className = 'eachlink'
+        
+                // asign
+                h3.innerText = e.title
+                a.innerHTML = `<a  onclick="openNewLink('${e._id}')">Read More ></a>`
+                 a.style.cursor = 'pointer' 
+                 a.href = 'javascript:void(0)'
+                // append
+                aside.appendChild(each_link)
+                aside.appendChild(hr)
+                each_link.appendChild(h3)
+                each_link.appendChild(a)
+            })
+            
+    
+        }).catch((err)=>{
+            console.error(err);
+        })
+    
+
+       
+
 }
 
 sideBar()
 
 // view from admin
+
 function openBlogLink() {
-    let blog = JSON.parse(localStorage.getItem('openblog'));
+
+    let blog = sessionStorage.getItem('blogCurrent');
+
         if(blog !== null){
-            openLink(blog)
+            openNewLink(blog)
         }
-    localStorage.removeItem('openblog')
+    // localStorage.removeItem('openblog')
+    sessionStorage.removeItem('blogCurrent');
 }
+
 openBlogLink()
 
 // side bar 
 function openNewLink(id){  
-    
+    // console.log(id)
     openLink(id)    
     // window.location.reload()
 }
 
-function openLink(id) {
-    
-    let posts = JSON.parse(localStorage.getItem('post')) || [];
-    
-    const mainContent = document.querySelector('.maincontent');
-    const template = document.getElementById('template');
-   
-    const mainclear = document.getElementById('mainclear');
-    
-    mainclear.innerText = '';   
+function openLink(posts){
 
-    const clonedTemplate = template.content.cloneNode(true); 
 
-    const h1 = clonedTemplate.querySelector('h1');
-    const img = clonedTemplate.querySelector('img');
-    const h3 = clonedTemplate.querySelector('.bloginfo h3');
-    const article = clonedTemplate.querySelector('.article');
-       
-    // append 
-    mainContent.appendChild(mainclear);
-    mainclear.appendChild(clonedTemplate);
+        showComment(posts)
 
-    // Assign content
-    h1.innerText = posts[id].title;
-    img.src = posts[id].image;
-    h3.innerText = `Author: ${posts[id].author}`;
+        axios({
+            method:'GET',
+            url: `https://mybrand-be-4hmq.onrender.com/api/blogs/${posts}`,
 
-    article.innerHTML = '';
-    const p = document.createElement('p');
-    p.innerHTML = posts[id].content;
-    article.appendChild(p);
+        }).then((res)=>{
+            // console.log(res.data._id)
+            const mainContent = document.querySelector('.maincontent');
 
-    const reaction1 = document.querySelector('.reaction1');
-    reaction1.innerHTML = `<i class="far fa-thumbs-up" onclick="like(${id})"></i>
-    <p id='like_count'>${posts[id].likes}</p>`;
-    
-    const reaction2 = document.querySelector('.reaction2');
-    reaction2.innerHTML = `<i class="far fa-comment"></i>
-    <p>${posts[id].comment.length}</p>`
-    
-    // const original = document.getElementById('original');
-    // const form = document.querySelector('.comment_form');
+            const template = document.getElementById('template');
+        
+            const mainclear = document.getElementById('mainclear');
+                       
+            const clonedTemplate = template.content.cloneNode(true); 
 
-    const btn = document.getElementById('btn')
-   
+            mainContent.innerHTML = '';
 
-    btn.onclick = () => {
-        addComment(id);
-    };
-    
-    showComment(id)
+            const h1 = clonedTemplate.querySelector('h1');
+            const img = clonedTemplate.querySelector('img');
+            const h3 = clonedTemplate.querySelector('.bloginfo h3');
+            const article = clonedTemplate.querySelector('.article');
+            
+            // append 
+            mainContent.appendChild(mainclear);
+            mainContent.appendChild(clonedTemplate);
+
+            // Assign content
+            h1.innerText = res.data.title;
+            img.src = res.data.image;
+            h3.innerText = res.data.author;
+            
+            article.innerHTML = '';
+
+            const p = document.createElement('p');
+
+            p.innerHTML = res.data.content;
+
+            article.appendChild(p);
+
+
+            const reaction1 = document.querySelector('.reaction1');
+            reaction1.innerHTML = `<i class="far fa-thumbs-up" id="liked" onclick='like("${res.data._id}")' "></i>
+            <p id='like_count'></p>`;         
+
+           axios({
+                url: `https://mybrand-be-4hmq.onrender.com/api/blogs/${res.data._id}/likes`
+            }).then((res)=>{
+                const like = document.getElementById('like_count')      
+                like.innerText = res.data.likes            
+            })
+
+            
+                const reaction2 = document.querySelector('.reaction2');
+            reaction2.innerHTML = `<i class="far fa-comment"></i>
+            <p id="commentCount">   </p>` 
+            axios({
+                url: `https://mybrand-be-4hmq.onrender.com/api/blogs/${res.data._id}/comments`
+            }).then((res)=>
+            {
+                const comment = document.getElementById('commentCount')
+                comment.innerHTML = res.data.length
+            })
+          
+        
+
+            
+        
+            const btn = document.getElementById('btn')
+            
+            btn.onclick = () => {
+
+                addComment(res.data._id);
+
+            };   
+
+        }).catch((err)=>{
+            
+            console.error("error",err)
+
+        })    
+               
 }
 
 
-// like function
-function like(id){
-    const changeLike = document.getElementById('like_count');
-    let posts = JSON.parse(localStorage.getItem('post')) || [];  
-    posts[id].likes += 1    
-    localStorage.setItem('post', JSON.stringify(posts));
-    changeLike.innerText = posts[id].likes
-}
-
-
-
-// open page from blog pages
-function openPage() {
-        const index = JSON.parse(localStorage.getItem('blogCurrent'))
-        if (index !== null){
-            openLink(index)
-        }
-        localStorage.removeItem('blogCurrent')
-}
-
-openPage();
 
 
 // add comment 
 
 function addComment(id){
-    let posts = JSON.parse(localStorage.getItem('post')) || [];  
+        // console.log(id)
+  
     const error = document.getElementById('error')
     error.innerHTML = ''
     const textName = document.getElementById('name').value;
@@ -176,15 +210,29 @@ function addComment(id){
 
 
     if(valid){   
-    posts[id].comment.push({
-        name:textName,
-        email:email,
-        text:textarea
-    });
-}
-    localStorage.setItem('post',JSON.stringify(posts));
 
-    showComment(id)
+        axios({
+            method: 'POST',
+            url: `https://mybrand-be-4hmq.onrender.com/api/blogs/${id}/comments`,
+            data:{
+                    name:name,
+                    email:emailed,
+                    comment:text
+            }
+        }).then((res)=>{
+            console.log('success')
+            alertify.set('notifier','position','top-center');
+            alertify.success("Comment Posted")
+            showComment(id)
+
+        }).catch((err)=>{
+            console.log(err);
+        })
+
+    }
+
+    // showComment(id)  
+    
 }
 
 // error message function
@@ -198,66 +246,105 @@ function errorMessage(message){
 
 
 // show the comment 
-function showComment(id){
+function showComment(id) {
 
-    var comments = [];
-    
-    if (localStorage.getItem('post') !== null) {
-      comments = JSON.parse(localStorage.getItem('post'));
-      }
-      const clear = document.getElementById('clear')
-      clear.innerHTML = ""
-      comments[id].comment.forEach((word) => {
-          // declaring the comment       
-          const heading = document.createElement('h3');
-          const commentWord = document.createElement('p');
-          const commentInfo = document.createElement('div');
-          const commentSection = document.createElement('div')
-          const original = document.getElementById('original')
-          
-          // classnames
-          commentInfo.className = 'comment_info'
-          commentSection.className = 'comments_section'
-  
-          
-          // assignin the values
-  
-          heading.textContent = word.name;
-          commentWord.textContent = word.text;
-  
-          
-          // append the comment
-          original.append(clear)
-          clear.appendChild(commentSection);
-          commentSection.appendChild(commentInfo);
-          commentInfo.appendChild(heading);
-          commentInfo.appendChild(commentWord);
-          
-      });
+    axios({
+        url: `https://mybrand-be-4hmq.onrender.com/api/blogs/${id}/comments`
+    }).then((res) => {
+        const comment = document.getElementById('commentCount')
+        comment.innerHTML = res.data.length
+        const clear = document.getElementById('clear');
 
+        clear.innerHTML = "";
+        
+        res.data.forEach((word) => {
+            // Create elements for each comment
+            const heading = document.createElement('h3');
+            const commentWord = document.createElement('p');
+            const commentInfo = document.createElement('div');
+            const commentSection = document.createElement('div');
+            const original = document.getElementById('original');
+
+            // Add classes to elements
+            commentInfo.className = 'comment_info';
+            commentSection.className = 'comments_section';
+
+            // Assign values to elements
+            heading.textContent = word.name;
+            commentWord.textContent = word.comment;
+
+            // Append comments to the DOM
+            original.appendChild(clear);
+            clear.appendChild(commentSection);
+            commentSection.appendChild(commentInfo);
+            commentInfo.appendChild(heading);
+            commentInfo.appendChild(commentWord);
+            
+        });
+    }).catch((err) => {
+        console.error(err);
+    });
+    // Location.reload()
 }
 
-// ************************************
+// like function
+function like(id){
+    const changeLike = document.getElementById('like_count');
+    const token = sessionStorage.getItem('token');
+    const liking = document.getElementById('liked');
 
-// const name = document.getElementById('name').value.trim();
-// const emailed = document.getElementById('email').value.trim();
-// const text = document.getElementById('comment').value.trim();
+    if(!token){
 
-// name.addEventListener('keyup', (e)=>{
-//         if(e === ''){
-//             errorMessage('Please enter a name');
-//         }
+        // window.location.href="./sign_in.html"
+        // alertify.set('notifier','position','top-center');
+        // alertify.error('Unauthorized access')
+        const pop = document.getElementById('popup');
+        const yes = document.getElementById('yes');
+        const no = document.getElementById('no');
+
+        pop.showModal()
+        yes.addEventListener('click',()=>{
+            window.location.href="./sign_in.html"
+        })
+        no.addEventListener('click',()=>{
+            pop.close()
+        })
+
+    }
+    else{
+        
+        axios({
+            method: 'PUT',
+            url:`https://mybrand-be-4hmq.onrender.com/api/blogs/${id}/likes`,
+            headers: { 'Authorization': 'Bearer ' + token}
+        }).then((res)=>{ 
+            // console.log(res.data)
+            // console.log(res.data.blog);  
+            alertify.set('notifier','position','top-center');
+            alertify.success(res.data.message)
+
+            axios({
+                method: 'GET',
+                url: `https://mybrand-be-4hmq.onrender.com/api/blogs/${res.data.blog}/likes`,
+            })
+                .then((res) => {
+
+                    // liking.style.backgroundColor = "green"
+                    changeLike.innerText = res.data.likes
+                    
+                    
+                    
+                })
+                .catch((err) => {
+                    console.error(err);
+                });
+
+        }).catch((err)=>{
+            console.log(err)
+        })
+        
+        
+    }
 
 
-// })  
-// emailed.addEventListener('keyup', (e)=>{
-//     if(e === ''){
-//         errorMessage('Please enter an email');
-//     }
-
-    
-// })  
-// text.addEventListener('keyup', (e)=>{
-//     error.innerText = ''
-
-// })
+}

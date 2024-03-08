@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Post</title>
     <link rel="stylesheet" href="admin.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/css/alertify.min.css">
 </head>
 <body>
     <!-- nav bar -->
@@ -70,8 +71,8 @@
                 <h1>Manage Posts</h1>
             </div>
             <div class="name">
-                <h3>Admin</h3>
-                <a href="../index.html"><i class="fas fa-sign-out-alt"></i></a>
+                <h3 id="userName"></h3>
+                <a href="../Pages/sign_in.html" onclick="logout()"><i class="fas fa-sign-out-alt"></i></a>
             </div>
         </header>
         <!-- main content -->
@@ -79,15 +80,18 @@
             <!-- Manage post -->
             <div class="manage-post">
                     <!-- each post -->
-                    <div class="manage-each-post">
+                    <div class="titleShow">
                         <p>Title</p>
                         <p>Author</p>
                         <p>Reactions</p>
                     </div>
+                    <!-- <div class="manage-each-post">
+                    </div> -->
                     <div class="show-section"></div>
             </div>
         </div>
     </main>
     <script src="manage.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.min.js"></script>  
 </body>
 </html>
