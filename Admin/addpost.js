@@ -234,6 +234,7 @@ function update() {
         })
         .catch((error) => {
             console.error("Error fetching data:", error);
+         
         });
        
 
@@ -284,10 +285,12 @@ function updatePost(){
         .then((res) => {
             console.log(res.data);
             sessionStorage.removeItem('blogUpdate');
+            
             window.location.href = "./manageposts.html"
         })
         .catch((err) => {
             console.error(err);
+            errorMessage(err.response.data);
     
         });
            

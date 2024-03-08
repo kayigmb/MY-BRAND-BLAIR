@@ -1,6 +1,3 @@
-function goHome(){
-    window.location.href = "/index.html";
-}
 
 function goLogin(){
     window.location.href = "sign_in.html";
@@ -93,43 +90,64 @@ function errorMessage(message) {
 
 
 const login = async() => {
-            try{            
-                
-                var username = document.getElementById('username').value.trim();
-                var password = document.getElementById('password').value.trim();
-                
-                const btn = document.querySelector('.lgnbtn')
-                btn.disabled = true;
-                axios({
-                    method:'POST',
-                    url: 'https://mybrand-be-4hmq.onrender.com/api/signin',
-                    data:{
-                        username: username,
-                        password: password
-                    }
-                })
-                .then((response)=>{
-                    // console.log(response.data.user.token); 
-                    alertify.set('notifier','position', 'top-center');
-                    alertify.success('Success Login');
-                    sessionStorage.setItem('token', response.data.user.token);
-                    window.location.href = '../Admin/dashbord.html'
-                    btn.disabled = false;
-                    
-                })
-                .catch((error)=>{
-                    // alert(error.message); 
-                    btn.disabled = false
-                    errorMessage(error.response.data.message)
-
-                    // console.log(error)
-                });
-
-            }catch(error) {
+    try{            
         
-                console.log(error);
-                
+        var username = document.getElementById('username').value.trim();
+        var password = document.getElementById('password').value.trim();
+        
+        const btn = document.querySelector('.signupbtn')
+        btn.disabled = true;
+        axios({
+            method:'POST',
+            url: 'https://mybrand-be-4hmq.onrender.com/api/signup',
+            data:{
+                username: username,
+                password: password
             }
+        })
+        .then((response)=>{
+            
+            // window.location.href = './sign_in.html'
+            btn.disabled = true;
+            
+            axios({
+                method:'POST',
+                url: 'https://mybrand-be-4hmq.onrender.com/api/signin',
+                data:{
+                    username: username,
+                    password: password
+                }
+            })
+            .then((response)=>{
+                // console.log(response.data.user.token); 
+                alertify.set('notifier','position', 'top-center');
+                alertify.success('Success Login');
+                sessionStorage.setItem('token', response.data.user.token);
+                window.location.href = '../Admin/dashbord.html'
+                btn.disabled = false;
+                
+            })
+            .catch((error)=>{
+                // alert(error.message); 
+                btn.disabled = false
+                errorMessage(error.response.data.message)
+
+                // console.log(error)
+            });
+        })
+        .catch((error)=>{
+            // alert(error.message); 
+            if(error.response.status){
+                errorMessage('User already exists')
+            }
+            btn.disabled = false
+        });
+
+    }catch(error) {
+
+        console.log(error);
+        
+    }
 }
 
 

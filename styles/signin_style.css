@@ -52,7 +52,8 @@ form{
     cursor: pointer;
 }
 /* login btn  */
-.lgnbtn{
+.lgnbtn,
+.signupbtn{
     background-color: var(--yellow);
     border:1px solid var(--yellow);
     width: 100%;
@@ -69,6 +70,17 @@ h1{
     letter-spacing: 5px;
     font-weight: normal;
 
+}
+
+.link-sign{
+   color: var(--white);
+   text-decoration: none;
+}
+.signuplink{
+    color: var(--yellow);
+    text-decoration: none;
+    font-size:20px;
+    margin-bottom: 30px;
 }
 /* label  */
 label{

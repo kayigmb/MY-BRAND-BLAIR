@@ -294,9 +294,22 @@ function like(id){
     const liking = document.getElementById('liked');
 
     if(!token){
+
         // window.location.href="./sign_in.html"
-        alertify.set('notifier','position','top-center');
-        alertify.error('Unauthorized access')
+        // alertify.set('notifier','position','top-center');
+        // alertify.error('Unauthorized access')
+        const pop = document.getElementById('popup');
+        const yes = document.getElementById('yes');
+        const no = document.getElementById('no');
+
+        pop.showModal()
+        yes.addEventListener('click',()=>{
+            window.location.href="./sign_in.html"
+        })
+        no.addEventListener('click',()=>{
+            pop.close()
+        })
+
     }
     else{
         

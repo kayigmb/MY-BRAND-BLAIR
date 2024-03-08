@@ -145,54 +145,7 @@ function contactUser(){
 
 
 
-
-
-
-
-
-
 // slider 
-document.addEventListener("DOMContentLoaded", function () {
-
-    const blogPages = document.querySelector('.blog_pages');
-    const leftButton = document.querySelector('.left');
-    const rightButton = document.querySelector('.right');
-
-    let current = 0;
-
-    const pages = document.querySelectorAll('.blog_individual');
-   console.log( blogPages)
-   console.log( pages.element.children.length)
-
-    leftButton.addEventListener('click', function () {
-
-        if (current > 0) {
-            current--;
-            scroll();
-        }
-
-    });
-
-    rightButton.addEventListener('click', function () {
-        if (current < pages.length - 1) {
-            current++;
-            scroll();
-        }
-    
-    });
-
-    function scroll() {
-        const pageWidth = pages[current].offsetWidth + 10; 
-        blogPages.scrollLeft = current * pageWidth;
-    }
-
-   
-    
-});
-
-
-
-
 
 
 // blogs
@@ -236,20 +189,13 @@ function blogPagesShow() {
             axios({
                 url: `https://mybrand-be-4hmq.onrender.com/api/blogs/${element._id}/likes`
             }).then((res)=>{
-
-                react1.innerHTML = `<i class="far fa-thumbs-up"></i><p>${res.data.likes}</p>`
-                
-            })
-
-            
+                react1.innerHTML = `<i class="far fa-thumbs-up"></i><p>${res.data.likes}</p>`   
+            })  
 
             axios({
                 url: `https://mybrand-be-4hmq.onrender.com/api/blogs/${element._id}/comments`
             }).then((res)=>{
-    
-
                 react2.innerHTML = `<i class="fa-solid fa-comment"></i><p>${res.data.length}</p>`
-
             })
 
             // append
@@ -276,5 +222,18 @@ function blogPagesShow() {
 blogPagesShow();
 
 
+// slider
+document.addEventListener('DOMContentLoaded', function() {
+    const left = document.getElementById('left');
+    const right = document.getElementById('right');
+    const pages = document.querySelector('.pages');
 
+    left.addEventListener('click', function() {
+        pages.scrollLeft -= pages.offsetWidth;
+    });
+
+    right.addEventListener('click', function() {
+        pages.scrollLeft += pages.offsetWidth;
+    });
+});
 

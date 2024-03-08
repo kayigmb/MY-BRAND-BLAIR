@@ -91,6 +91,39 @@ hr{
 
 
 }
+dialog{
+    z-index: 99;
+    position: fixed;
+    margin: 20px auto;
+    width: 350px;
+    min-height: 100px;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color:var(--dark_grey);
+
+}
+
+dialog p{
+    font-size: 30px;
+    margin: 10px;
+}
+
+dialog button{
+    width: 100px;
+    height: 40px;
+    margin: 20px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-color: var(--black);
+    color: var(--light_grey);
+    font-size: 15px;
+}
+dialog::backdrop{
+
+    backdrop-filter: blur(2px);
+
+}
 
 .hmenu .hbar, .hmenu:before, .hmenu:after{
     width: 35px;
