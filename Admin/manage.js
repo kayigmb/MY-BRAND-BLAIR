@@ -15,169 +15,87 @@ menuItems.forEach(function(menuItem) {
 })
 
 
-//logout
-function logout(){
+// add post
+    const managePost = document.querySelector('.manage-post');
+    var cleartext = document.querySelector('.show-section');
 
-    sessionStorage.removeItem('token');
-   
-}
+    function showPost(){       
 
-//the user name
-const userName = document.getElementById('userName');
+        let blogs = [];
+        blogs = JSON.parse(localStorage.getItem('post'));
 
-function getUserName(){
+        const empty  = document.createElement('h1');
 
-    const user = sessionStorage.getItem('token') || [];
-
-   if(user.length === 0){
-
-        window.location.href = '../Pages/sign_in.html'
-
-   }else{
-        axios({
-            url: 'https://mybrand-be-4hmq.onrender.com/api/protected',
-            headers: { 'Authorization': 'Bearer ' + user}
-        })
-        .then((res)=> {
-
-            // console.log(res.data)
-            userName.innerText = `${res.data.user.username}`
-
-        })
-        .catch((err)=> console.error(err))
-   }
-
-}
-
-getUserName()
-
-
-//show the posts
-
-const managePost = document.querySelector('.manage-post');
-
-const cleartext = document.querySelector('.show-section');
-
-function showPost(){   
-        
-        const user = sessionStorage.getItem('token');
-
-                axios({
-                    url: `https://mybrand-be-4hmq.onrender.com/api/blogs`,
-                }).then((res)=> {
-                        // console.log(res);
-
-                        const blogs = res.data || [];
-            
-                        blogs.forEach((e, index)=>{
-
-                        // console.log(res.data);
-                        const postContainer = document.createElement('div');
-                        const title = document.createElement('p');
-                        const author = document.createElement('p');
-                        const icons = document.createElement('div');
-                        // class names
-                        
-               
-                        // console.log(index)
-
-                        postContainer.className ='manage-each-post';
-                        icons.className = 'manage-icons'
-                        
-                        // assign
-                        title.innerText = e.title
-                        author.innerText = e.author
-
-                        icons.innerHTML = `<i class="fas fa-eye" onclick="view('${e._id}')"></i>`
-                        icons.innerHTML += `<i class="fas fa-edit" onclick="edit('${e._id}')"></i>`
-                        icons.innerHTML += `<i class="fas fa-trash-alt" onclick="deletePost('${e._id}')"></i>`
+        if(blogs.length < 1){
+            empty.innerHTML = 'Empty Posts'
     
-                        // append
-                        managePost.appendChild(cleartext)
-                        cleartext.appendChild(postContainer)
-                        postContainer.appendChild(title)
-                        postContainer.appendChild(author)
-                        postContainer.appendChild(icons)
+        }
+          
+        managePost.appendChild(empty);
+        
 
-                })
+        // posts each
+        blogs.forEach((element,index)=>{
 
+        const postContainer = document.createElement('div');
+        const title = document.createElement('p');
+        const author = document.createElement('p');
+        const icons = document.createElement('div');
+        // class names
 
-            })
-        .catch((err)=> console.error(err))
-}
+        postContainer.className ='manage-each-post';
+        icons.className = 'manage-icons'
 
-showPost()
+        // assign
+        title.innerText = element.title
+        author.innerText = element.author
+        icons.innerHTML = `<i class="fas fa-eye" onclick="view(${index})"></i>`
+        icons.innerHTML += `<i class="fas fa-edit" onclick="edit(${index})"></i>`
+        icons.innerHTML += `<i class="fas fa-trash-alt" onclick="deletePost(${index})"></i>`
 
+        // append
+        managePost.appendChild(cleartext)
+        cleartext.appendChild(postContainer)
+        postContainer.appendChild(title)
+        postContainer.appendChild(author)
+        postContainer.appendChild(icons)
+          
+        })
+
+        
+
+    }
+
+    showPost()
 
 //delete
 
 function deletePost(index){
+    let blog = JSON.parse(localStorage.getItem('post'))||[];
 
-    const user = sessionStorage.getItem('token');
+    blog.splice(index, 1);
+    localStorage.setItem('post', JSON.stringify(blog));
 
-    axios({
+    
+    cleartext.innerHTML = '';
 
-        method:'DELETE',
-
-        url: `https://mybrand-be-4hmq.onrender.com/api/blogs/${index}`,
-
-        headers: { 'Authorization': 'Bearer ' + user}
-        
-
-    }).then((response)=> {
-        alertify.set('notifier','position','top-center')
-        alertify.error(response.data)
-        // window.location.reload() 
-        cleartext.innerHTML = ""
-        showPost()   
-    }).catch((error)=>{
-
-        alertify.set('notifier','position','top-center')
-        alertify.error(error.response.data.message)
-    })
-  
+    showPost()
 }
-
-
-
-
 //edit
 
 function edit(index){
+    let blog = JSON.parse(localStorage.getItem('post'))||[];
 
-    const user = sessionStorage.getItem('token');
-
-    axios({
-
-        url: `https://mybrand-be-4hmq.onrender.com/api/protected`,
-
-        headers: { 'Authorization': 'Bearer ' + user}
-
-    }).then((response)=> {
-      if(response.data.user.admin === true)
-        {
-            sessionStorage.setItem('blogUpdate',index)
-            window.location.href = "./addpost.html"
-        }
-        else{
-            alertify.set('notifier','position','top-center')
-            alertify.error('Unauthorized access')
-        }
-    }).catch((error)=>{
-        // alert(error.response.data.message)
-        alertify.set('notifier','position','top-center')
-            alertify.error(error.response.data.message)
-    })
-    // console.log(index)
-    
-
+    const current = blog[index];
+    const currentIndex = blog.indexOf(current);
+    localStorage.setItem('imageu', blog[index].image)
+    localStorage.setItem('current', currentIndex);
+     window.location.href = "addpost.html"
 }
 
 //view
 
 function view(index){
-    sessionStorage.setItem('blogCurrent',index)
+    const blog = localStorage.setItem('openblog',JSON.stringify(index))
     window.open('../Pages/blog_one.html','_blank');
-
-    // console.log(index);
 }

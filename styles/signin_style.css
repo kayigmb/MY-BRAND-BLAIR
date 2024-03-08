@@ -52,8 +52,7 @@ form{
     cursor: pointer;
 }
 /* login btn  */
-.lgnbtn,
-.signupbtn{
+.lgnbtn{
     background-color: var(--yellow);
     border:1px solid var(--yellow);
     width: 100%;
@@ -70,17 +69,6 @@ h1{
     letter-spacing: 5px;
     font-weight: normal;
 
-}
-
-.link-sign{
-   color: var(--white);
-   text-decoration: none;
-}
-.signuplink{
-    color: var(--yellow);
-    text-decoration: none;
-    font-size:20px;
-    margin-bottom: 30px;
 }
 /* label  */
 label{
@@ -187,14 +175,14 @@ label{
  }
 }
 
-#error{
+.error{
     margin-top: 10px;
     width: 100%;
     height: auto;
 
 }
 
-#error p{
+.error p{
     font-size: 20px;
     margin-top: 5px;
     color: red;

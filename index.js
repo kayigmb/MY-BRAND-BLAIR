@@ -111,140 +111,112 @@ function errorMessage(message) {
 //  contact the user 
 
 function contactUser(){
-
     const enteredName = name.value.trim();    
     const enteredEmail = email.value.trim();    
     const enteredText = textarea.value.trim();
-
-    const btn = document.getElementById("btnMessage");
-
-    btn.disabled = true;
     
-    axios({
-        method:'POST',
-        url:'https://mybrand-be-4hmq.onrender.com/api/queries',
-        data:{
-            name: enteredName,
-            email: enteredEmail,
-            content:enteredText
-        }
-    }).then((response) => {
-        
-       alertify.set('notifier','position','top-center')
-       alertify.success('Message Sent Successfully');
-       btn.disabled = false;
-        form.reset();
-    
-    }).catch((error) => {
+    let messageSent = JSON.parse(localStorage.getItem('messages')) || [];
 
-        console.error(error);
-        btn.disabled = false;
-    })
-   
+    messageSent.push({
+        name: enteredName,
+        email: enteredEmail,
+        text:enteredText
+    });
+    localStorage.setItem('messages', JSON.stringify(messageSent));
+    window.location.reload();
 }   
 
-
-
 // slider 
+document.addEventListener("DOMContentLoaded", function () {
+    const blogPages = document.querySelector('.blog_pages');
+    const leftButton = document.querySelector('.left');
+    const rightButton = document.querySelector('.right');
+
+    let current = 0;
+    const pages = document.querySelectorAll('.blog_individual');
+
+    leftButton.addEventListener('click', function () {
+        if (current > 0) {
+            current--;
+        }
+        scroll();
+    });
+
+    rightButton.addEventListener('click', function () {
+        if (current < pages.length - 1) {
+            current++;
+        }
+        scroll();
+    });
+
+    function scroll() {
+        const pageWidth = pages[current].offsetWidth;
+        blogPages.scrollLeft = current * pageWidth;
+    }
+});
 
 
 // blogs
 
-function blogPagesShow() {
-    axios({
-        url: "https://mybrand-be-4hmq.onrender.com/api/blogs"
-    }).then((res) => {
-        const pages = document.querySelector('.pages'); 
+function blogPagesShow(){
 
-        const posts = res.data;
-        // console.log(posts)
-        posts.forEach((element, index) => {
-        //    console.log(element)
-            const blog_individual = document.createElement('div');
-            const image = document.createElement('img');
-            const blog_word = document.createElement('div');
-            const h3 = document.createElement('h3');
-            const a = document.createElement('a');
-            const iconReact = document.createElement('div');
-            const icons = document.createElement('div');
-            const react1 = document.createElement('div');
-            const react2 = document.createElement('div');
+    const pages = document.querySelector('.pages')
 
-            //class name
-            blog_individual.className = 'blog_individual';
-            blog_word.className = 'blog_word';
-            iconReact.className = 'icons_reaction';
-            icons.className = 'iconsreact';
-            react1.className = 'reaction1';
-            react2.className = 'reaction2';
-            // assign
-            image.src = element.image;
-            h3.innerText = element.title;
+    const posts =  JSON.parse(localStorage.getItem('post')) || [];
 
-            a.innerHTML = `<a onclick='viewBlog("${element._id}")' class="learn_more">Learn More
-                <span style="font-weight: bold;">></span>
-                </a> `;
-                var id = element._id
-                blog_individual.addEventListener("click", ()=>{
-                    viewBlog(id)
-                });
+    posts.forEach((e)=>{
+        const blog_individual = document.createElement('div');
+        const image = document.createElement('img');
+        const blog_word = document.createElement('div');
+        const h3 = document.createElement('h3');
+        const p = document.createElement('p')
+        const a = document.createElement('a')
+        const  iconReact = document.createElement('div');
+        const icons = document.createElement('div');
+        const react1 = document.createElement('div');
+        const react2 = document.createElement('div');
 
-            axios({
-                url: `https://mybrand-be-4hmq.onrender.com/api/blogs/${element._id}/likes`
-            }).then((res)=>{
-                react1.innerHTML = `<i class="far fa-thumbs-up"></i><p>${res.data.likes}</p>` 
+        //class name
+        blog_individual.className = 'blog_individual'
+        blog_word.className = 'blog_word'
+        iconReact.className = 'icons_reaction'
+        icons.className = 'iconsreact'
+        react1.className = 'reaction1'
+        react2.className = 'reaction2'
+        // assign
+        image.src = e.image
+        h3.innerText = e.title
+        let maxLength = 7;
 
-            })  
+            if (e.content.length > maxLength) {
+                p.innerHTML = e.content.substr(0, maxLength) + '...'; 
+            }
+        a.innerHTML = `<a href="Pages/blog_page.html" class="learn_more">View More 
+        <span style="font-weight: bold;">></span>
+</a> `  
+        react1.innerHTML = `<i class="far fa-thumbs-up"></i><p>${e.likes}</p>`
+        react2.innerHTML = `<i class="fa-solid fa-comment"></i><p>${Object.values(e.comment).length}</p>`
 
-            axios({
-                url: `https://mybrand-be-4hmq.onrender.com/api/blogs/${element._id}/comments`
-            }).then((res)=>{
-                react2.innerHTML = `<i class="fa-solid fa-comment"></i><p>${res.data.length}</p>`
-            })
-
-            // append
-           
-            pages.appendChild(blog_individual);
+        // append
+        pages.appendChild(blog_individual)
 
 
-            blog_individual.appendChild(image);
-            blog_individual.appendChild(blog_word);
+        blog_individual.appendChild(image)
+        blog_individual.appendChild(blog_word)
 
-            blog_word.appendChild(h3);
-            blog_word.appendChild(a);
-            blog_individual.appendChild(iconReact);
-            iconReact.appendChild(icons);
-            icons.appendChild(react1);
-            icons.appendChild(react2);
-        });
-
-    }).catch((err) => {
-        console.error(err);
-    })
-}
-
-blogPagesShow();
-
-
-// slider
-document.addEventListener('DOMContentLoaded', function() {
-    const left = document.getElementById('left');
-    const right = document.getElementById('right');
-    const pages = document.querySelector('.pages');
-
-    left.addEventListener('click', function() {
-        pages.scrollLeft -= pages.offsetWidth;
-    });
-
-    right.addEventListener('click', function() {
-        pages.scrollLeft += pages.offsetWidth;
-    });
-});
-
-function viewBlog(index){
+        blog_word.appendChild(h3)
+        // blog_word.appendChild(p)
+        blog_word.appendChild(a)
+        blog_individual.appendChild(iconReact)
+        iconReact.appendChild(icons)
+        icons.appendChild(react1)
+        icons.appendChild(react2)
     
-    const currentBlog = sessionStorage.setItem('blogCurrent', index)
-    window.location.href = './Pages/blog_one.html'
-    // console.log(index)
+    })
 
 }
+
+blogPagesShow()
+
+
+
