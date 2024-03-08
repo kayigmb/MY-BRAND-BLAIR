@@ -1016,6 +1016,7 @@ input[type="text"]{
     width: 90%;
     height: 50px;
     font-size: 29px;
+    padding: 5px;
 
 }
 textarea{
@@ -1023,6 +1024,7 @@ textarea{
     width: 90%;
     font-size: 29px;
     resize: none;
+    padding: 5px;
 }
 
 @media (max-width:1218px) {
