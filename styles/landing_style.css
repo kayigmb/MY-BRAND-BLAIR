@@ -810,6 +810,7 @@ select option{
     background-color: white;
     border: 1px solid white;
     margin-bottom:20px;
+    cursor: pointer;
     /* position: ; */
     
 }
