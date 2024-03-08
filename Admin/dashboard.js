@@ -1,135 +1,56 @@
+// drop menu bar
 
-//logout
-function logout(){
+const hmenu = document.querySelector('.hmenu');
+const mnav = document.querySelector('.mnav');
+const menuItems = document.querySelectorAll('.mnav a');
 
-    sessionStorage.removeItem('token');
-   
-}
-
-//the user name
-const userName = document.getElementById('userName');
-
-function getUserName(){
-
-    const user = sessionStorage.getItem('token') || [];
-
-   if(user.length === 0){
-
-        window.location.href = '../Pages/sign_in.html'
-
-   }else{
-        axios({
-            url: 'https://mybrand-be-4hmq.onrender.com/api/protected',
-            headers: { 'Authorization': 'Bearer ' + user}
-        })
-        .then((res)=> {
-
-        
-            userName.innerText = `${res.data.user.username}`
-
-        })
-        .catch((err)=> console.error(err))
-   }
-
-}
-
-getUserName()
+hmenu.addEventListener('click',function() {
+    hmenu.classList.toggle('is-active');
+    mnav.classList.toggle('is-active');
+});
+menuItems.forEach(function(menuItem) {
+          menuItem.addEventListener('click', function() {
+         hmenu.classList.remove('is-active');
+         mnav.classList.remove('is-active');
+});
+})
 
 
-
-//
 
 function totalComments(){
-
+    const commenting = JSON.parse(localStorage.getItem('post'))||[];
     const comment = document.getElementById('comment');
-
-    var count = 0
-    axios({
-        url: 'https://mybrand-be-4hmq.onrender.com/api/blogs'
-    }).then((res)=>{
-
-        res.data.forEach((data)=>{
-            
-            axios({
-                url:`https://mybrand-be-4hmq.onrender.com/api/blogs/${data._id}/comments`,
-            }).then((res)=>{
-                // console.log(res.data.length)
-                count =  count + res.data.length
-                // console.log(count)
-                comment.innerText = count;
-            })
-
-        })
-        
-    })
-
+    var count = 0;
+    commenting.forEach((e)=>{
+        count += e.comment.length
+    })        
+    comment.innerText = count;
 }
 
 totalComments();
 
 function totalMessage(){
-    
+    let messages = JSON.parse(localStorage.getItem('messages'))||[];
     const messageSent = document.getElementById('messages');
-
-    const user = sessionStorage.getItem('token');
-    const blogs = document.getElementById('blog');
-
-    axios({
-        url: 'https://mybrand-be-4hmq.onrender.com/api/queries',
-        headers: { 'Authorization': 'Bearer ' + user}
-    })
-    .then((res)=> {
-        messageSent.innerText = res.data.length;
-    })
-    .catch((err)=> console.error(err))
-
-
-  
+    messageSent.innerText = messages.length;
 }
 totalMessage();
 
-
 function totalBlogs(){
-
-    const user = sessionStorage.getItem('token');
+    let blog = JSON.parse(localStorage.getItem('post'))||[];
     const blogs = document.getElementById('blog');
-
-    axios({
-        url: 'https://mybrand-be-4hmq.onrender.com/api/blogs',
-        // headers: { 'Authorization': 'Bearer ' + user}
-    })
-    .then((res)=> {
-        blogs.innerHTML = res.data.length;
-    })
-    .catch((err)=> console.error(err))
-    
+    blogs.innerHTML = blog.length;
 }   
 totalBlogs()
 
 function totalLikes(){
-   
+    var likes = JSON.parse(localStorage.getItem('post'))||[];
     const like = document.getElementById('likes');
-
-    var count = 0
-    axios({
-        url: 'https://mybrand-be-4hmq.onrender.com/api/blogs'
-    }).then((res)=>{
-
-        res.data.forEach((data)=>{
-            
-            axios({
-                url:`https://mybrand-be-4hmq.onrender.com/api/blogs/${data._id}/likes`,
-            }).then((res)=>{
-                // console.log(res.data.likes)
-                count =  count + res.data.likes
-                // // console.log(count)
-                like.innerText = count;
-            })
-
-        })
-
-        
-    })
+    var counting = 0;
+    likes.forEach((e)=>{
+        counting += e.likes
+    })        
+    like.innerText = counting;
 
 }
 totalLikes()
