@@ -460,12 +460,13 @@ input[type="text"]{
     height: 30px;
     border-radius: 7px;
     background-color: transparent;
-    font-size: 16px;
+    font-size: 30px;
 }
  textarea{
-    width:70%;
+    width:40%;
     height:auto;
     border-radius: 7px;
+    font-size: 20px;
     background-color: transparent;
  }
  .error{

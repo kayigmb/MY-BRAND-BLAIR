@@ -824,7 +824,9 @@ select option{
     margin: 40px auto;
     height: calc(100%-280px);
 }
-
+.learn_more{
+    cursor:pointer
+}
 /* blog card title */
 .blog_word h3{
     color:var(--black);
@@ -1017,7 +1019,8 @@ input[type="text"]{
 }
 textarea{
     background-color: var(--light_grey);
-    width: 80%;
+    width: 90%;
+    font-size: 29px;
     resize: none;
 }
 

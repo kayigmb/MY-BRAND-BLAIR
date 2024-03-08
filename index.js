@@ -181,15 +181,19 @@ function blogPagesShow() {
             image.src = element.image;
             h3.innerText = element.title;
 
-            a.innerHTML = `<a href="Pages/blog_page.html" class="learn_more">View More 
+            a.innerHTML = `<a onclick='viewBlog("${element._id}")' class="learn_more">Learn More
                 <span style="font-weight: bold;">></span>
                 </a> `;
-            
+                var id = element._id
+                blog_individual.addEventListener("click", ()=>{
+                    viewBlog(id)
+                });
 
             axios({
                 url: `https://mybrand-be-4hmq.onrender.com/api/blogs/${element._id}/likes`
             }).then((res)=>{
-                react1.innerHTML = `<i class="far fa-thumbs-up"></i><p>${res.data.likes}</p>`   
+                react1.innerHTML = `<i class="far fa-thumbs-up"></i><p>${res.data.likes}</p>` 
+
             })  
 
             axios({
@@ -237,3 +241,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+function viewBlog(index){
+    
+    const currentBlog = sessionStorage.setItem('blogCurrent', index)
+    window.location.href = './Pages/blog_one.html'
+    // console.log(index)
+
+}
