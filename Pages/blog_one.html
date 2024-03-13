@@ -17,13 +17,16 @@
                 <h1><a href="blog_page.html">Related Pages</a></h1>
             </div>
             <hr>
-
+            
             <!-- each blog link
             <div class="eachlink">
                 <h3>Node Js</h3>
                 <a href="#">Read More ></a>
             </div>
             <hr>             -->
+            <div id="side">
+
+            </div>
         </aside>
 
 
@@ -90,25 +93,25 @@
             <!-- main content -->
            <div class="maincontent">
             
-              <div id="mainclear">
-                <template id="template">
-                    <h1>Node Js</h1>
-                    <div class="heading">
-                        <div class="imagetitle">
-                            <img src="../img/blogimage.png" alt="blog image">
-                        </div>
-                        
-                        <div class="bloginfo">
-                            <p>By:</p><h3>Blair Kayigamba</h3>
-                            <!-- <p>November 21,2019</p> -->
-                        </div>
-                    </div>
-    
-                    <div class="article">
-                        <p>
-                        </p>
-                        <p>
-                        </p>
+                     <div id="mainclear">
+                            <template id="template">
+                            <h1>Node Js</h1>
+                            <div class="heading">
+                                <div class="imagetitle">
+                                    <img src="../img/blogimage.png" alt="blog image">
+                                </div>
+                                
+                                <div class="bloginfo">
+                                    <p>By:</p><h3>Blair Kayigamba</h3>
+                                    <!-- <p>November 21,2019</p> -->
+                                </div>
+                            </div>
+            
+                            <div class="article">
+                                <p>
+                                </p>
+                                <p>
+                                </p>
                     
                     </div>
                     
@@ -155,7 +158,7 @@
                                 </div>
                             </div>
                         
-            <!-- - <div class="comments_section">
+            - <div class="comments_section">
                         <div class="comment_info">
                             <h3>John</h3>
                             <p>Lorem ipsum dolor sit amet consectetur
@@ -163,7 +166,7 @@
                             Repudiandae, tempore?
                             </p>
                         </div>               
-                </div> -->
+                </div>
                             
                         </div>
                 </template>
@@ -174,7 +177,30 @@
             </div>
            
         </main>
-        <script src="blog_one.js"></script>   
+        <script>
+            const hmenu = document.querySelector('.hmenu');
+            const mnav = document.querySelector('.mnav');
+            const menuItems = document.querySelectorAll('.mnav a');
+            
+            hmenu.addEventListener('click',()=>{
+                hmenu.classList.toggle('is-active');
+                mnav.classList.toggle('is-active');
+            });
+
+            menuItems.forEach((menuItem)=>{
+                      menuItem.addEventListener('click', function() {
+                     hmenu.classList.remove('is-active');
+                     mnav.classList.remove('is-active');
+                });
+
+            });
+        </script>
+        <script type="text/babel" src="blog_one.js"></script>   
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.min.js"></script>   
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
     </body>
 </html>
