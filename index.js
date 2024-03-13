@@ -117,7 +117,6 @@ function contactUser(){
     const enteredText = textarea.value.trim();
 
     const btn = document.getElementById("btnMessage");
-
     btn.disabled = true;
     
     axios({
