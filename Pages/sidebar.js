@@ -4,7 +4,9 @@ const {useEffect,useState} = React
 function Sidebar() {
 
     const [posts,setPosts] = useState([])
+
     // const [current, setCurrent] = useState('')
+    
     const aside = document.querySelector('aside');
     
     useEffect(() => {

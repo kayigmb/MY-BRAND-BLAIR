@@ -30,7 +30,6 @@ form.addEventListener('submit', (e) => {
 
 
 
-
 const name = document.getElementById('name');
 const email = document.getElementById('email');
 const textarea = document.getElementById('text')

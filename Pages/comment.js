@@ -1,5 +1,7 @@
 const {useEffect, useState} = React
+
 function Comment(){
+
     let blog = sessionStorage.getItem('blogCurrent');
 
     // const nameE = document.getElementById('name');
@@ -14,13 +16,9 @@ function Comment(){
 
     function HandleAdd(){
         Validation()
-        // console.log('dd')
     }
 
     function Validation() {
-        // const nameEnter = document.getElementById("name").value.trim();
-        // const emailEnter = document.getElementById("email").value.trim();
-        // const textEnter = document.getElementById("comment").value.trim();
 
         const error = document.getElementById("error");
         error.innerText = "";
@@ -49,6 +47,7 @@ function Comment(){
         if (isValid) {
             // console.log(isValid);
             AddComment(name,email,content);
+
         }
     } 
 
@@ -79,10 +78,13 @@ function Comment(){
     return(
         <div>
             <h2>Comments: <span id="commentnumber"></span></h2>
+
             <div class="comment_form">
 
                 <div class="each_input_comment">
+
                     <label for="name">Enter Name:</label>
+
                     <input type="text" id="name" autocomplete="off" value={name} onChange={
                         (e)=>{
                                 setName(e.target.value);
@@ -92,6 +94,7 @@ function Comment(){
                 <div class="each_input_comment">
 
                     <label for="email">Enter Email:</label>
+
                     <input type="text" id="email" autocomplete="off" value={email} onChange={
                         (e)=>{
                                 setEmail(e.target.value);
@@ -104,14 +107,20 @@ function Comment(){
 
                     <label for="comment">Comment:</label>
 
-                    <textarea name="comment" id="comment" cols="30" rows="10"               
-                        autocomplete="off" 
-                        value={content} 
-                        onChange={(e) => {
-                            setContent(e.target.value.trim());
-                        }}
-                    ></textarea>
+                    <textarea name="comment" 
+                        id="comment" 
 
+                        cols="30"
+
+                        rows="10"      
+
+                        autocomplete="off" 
+
+                        value = {content}
+
+                        onChange={(e)=>setContent(e.target.value)}
+
+                    ></textarea>
                 </div>
 
                 <div class="error" id="error"></div>
@@ -131,6 +140,7 @@ function Comment(){
                     </div>
                     </div>
                 ))}
+                
             </div>
             
             
