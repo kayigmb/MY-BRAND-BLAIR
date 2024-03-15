@@ -90,7 +90,7 @@ function Open(){
                     <img src={show.image} alt="blog image"/>
                 </div>
                 <div className="bloginfo">
-                    <h3>{show.author}</h3>
+                    <h3>Author: {show.author}</h3>
                 </div>
             </div>
             <div className="article" dangerouslySetInnerHTML={{ __html: show.content }}></div>
