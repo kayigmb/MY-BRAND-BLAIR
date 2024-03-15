@@ -1,8 +1,8 @@
 const {useState,useEffect} = React
 
 function App(){
+
     const [posts,setPosts] = useState([])
-    const [comments,setComments] = useState(0)
 
     useEffect(()=>{
         axios({
@@ -14,11 +14,13 @@ function App(){
         })
     },[])
 
+
     function OpenLink(id){
         sessionStorage.setItem('blogCurrent', id)
         window.location.href = 'blog_one.html'
         // console.log(id)
     }
+
 
     const Card=({single})=>{
 
@@ -38,32 +40,36 @@ function App(){
                 }
         }, [single._id]);
 
-        return ( 
+            return ( 
 
-        <div className="blog_card">
-                <img src={single.image} alt="" />
-                <div className="blog_word">
-                    <h2 id="title">{single.title}</h2>
-                    <a href="blog_one.html" class="learn_more" onClick={()=>OpenLink(single._id)}>Learn More  
-                            <span>{" ->"}</span>
-                    </a>
-                </div>
-                <div className="icons_reactions">
-                    <div className="iconsreact">
-                        <div className="reaction1"><i class="far fa-thumbs-up"></i><p>{single.likes.length}</p></div>
-                       <div className="reaction2"> <i class="fa-solid fa-comment"></i><p>{count}</p></div>
+                <div className="blog_card">
+                    <img src={single.image} alt="" />
+                    <div className="blog_word">
+                        <h2 id="title">{single.title}</h2>
+                        <a href="blog_one.html" class="learn_more" onClick={()=>OpenLink(single._id)}>Learn More  
+                                <span>{" ->"}</span>
+                        </a>
+                    </div>
+                    <div className="icons_reactions">
+                        <div className="iconsreact">
+                            <div className="reaction1"><i class="far fa-thumbs-up"></i><p>{single.likes.length}</p></div>
+                        <div className="reaction2"> <i class="fa-solid fa-comment"></i><p>{count}</p></div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        )         
-    }
+            )         
+        }
 
  
 
     return (
-        posts.map((e) => (
+        (posts.length >0 ? (posts.map((e) => (
             <div key={e._id}>
               <Card key={e._id} single={e} />
+            </div>
+        ))):(
+            <div>
+                <h3>Blogs loading ...</h3>
             </div>
         ))
     )

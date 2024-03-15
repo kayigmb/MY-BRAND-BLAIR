@@ -4,10 +4,6 @@ function Comment(){
 
     let blog = sessionStorage.getItem('blogCurrent');
 
-    // const nameE = document.getElementById('name');
-    // const emailE = document.getElementById('email');
-    // const textE = document.getElementById('comment');
-
     const [show,setShow] = useState()
 
     const [name,setName] = useState("")
@@ -47,12 +43,25 @@ function Comment(){
         if (isValid) {
             // console.log(isValid);
             AddComment(name,email,content);
-
         }
     } 
 
-    function AddComment(id, n, e, t) {
-        console.log("New Comment:", { n, e, t}); 
+    function AddComment(n, e, t) {
+        // console.log(blog)
+        // console.log("New Comment:", { n, e, t}); 
+        axios({
+            method:'POST',
+            url: `https://mybrand-be-4hmq.onrender.com/api/blogs/${blog}/comments`,
+            data:{
+                name:n,
+                email:e,
+                comment:t
+        }
+        }).then((res)=>{
+            console.log('success');
+            alertify.set('notifier','position','top-center');
+            alertify.success("Comment Posted")
+        })
     }
 
     function errorMessage(message){
@@ -79,47 +88,32 @@ function Comment(){
         <div>
             <h2>Comments: <span id="commentnumber"></span></h2>
 
-            <div class="comment_form">
+            <div class="comment_form">  
 
                 <div class="each_input_comment">
-
                     <label for="name">Enter Name:</label>
-
                     <input type="text" id="name" autocomplete="off" value={name} onChange={
                         (e)=>{
                                 setName(e.target.value);
                         }
                     } />
                 </div>
+
                 <div class="each_input_comment">
-
                     <label for="email">Enter Email:</label>
-
                     <input type="text" id="email" autocomplete="off" value={email} onChange={
                         (e)=>{
                                 setEmail(e.target.value);
                         }
                     }/>
-
                 </div>
 
                 <div class="each_input_comment">
-
                     <label for="comment">Comment:</label>
-
-                    <textarea name="comment" 
-                        id="comment" 
-
-                        cols="30"
-
-                        rows="10"      
-
-                        autocomplete="off" 
-
-                        value = {content}
-
-                        onChange={(e)=>setContent(e.target.value)}
-
+                    <textarea name="comment" id="comment" cols="30" rows="10"  autocomplete="off" value = {content}
+                    onChange={
+                        (e)=>setContent(e.target.value)
+                    }
                     ></textarea>
                 </div>
 

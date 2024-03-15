@@ -82,6 +82,7 @@ function Open(){
     // console.log(show)
 
     return(
+
         <div>
             <h1>{show.title}</h1> 
             <div className="heading">
@@ -104,6 +105,7 @@ function Open(){
                 </div>
             </div>
         </div>   
+        
     )
         
 }
