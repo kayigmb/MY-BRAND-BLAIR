@@ -413,6 +413,7 @@ main h1{
     font-weight: 500;
     line-height: 123.6%; 
     height: auto;
+    padding: 10px;
     background-color: transparent;
 }
 
