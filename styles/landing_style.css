@@ -1100,3 +1100,12 @@ footer{
     justify-content: center;
     align-items: center;
 }
+
+.loading{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 25px;
+    color: var(--yellow);
+}

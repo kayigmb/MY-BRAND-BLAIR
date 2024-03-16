@@ -146,82 +146,7 @@ function contactUser(){
 // slider 
 
 
-// blogs
 
-function blogPagesShow() {
-    axios({
-        url: "https://mybrand-be-4hmq.onrender.com/api/blogs"
-    }).then((res) => {
-        const pages = document.querySelector('.pages'); 
-
-        const posts = res.data;
-        // console.log(posts)
-        posts.forEach((element, index) => {
-        //    console.log(element)
-            const blog_individual = document.createElement('div');
-            const image = document.createElement('img');
-            const blog_word = document.createElement('div');
-            const h3 = document.createElement('h3');
-            const a = document.createElement('a');
-            const iconReact = document.createElement('div');
-            const icons = document.createElement('div');
-            const react1 = document.createElement('div');
-            const react2 = document.createElement('div');
-
-            //class name
-            blog_individual.className = 'blog_individual';
-            blog_word.className = 'blog_word';
-            iconReact.className = 'icons_reaction';
-            icons.className = 'iconsreact';
-            react1.className = 'reaction1';
-            react2.className = 'reaction2';
-            // assign
-            image.src = element.image;
-            h3.innerText = element.title;
-
-            a.innerHTML = `<a onclick='viewBlog("${element._id}")' class="learn_more">Learn More
-                <span style="font-weight: bold;">></span>
-                </a> `;
-                var id = element._id
-                blog_individual.addEventListener("click", ()=>{
-                    viewBlog(id)
-                });
-
-            axios({
-                url: `https://mybrand-be-4hmq.onrender.com/api/blogs/${element._id}/likes`
-            }).then((res)=>{
-                react1.innerHTML = `<i class="far fa-thumbs-up"></i><p>${res.data.likes}</p>` 
-
-            })  
-
-            axios({
-                url: `https://mybrand-be-4hmq.onrender.com/api/blogs/${element._id}/comments`
-            }).then((res)=>{
-                react2.innerHTML = `<i class="fa-solid fa-comment"></i><p>${res.data.length}</p>`
-            })
-
-            // append
-           
-            pages.appendChild(blog_individual);
-
-
-            blog_individual.appendChild(image);
-            blog_individual.appendChild(blog_word);
-
-            blog_word.appendChild(h3);
-            blog_word.appendChild(a);
-            blog_individual.appendChild(iconReact);
-            iconReact.appendChild(icons);
-            icons.appendChild(react1);
-            icons.appendChild(react2);
-        });
-
-    }).catch((err) => {
-        console.error(err);
-    })
-}
-
-blogPagesShow();
 
 
 // slider
@@ -239,10 +164,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function viewBlog(index){
-    
-    const currentBlog = sessionStorage.setItem('blogCurrent', index)
-    window.location.href = './Pages/blog_one.html'
-    // console.log(index)
-
-}
