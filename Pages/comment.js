@@ -1,5 +1,10 @@
 const {useEffect, useState} = React
 
+function Input({index, val, set}) {
+        return (
+          <input type="text" id={index} value={val} autocomplete="off" onChange={(e)=> set(e.target.value)}/>
+        )
+}
 function Comment(){
 
     let blog = sessionStorage.getItem('blogCurrent');
@@ -82,7 +87,8 @@ function Comment(){
         })
 
     },[show])
-
+    
+    
 
     return(
         <div>
@@ -91,21 +97,14 @@ function Comment(){
             <div class="comment_form">  
 
                 <div class="each_input_comment">
-                    <label for="name">Enter Name:</label>
-                    <input type="text" id="name" autocomplete="off" value={name} onChange={
-                        (e)=>{
-                                setName(e.target.value);
-                        }
-                    } />
+                    <label for="name">Enter Name:</label>       
+                    <Input index="name" val={name} set={setName} />
                 </div>
 
                 <div class="each_input_comment">
                     <label for="email">Enter Email:</label>
-                    <input type="text" id="email" autocomplete="off" value={email} onChange={
-                        (e)=>{
-                                setEmail(e.target.value);
-                        }
-                    }/>
+                    <Input index="email" val={email} set={setEmail} />
+                                    
                 </div>
 
                 <div class="each_input_comment">

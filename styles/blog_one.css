@@ -465,13 +465,15 @@ input[type="text"]{
     height: 30px;
     border-radius: 7px;
     background-color: transparent;
-    font-size: 30px;
+    font-size: 25px;
+    padding:5px;
 }
  textarea{
     width:40%;
     height:auto;
     border-radius: 7px;
-    font-size: 20px;
+    font-size: 25px;
+    padding:10px;
     background-color: transparent;
  }
  .error{

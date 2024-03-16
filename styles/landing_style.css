@@ -1015,14 +1015,14 @@ input[type="text"]{
     background-color: var(--light_grey);
     width: 90%;
     height: 50px;
-    font-size: 29px;
+    font-size: 25px;
     padding: 5px;
 
 }
 textarea{
     background-color: var(--light_grey);
     width: 90%;
-    font-size: 29px;
+    font-size: 25px;
     resize: none;
     padding: 5px;
 }
