@@ -8,7 +8,7 @@ function App() {
             url: "https://mybrand-be-4hmq.onrender.com/api/blogs"
         }).then((res) => {
             // console.log(res.data);
-            // setBlogs(res.data);
+            setBlogs(res.data);
         }).catch((err) => {
             console.error(err);
         });
