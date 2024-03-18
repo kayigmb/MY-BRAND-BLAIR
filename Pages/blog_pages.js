@@ -16,8 +16,10 @@ function App(){
 
 
     function OpenLink(id){
-        localStorage.setItem('blogCurrent', id)
-        window.location.href = 'blog_one.html'
+        // localStorage.setItem('blogCurrent', id)
+        // window.location.href = 'blog_one.html'
+        const url = `blog_one.html?id=${id}`;
+        window.location.href = url;
         // console.log(id)
     }
 
@@ -46,7 +48,7 @@ function App(){
                     <img src={single.image} alt="" />
                     <div className="blog_word">
                         <h2 id="title">{single.title}</h2>
-                        <a href="blog_one.html" class="learn_more" onClick={()=>OpenLink(single._id)}>Learn More  
+                        <a class="learn_more" onClick={()=>OpenLink(single._id)}>Learn More  
                                 <span>{" ->"}</span>
                         </a>
                     </div>
