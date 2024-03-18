@@ -172,7 +172,7 @@ dialog::backdrop{
 }
 
 .maincontent h1{
-    font-size: clamp(80px,90px,12vw);
+    font-size: clamp(20px,90px,12vw);
 }
 @media (max-width: 769px) {
     body{

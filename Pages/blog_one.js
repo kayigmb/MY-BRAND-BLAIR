@@ -25,7 +25,7 @@ function Open(){
                 method: 'GET',
                 url: `https://mybrand-be-4hmq.onrender.com/api/blogs/${blog}`,
             }).then((res) => {
-                
+
                 // console.log(res.data)
                 setShow(res.data);
 
@@ -85,7 +85,7 @@ function Open(){
     }  
 
     // console.log(show)
-
+        
     return(
 
         <div>

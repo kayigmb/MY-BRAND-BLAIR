@@ -36,7 +36,7 @@ function Sidebar() {
                 <div className="eachlink">
                     <h3>{post.title}</h3>
                 
-                    <a href='javascript:void(0)' onClick={() => {OpenLink(post._id); }}>{'Read More >'}
+                    <a href='javascript:void(0)' onClick={() => {OpenLink(post._id); }}>{'Read More ->'}
                     </a>
                     <hr />
                 </div>
