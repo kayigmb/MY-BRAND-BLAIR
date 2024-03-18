@@ -2,7 +2,7 @@
 const {useEffect,useState} = React
 
 function Open(){
-    let blog = sessionStorage.getItem('blogCurrent');
+    let blog = localStorage.getItem('blogCurrent');
 
     const token = sessionStorage.getItem('token');
 

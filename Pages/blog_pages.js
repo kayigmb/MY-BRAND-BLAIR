@@ -16,7 +16,7 @@ function App(){
 
 
     function OpenLink(id){
-        sessionStorage.setItem('blogCurrent', id)
+        localStorage.setItem('blogCurrent', id)
         window.location.href = 'blog_one.html'
         // console.log(id)
     }

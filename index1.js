@@ -15,7 +15,7 @@ function App() {
     }, []);
 
     function View(index) {
-        sessionStorage.setItem('blogCurrent', index);
+        localStorage.setItem('blogCurrent', index);
         window.location.href = './Pages/blog_one.html';
     }
 

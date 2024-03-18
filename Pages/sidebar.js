@@ -24,7 +24,7 @@ function Sidebar() {
 
     function OpenLink(id){
         // console.log(id)
-        sessionStorage.setItem('blogCurrent',id);
+        localStorage.setItem('blogCurrent',id);
         window.location.reload();
     }
 

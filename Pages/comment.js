@@ -7,7 +7,7 @@ function Input({index, val, set}) {
 }
 function Comment(){
 
-    let blog = sessionStorage.getItem('blogCurrent');
+    let blog = localStorage.getItem('blogCurrent');
 
     const [show,setShow] = useState()
 
