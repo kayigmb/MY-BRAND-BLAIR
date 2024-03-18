@@ -7,7 +7,8 @@ function Input({index, val, set}) {
 }
 function Comment(){
 
-    let blog = localStorage.getItem('blogCurrent');
+    const urlParams = new URLSearchParams(window.location.search);
+    let blog = urlParams.get('id');
 
     const [show,setShow] = useState()
 

@@ -15,8 +15,9 @@ function App() {
     }, []);
 
     function View(index) {
-        localStorage.setItem('blogCurrent', index);
-        window.location.href = './Pages/blog_one.html';
+        // localStorage.setItem('blogCurrent', index);
+        const url = `/Pages/blog_one.html?id=${index}`;
+        window.location.href = url;
     }
 
     function Card(props) {

@@ -2,13 +2,16 @@
 const {useEffect,useState} = React
 
 function Open(){
-    let blog = localStorage.getItem('blogCurrent');
+   
+    const urlParams = new URLSearchParams(window.location.search);
+    let blog =  urlParams.get('id');
 
     const token = sessionStorage.getItem('token');
 
     const [show,setShow] = useState([])
     const [likes,setLikes] = useState(0)
     const [comments,setComments] = useState(0)
+
     useEffect(() => {
        
 
@@ -22,8 +25,10 @@ function Open(){
                 method: 'GET',
                 url: `https://mybrand-be-4hmq.onrender.com/api/blogs/${blog}`,
             }).then((res) => {
+                
                 // console.log(res.data)
                 setShow(res.data);
+
             }).catch((err) => {
                 console.error(err);
             })

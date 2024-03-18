@@ -24,8 +24,11 @@ function Sidebar() {
 
     function OpenLink(id){
         // console.log(id)
-        localStorage.setItem('blogCurrent',id);
-        window.location.reload();
+        // localStorage.setItem('blogCurrent',id);
+        // window.location.reload();
+        const url = `blog_one.html?id=${id}`;
+        window.location.href = url;
+
     }
 
     return (    
