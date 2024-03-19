@@ -72,6 +72,8 @@ h1{
 
 }
 
+
+
 .link-sign{
    color: var(--white);
    text-decoration: none;
@@ -98,6 +100,7 @@ input[type="text"], input[type="password"]{
         font-size: 20px;
         margin-top: 10px;
         border: 1px solid var(--white);
+        padding: 5px;
 }
 /* input box */
 .form_input{

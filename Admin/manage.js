@@ -176,8 +176,10 @@ function edit(index){
 //view
 
 function view(index){
-    sessionStorage.setItem('blogCurrent',index)
-    window.open('../Pages/blog_one.html','_blank');
 
+    const url = `blog_one.html?id=${index}`;
+    window.open(`../Pages/${url}`,'_blank');
+
+    // window.location.href = url;
     // console.log(index);
 }

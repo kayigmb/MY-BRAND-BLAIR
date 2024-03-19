@@ -786,16 +786,16 @@ select option{
 }
 
 .left, .right{
-    position: absolute;
-    width: 50px;
-    height:50px;
-    background-color: var(--yellow);
-    border-radius: 30px;
-    font-size: 35px;
-    margin-top: 200px;
-    z-index: 99;
-    border: 1px solid transparent;
-    cursor: pointer;
+        position: absolute;
+        width: 50px;
+        height:50px;
+        background-color: var(--yellow);
+        border-radius: 30px;
+        font-size: 35px;
+        margin-top: 200px;
+        z-index: 99;
+        border: 1px solid transparent;
+        cursor: pointer;
     
 }
 
@@ -1015,14 +1015,16 @@ input[type="text"]{
     background-color: var(--light_grey);
     width: 90%;
     height: 50px;
-    font-size: 29px;
+    font-size: 25px;
+    padding: 5px;
 
 }
 textarea{
     background-color: var(--light_grey);
     width: 90%;
-    font-size: 29px;
+    font-size: 25px;
     resize: none;
+    padding: 5px;
 }
 
 @media (max-width:1218px) {
@@ -1097,4 +1099,13 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.loading{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 25px;
+    color: var(--yellow);
 }
