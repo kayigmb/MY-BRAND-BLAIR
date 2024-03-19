@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="../styles/blog_one.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/css/alertify.min.css">
 </head>
 <body>
-    
         <!-- Aside bar -->
         <aside>
             <div class="image">
@@ -57,21 +54,10 @@
             </div>
         </nav>
 
-        <div class="notify">
-            <output role="alert" id="toast"></output>
-         </div>
 
         <!-- Main content -->
         <main>
                      <!-- drop down nav bar-->
-
-                     <dialog id="popup">
-                        <p id="pop" style="color:red;">Unauthorised access</p>
-                        <p>Go to login?</p>
-                        <button id="yes">OK</button>
-                        <button id="no">Cancel</button>
-                    </dialog>
-                    
 
                      <div class="dropdownbar">
                         <!-- drop bar section -->
@@ -90,8 +76,9 @@
                             <a href="sign_in.html">Log In</a>
                          </div>
                     </div>
-                    
+
             <!-- main content -->
+<<<<<<< HEAD
            <div class="maincontent">                    
                     <div id="template">
                         <h1></h1>
@@ -112,6 +99,43 @@
                         </div>
                     
 
+=======
+           <div class="maincontent">
+              <div id="mainclear">
+                <template id="template">
+                    <h1>Node Js</h1>
+                    <div class="heading">
+                        <div class="imagetitle">
+                            <img src="../img/blogimage.png" alt="blog image">
+                        </div>
+                        
+                        <div class="bloginfo">
+                            <h3><span>Author:</span> Blair Kayigamba</h3>
+                            <!-- <p>November 21,2019</p> -->
+                        </div>
+                    </div>
+    
+                    <div class="article">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                            Obcaecati, maiores fugiat nam amet doloribus optio ab dolorem sint cumque possimus qui
+                            placeat nemo molestias esse sequi odio facilis sunt a laudantium consequatur molestiae 
+                            deleniti sed similique! Doloremque ducimus, sit exercitationem quis veniam culpa ut earum, 
+                            ea explicabo delectus voluptatum iste!
+                        </p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo nam itaque, numquam modi magnam 
+                            dolore ipsa provident quam amet reiciendis nihil! Commodi quaerat, reprehenderit aut ex quibusdam
+                            impedit accusantium possimus culpa nesciunt eligendi perferendis. Ab rem in saepe aliquid, tempora
+                            eaque iure facere voluptatibus? Exercitationem at ratione incidunt voluptatibus, accusamus 
+                            odit excepturi laudantium quo quos quae, deleniti mollitia voluptatem sed quam vero voluptates.
+                            Id repellat exercitationem similique earum! Facilis aspernatur adipisci sint, expedita, 
+                            repellendus doloribus quos doloremque quo totam et quisquam molestias veniam nulla nisi 
+                            necessitatibus exercitationem, blanditiis eligendi voluptate?
+                        </p>
+                    
+                    </div>
+                
+    
+>>>>>>> main
                         <div class="blog_reaction">
                             <!-- each reaction icon -->
                             <div class="reaction1">
@@ -134,22 +158,20 @@
                                 <!-- each input comment -->
                                 <div class="each_input_comment">
                                     <label for="name">Enter Name:</label>
-                                    <input type="text" id="name" autocomplete="off">
+                                    <input type="text" id="name">
                                 </div>
                                 <!-- each input comment -->
                                 <div class="each_input_comment">
                                     <label for="email">Enter Email:</label>
-                                    <input type="text" id="email" autocomplete="off">
+                                    <input type="text" id="email">
                                 </div>
                                 <!-- each input comment -->
                                 <div class="each_input_comment">
                                     <label for="comment">Comment:</label>
-                                    <textarea name="comment" id="comment" cols="30" rows="10" autocomplete="off"></textarea>
+                                    <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
                                 </div>
                                 <div class="error" id="error"></div>
-                                
                                 <button id="btn">Post Comment</button>
-
                                 <div class="commentclear" id="clear">
 
                                 </div>
@@ -170,6 +192,7 @@
            </div>
            
         </main>
+<<<<<<< HEAD
         <script>
             const hmenu = document.querySelector('.hmenu');
             const mnav = document.querySelector('.mnav');
@@ -199,5 +222,8 @@
         <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 
 
+=======
+        <script src="blog_one.js"></script>    
+>>>>>>> main
     </body>
 </html>

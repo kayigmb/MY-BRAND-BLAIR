@@ -670,10 +670,10 @@ select option{
     .services_show,
      .blog_pages{
        /* height: calc(100vh - 20vh); */
-        margin: 20px auto;
+       margin: 20px auto;
         overflow: scroll;
         scroll-behavior: smooth;
-        /* scrollbar-color:inherit; */
+        scrollbar-color:inherit;
     }
 
 }
@@ -759,25 +759,26 @@ select option{
 
 .blog{
     height: 100%;
-    width: 75%;
+    width: 86%;
     margin: 0 auto;
-    position: relative;
 }
 .blog h1{
     text-align: center;
     font-size:clamp(20px,40px,10vw);
 }
-.pages{
-    z-index: 1;
+.blog_pages{
+    margin:30px auto;
+    width: 93%;
+    height:auto;
     display: flex;
-    overflow: scroll;
-    gap: 30px;
-
-    flex-grow:1 ;
     flex-wrap: nowrap;
-    scroll-behavior: smooth;
-    position:relative;
+    gap:10px;
+    z-index: 91;
+    overflow: auto;
+    align-items: center;
+    position: relative;
 }
+<<<<<<< HEAD
 .slider-container{
     margin-top:40px;
     overflow: scroll;
@@ -797,27 +798,28 @@ select option{
         border: 1px solid transparent;
         cursor: pointer;
     
+=======
+.pages{
+    position: absolute;
+    overflow:auto;
+    min-width: 90%;
+    display: flex;
+    gap: 30px;
+>>>>>>> main
 }
 
-.left{
-    left: 0;
-}
-.right{
-    right: 0;
-}
 .blog_individual{
-    min-width: 15vw;
+    width: 20vw;
+    min-height: auto;
     background-color: white;
     border: 1px solid white;
     margin-bottom:20px;
-    cursor: pointer;
-    /* position: ; */
     
 }
 /*blog card image  */
 .blog_individual img{
-    width: 100%;
-    height: 300px;
+    max-width: 100%;
+    min-height: 280px;
 }
 /* blog word */
 .blog_word{
@@ -825,15 +827,15 @@ select option{
     margin: 40px auto;
     height: calc(100%-280px);
 }
-.learn_more{
-    cursor:pointer
-}
 /* blog card title */
 .blog_word h3{
     color:var(--black);
      display: -webkit-box;
+    /* -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+     text-overflow: ellipsis;   */
 }
-
 /* blog card paragraph */
 .blog_word p{
     color: var(--dark_grey);
@@ -872,15 +874,31 @@ select option{
      color: green;
      font-weight: bold;
  }
-
+.slide-content{
+    width: auto;
+    height: 600px;
+    overflow: scroll;
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.left, .right{
+    width: 50px;
+    height:50px;
+    font-size: 35px;
+    z-index: 96;
+    margin-top: 30vh;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
 
  @media (max-width: 1090px) {
     .blog_pages{
         margin: 20px auto;
-    }
+   }
     
     .blog_individual{
-        min-width: 300px;
+        width:300px;
     }
 
     .blog_pages,
@@ -1021,8 +1039,12 @@ input[type="text"]{
 }
 textarea{
     background-color: var(--light_grey);
+<<<<<<< HEAD
     width: 90%;
     font-size: 25px;
+=======
+    width: 80%;
+>>>>>>> main
     resize: none;
     padding: 5px;
 }

@@ -52,8 +52,7 @@ form{
     cursor: pointer;
 }
 /* login btn  */
-.lgnbtn,
-.signupbtn{
+.lgnbtn{
     background-color: var(--yellow);
     border:1px solid var(--yellow);
     width: 100%;
@@ -71,6 +70,7 @@ h1{
     font-weight: normal;
 
 }
+<<<<<<< HEAD
 
 
 
@@ -84,6 +84,8 @@ h1{
     font-size:20px;
     margin-bottom: 30px;
 }
+=======
+>>>>>>> main
 /* label  */
 label{
     font-size: 1.5vw;
@@ -190,14 +192,14 @@ label{
  }
 }
 
-#error{
+.error{
     margin-top: 10px;
     width: 100%;
     height: auto;
 
 }
 
-#error p{
+.error p{
     font-size: 20px;
     margin-top: 5px;
     color: red;
